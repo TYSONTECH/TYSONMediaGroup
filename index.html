@@ -152,8 +152,8 @@
         .img-wrapper::after { content: "PLAY"; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 0.6rem; letter-spacing: 0.4em; font-weight: 500; color: #fff; opacity: 0; transition: var(--transition-main); z-index: 2; border: 1px solid rgba(255,255,255,0.2); padding: 0.8rem 1.4rem; background: rgba(0,0,0,0.4); backdrop-filter: blur(5px); }
         .item-card:hover .img-wrapper::after { opacity: 1; letter-spacing: 0.5em; }
 
-        .item-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.4; filter: grayscale(30%); transition: var(--transition-main); }
-        .item-card:hover img { transform: scale(1.02); opacity: 0.6; filter: grayscale(0%); }
+        .item-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.5; filter: grayscale(15%); transition: var(--transition-main); }
+        .item-card:hover img { transform: scale(1.02); opacity: 0.75; filter: grayscale(0%); }
         
         .card-meta { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--text-muted); margin-bottom: 0.9rem; font-weight: 500; display: flex; justify-content: space-between; }
         .card-meta-chan { color: rgba(255,255,255,0.25); }
@@ -174,7 +174,7 @@
         
         .matrix-status { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--text-light); margin-top: 3rem; display: flex; align-items: center; gap: 0.6rem; opacity: 0.5; font-weight: 500; }
         .matrix-status span { width: 5px; height: 5px; background: #fff; border-radius: 50%; display: inline-block; }
-        .matrix-status.pulse span { background: #666; animation: microPulse 2s infinite ease-in-out; }
+        .matrix-status.pulse span { background: #30d158; animation: microPulse 2s infinite ease-in-out; }
 
         /* High-End Collective Personnel Directory */
         .roster-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 4.5rem 3.5rem; }
@@ -236,12 +236,14 @@
 </head>
 <body class="intro-active">
 
+    <!-- FILMED MOTION INTRO CANVAS OVERLAY -->
     <div id="preloader-canvas">
         <video autoplay muted playsinline id="intro-video">
             <source src="preload/asfdjkl;.mp4" type="video/mp4">
         </video>
     </div>
 
+    <!-- CINEMATIC LIGHTBOX SYSTEM COMPONENT -->
     <div id="videoLightbox" class="lightbox-overlay">
         <div class="lightbox-container">
             <div class="lightbox-video-frame">
@@ -257,6 +259,7 @@
         </div>
     </div>
 
+    <!-- MAIN PLATFORM NAVIGATION FRAME -->
     <header>
         <div class="nav-brand-container">
             <div class="nav-logo">
@@ -278,6 +281,7 @@
 
     <main style="padding-top: 4rem;">
         
+        <!-- FLAGSHIP HERO SCALE DISPLAY CANVAS -->
         <section class="hero-deck">
             <div class="hero-logo-container">
                 <img src="imagestuff/logostuff/mainweblogo.png" alt="TYSON Media Group">
@@ -286,25 +290,30 @@
             <div class="scroll-indicator">Scroll to Interface</div>
         </section>
 
+        <!-- WIDESCREEN FILM ARCHIVE HUB (STAR OF THE SHOW: TYSON AVIATION) -->
         <section id="broadcast" class="broadcast-hub">
             <div class="section-tag-line">
-                <span class="section-tag">Featured Broadcast Deck</span>
-                <div class="section-line"></div>
+                <span class="section-tag" style="color: #30d158;">★ Specialized Division Launch Priority</span>
+                <div class="section-line" style="background: rgba(48, 209, 88, 0.15);"></div>
             </div>
             
-            <div class="video-canvas-wrapper" onclick="launchLightbox('bwrrfE51zb8', '2026 Subaru Outback Touring XT POV Start Up + Walkaround', 'In this video, we start the all-new redesigned Outback! Overall, a very very refined SUV...')">
+            <!-- Main Featured Video Element - Hooked directly to the Aviation Launch -->
+            <div class="video-canvas-wrapper" onclick="launchLightbox('XBhHj-1K8YU', 'TYSON Aviation | Official Channel Launch Announcement', 'Welcome to TYSON Aviation. The official programmatic expansion establishing flight deck documentation, mechanical aerospace design analysis, and airborne cinematic essays.')">
                 <div class="video-canvas-container">
                     <video autoplay muted loop playsinline>
+                        <!-- Points to your converted MP4 of the announcement video. Falls back to original loop if missing -->
+                        <source src="preload/aviation_teaser.mp4" type="video/mp4">
                         <source src="preload/asfdjkl;.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="video-interface-overlay">
-                    <div class="video-status"><span></span>Live Network Screening Loop [CLICK TO OPEN]</div>
-                    <div>Aspect 21 : 9 // RAW SOURCE</div>
+                    <div class="video-status"><span style="background: #30d158;"></span>TYSON Aviation Inaugural Screening Loop [CLICK TO EXPAND]</div>
+                    <div>Aspect 21 : 9 // RAW SOURCE SECTOR</div>
                 </div>
             </div>
         </section>
 
+        <!-- INTERACTIVE STREAM STRIP CAROUSEL ENGINE -->
         <section id="journal" style="padding-bottom: 4rem;">
             <div class="section-tag-line">
                 <span class="section-tag">Network Spotlight Broadcasts</span>
@@ -313,7 +322,8 @@
             
             <div class="carousel-deck">
                 <div class="carousel-visual-pane" id="imageTrack">
-                    </div>
+                    <!-- Dynamic YouTube Cover Images Populate Automatically via JS -->
+                </div>
                 
                 <div class="carousel-content-overlay">
                     <div class="carousel-text-box">
@@ -334,12 +344,13 @@
             </div>
         </section>
 
+        <!-- SORTABLE INTEGRATION MATRIX -->
         <section style="padding-top: 2rem;">
             <div class="catalog-matrix-controls">
                 <button class="matrix-tab active" onclick="filterCategory('all', this)">All Feeds</button>
+                <button class="matrix-tab" onclick="filterCategory('aviation', this)">TYSON Aviation</button>
                 <button class="matrix-tab" onclick="filterCategory('flagship', this)">TYSON Media Group</button>
                 <button class="matrix-tab" onclick="filterCategory('atlantis', this)">TYSON Atlantis</button>
-                <button class="matrix-tab" onclick="filterCategory('aviation', this)">TYSON Aviation</button>
                 <button class="matrix-tab" onclick="filterCategory('collective', this)">Creative Collective</button>
             </div>
             
@@ -351,6 +362,7 @@
             <div id="noResults" class="no-results">No active video indexes match configuration matrix filters.</div>
         </section>
 
+        <!-- UMBRELLA DIVISION STATIONS SEPARATOR -->
         <section id="network">
             <div class="section-tag-line">
                 <span class="section-tag">Broadcast Network Divisions</span>
@@ -358,6 +370,15 @@
             </div>
             
             <div class="matrix-deck">
+                <a href="https://www.youtube.com/@tysonmediagroup-aviation" target="_blank" class="matrix-cell" style="border-color: rgba(48, 209, 88, 0.25);">
+                    <span class="matrix-cell-arrow" style="opacity: 0.6; color: #30d158;">↗</span>
+                    <div>
+                        <h4 style="color: #30d158;">TYSON Aviation</h4>
+                        <p>The newly established aerospace division. Configured to capture flight deck documentation, mechanical aerospace structures, and airborne cinematic essays.</p>
+                    </div>
+                    <div class="matrix-status pulse"><span></span>Deployment Stage Active</div>
+                </a>
+
                 <a href="https://www.youtube.com/@TYSONMediaGroup" target="_blank" class="matrix-cell">
                     <span class="matrix-cell-arrow">↗</span>
                     <div>
@@ -375,18 +396,10 @@
                     </div>
                     <div class="matrix-status"><span></span>Acoustic Sub-Station</div>
                 </a>
-                
-                <a href="https://www.youtube.com/@tysonmediagroup-aviation" target="_blank" class="matrix-cell">
-                    <span class="matrix-cell-arrow">↗</span>
-                    <div>
-                        <h4>TYSON Aviation</h4>
-                        <p>The newly established aerospace division. Configured to capture flight deck documentation, mechanical design structures, and airborne cinematic essays.</p>
-                    </div>
-                    <div class="matrix-status pulse"><span></span>Launching Soon</div>
-                </a>
             </div>
         </section>
 
+        <!-- HUMAN ELEMENT: DIRECTORY COLLECTIVE MATRIX -->
         <section id="collective" style="padding-bottom: 14rem;">
             <div class="section-tag-line">
                 <span class="section-tag">The Network Collective</span>
@@ -395,6 +408,7 @@
             
             <div class="roster-grid">
                 
+                <!-- TYLER -->
                 <div class="roster-card">
                     <div class="roster-header">
                         <div class="roster-identity-stack">
@@ -409,6 +423,7 @@
                     <p class="roster-bio">The foundational design and direction force of TYSON Media Group. Manages primary channel operations alongside his creative sandbox channel, T-Custard-26.</p>
                 </div>
 
+                <!-- ASH -->
                 <div class="roster-card">
                     <div class="roster-header">
                         <div class="roster-identity-stack">
@@ -423,6 +438,7 @@
                     <p class="roster-bio">Oversees tactical operations and operational formatting. Delivers the essential structural stabilization and mature guidance required to organize the network's long-term timeline.</p>
                 </div>
 
+                <!-- BRAYDEN -->
                 <div class="roster-card">
                     <div class="roster-header">
                         <div class="roster-identity-stack">
@@ -434,6 +450,7 @@
                     <p class="roster-bio">Maintains aesthetic balance across production tracks. Specializes in anchoring core experimental engineering scripts to reality while optimizing system execution parameters.</p>
                 </div>
 
+                <!-- TRISTON -->
                 <div class="roster-card">
                     <div class="roster-header">
                         <div class="roster-identity-stack">
@@ -448,6 +465,7 @@
                     <p class="roster-bio">Commands spatial capture processes across platforms. Constructs high-density, immersive POV virtual reality arrays designed for spatial simulation tracks.</p>
                 </div>
 
+                <!-- ZANE -->
                 <div class="roster-card">
                     <div class="roster-header">
                         <div class="roster-identity-stack">
@@ -467,11 +485,13 @@
 
     </main>
 
+    <!-- SYSTEM FOOTER -->
     <footer>
         <p>&copy; 2026 TYSON Media Group.</p>
         <p class="footer-closing">Stillness in Motion.</p>
     </footer>
 
+    <!-- RUNTIME DATA & VIDEO INTERFACE LOGIC ENGINE -->
     <script>
         // Kinetic Film Intro Playback Lifecycle Control
         window.addEventListener('DOMContentLoaded', () => {
@@ -486,25 +506,34 @@
         });
 
         /* MASTER PLATFORM INTEGRATED BROADCAST DATABASE 
-           Populated with your verified live YouTube transmissions
+           AUTOMATED THUMBNAILS: System automatically pulls the official maxres cover for each video using its ID.
         */
         const broadcastMasterRegistry = [
+            {
+                "id": "tmg-aviation-launch",
+                "title": "TYSON Aviation | Official Channel Launch Announcement",
+                "ytId": "XBhHj-1K8YU", 
+                "tag": "aviation",
+                "channelName": "@tysonmediagroup-aviation",
+                "issue": "Real Life! • Launch Feature",
+                "excerpt": "Welcome to TYSON Aviation. The official programmatic expansion establishing flight deck documentation, mechanical aerospace design analysis, and airborne cinematic essays.",
+                "featured": true
+            },
             {
                 "id": "tmg-forza-announcement",
                 "title": "Announcement | More Forza Motorsport content coming to TYSON",
                 "ytId": "v1S0mT4TdhQ", 
-                "image": "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80",
                 "tag": "flagship",
                 "channelName": "@TYSONMediaGroup",
                 "issue": "Video Game • Jun 3, 2026",
-                "excerpt": "hehe... yessss....",
+                "excerpt": "Incoming architectural updates documenting expanded telemetry grids, customized sound packages, and structural gameplay additions inside Forza Motorsport.",
                 "featured": true
             },
             {
                 "id": "tmg-racing-trailer",
                 "title": "TYSON Racing",
                 "ytId": "VEmux2kX6NQ",
-                "image": "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=1200&q=80",
+                "image": "",
                 "tag": "flagship",
                 "channelName": "@TYSONMediaGroup",
                 "issue": "Video Game • May 31, 2026",
@@ -515,7 +544,6 @@
                 "id": "tmg-f150-beamng",
                 "title": "2019 Ford F-150 Limited | POV Drive | BeamNG.Drive",
                 "ytId": "tpca3zN2cOo",
-                "image": "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1200&q=80",
                 "tag": "flagship",
                 "channelName": "@TYSONMediaGroup",
                 "issue": "Video Game • May 23, 2026",
@@ -526,12 +554,11 @@
                 "id": "tmg-subaru-outback-pov",
                 "title": "2026 Subaru Outback Touring XT POV Start Up + Walkaround",
                 "ytId": "bwrrfE51zb8",
-                "image": "https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=1200&q=80",
                 "tag": "flagship",
                 "channelName": "@TYSONMediaGroup",
                 "issue": "Real Life! • May 19, 2026",
                 "excerpt": "In this video, we start the all-new redesigned Outback! Overall, a very very refined wagon-ish SUV...",
-                "featured": true
+                "featured": false
             }
         ];
 
@@ -547,6 +574,11 @@
             initLightboxEvents();
             
             document.getElementById('journalSearch').addEventListener('input', executeRegistryRender);
+        }
+
+        // Helper function to extract high-quality YouTube thumbnails dynamically
+        function getYoutubeThumbnail(ytId) {
+            return `https://img.youtube.com/vi/${ytId}/maxresdefault.jpg`;
         }
 
         // --- LIGHTBOX INTERFACE ARCHITECTURE JS ---
@@ -596,7 +628,7 @@
 
             featuredData.forEach((item, idx) => {
                 const img = document.createElement('img');
-                img.src = item.image;
+                img.src = getYoutubeThumbnail(item.ytId);
                 img.alt = item.title;
                 img.className = `carousel-img-item ${idx === 0 ? 'active' : ''}`;
                 track.appendChild(img);
@@ -667,7 +699,7 @@
                 card.onclick = () => launchLightbox(item.ytId, item.title, item.excerpt);
                 
                 card.innerHTML = `
-                    <div class="img-wrapper"><img src="${item.image}" alt="${item.title}"></div>
+                    <div class="img-wrapper"><img src="${getYoutubeThumbnail(item.ytId)}" alt="${item.title}"></div>
                     <div class="card-meta">
                         <span>${item.issue}</span>
                         <span class="card-meta-chan">${item.channelName}</span>
