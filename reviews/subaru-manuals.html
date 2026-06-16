@@ -3,221 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Three Pedals, One Mission — TYSON Media Group</title>
+    <title>Subaru's Trio of Manuals | TYSON Media Group</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
     
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
         :root {
-            --bg-black: #050505;
-            --bg-deep: #000000;
+            --bg-black: #000000;
             --text-light: #f5f5f7;
-            --text-muted: #6e6e73;
-            --accent-glow: rgba(255, 255, 255, 0.15);
-            --border-color: rgba(255, 255, 255, 0.035);
-            --border-heavy: rgba(255, 255, 255, 0.08);
+            --text-muted: #8e8e93;
             --font-editorial: 'Cormorant Garamond', Georgia, serif;
             --font-accent: 'Montserrat', sans-serif;
-            --transition-main: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        body {
-            background-color: var(--bg-black); color: var(--text-light);
-            font-family: var(--font-accent); font-weight: 200; line-height: 1.8; overflow-x: hidden;
-            letter-spacing: -0.005em;
+        body { 
+            background-color: var(--bg-black); color: var(--text-light); 
+            font-family: var(--font-accent); font-weight: 200; line-height: 1.8; 
         }
-
-        /* Fine Grain Texture Layer */
+        
         body::before {
-            content: ""; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; opacity: 0.022; pointer-events: none; z-index: 9999;
+            content: ""; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; opacity: 0.03; pointer-events: none; z-index: 9999;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
-        /* Minimal Article Header Navigation */
-        header {
-            position: fixed; top: 0; left: 0; width: 100%; padding: 2.2rem 5%; display: flex; justify-content: space-between; align-items: center; z-index: 100;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.95) 60%, rgba(0,0,0,0)); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-            border-bottom: 1px solid var(--border-color);
-        }
-        .nav-back-link { color: var(--text-light); text-decoration: none; font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase; opacity: 0.5; transition: var(--transition-main); font-weight: 500; display: flex; align-items: center; gap: 0.5rem; }
-        .nav-back-link:hover { opacity: 1; transform: translateX(-3px); }
-        .nav-logo img { height: 12px; width: auto; display: block; opacity: 0.95; }
+        header { position: absolute; top: 0; left: 0; width: 100%; padding: 2.2rem 4%; display: flex; justify-content: space-between; align-items: center; z-index: 10; }
+        .nav-logo img { height: 14px; width: auto; opacity: 0.85; display: block; }
+        .back-btn { color: var(--text-muted); text-decoration: none; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; transition: color 0.3s; }
+        .back-btn:hover { color: var(--text-light); }
 
-        /* Article Layout Canvas */
-        .article-hero { min-height: 75vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 5% 6rem 5%; max-width: 1400px; margin: 0 auto; position: relative; }
-        .article-meta-header { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.3em; color: var(--text-muted); font-weight: 500; margin-bottom: 2rem; display: flex; gap: 2rem; }
-        .article-meta-header span strong { color: var(--text-light); font-weight: 400; }
+        .article-hero { height: 75vh; width: 100%; position: relative; display: flex; align-items: flex-end; padding: 5rem 10%; overflow: hidden; }
+        .article-hero-bg { position: absolute; top:0; left:0; width:100%; height:100%; object-fit: cover; opacity: 0.35; filter: grayscale(25%); z-index: -1; }
+        .article-hero::after { content: ''; position: absolute; bottom:0; left:0; width:100%; height:70%; background: linear-gradient(to top, var(--bg-black), transparent); z-index: -1; }
         
-        .article-title { font-family: var(--font-editorial); font-size: calc(2.2rem + 2.5vw); font-weight: 300; line-height: 1.1; letter-spacing: -0.02em; max-width: 1100px; margin-bottom: 2.5rem; }
-        .article-lead { font-family: var(--font-editorial); font-size: calc(1.2rem + 0.5vw); font-weight: 300; font-style: italic; color: rgba(255,255,255,0.55); line-height: 1.5; max-width: 850px; }
-
-        /* Full Bleed Image Frame */
-        .article-splash-frame { width: 100%; aspect-ratio: 21/9; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); background: #020203; overflow: hidden; position: relative; margin-bottom: 8rem; }
-        .article-splash-frame img { width: 100%; height: 100%; object-fit: cover; opacity: 0.45; filter: grayscale(20%) contrast(105%); }
-        .splash-caption { position: absolute; bottom: 2rem; left: 5%; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); }
-
-        /* Editorial Body Core */
-        .article-body-wrapper { max-width: 800px; margin: 0 auto; padding: 0 2rem 14rem 2rem; }
+        .hero-title-area { max-width: 900px; }
+        .article-meta { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--text-muted); margin-bottom: 1.2rem; }
+        .hero-title-area h1 { font-family: var(--font-editorial); font-size: calc(2.2rem + 2vw); font-weight: 300; line-height: 1.15; margin-bottom: 1.5rem; letter-spacing: -0.01em; }
         
-        .article-body-wrapper p { font-size: 1.05rem; color: rgba(255,255,255,0.7); margin-bottom: 2.5rem; font-weight: 300; }
-        .article-body-wrapper p strong { color: var(--text-light); font-weight: 400; }
+        .article-body { max-width: 1300px; margin: 0 auto; padding: 5rem 10% 9rem 10%; display: grid; grid-template-columns: 2.4fr 1fr; gap: 6rem; }
         
-        .article-body-wrapper h2 { font-family: var(--font-editorial); font-size: calc(1.6rem + 0.8vw); font-weight: 400; letter-spacing: -0.01em; line-height: 1.2; margin: 6rem 0 2rem 0; color: var(--text-light); border-top: 1px solid var(--border-color); padding-top: 3rem; }
-        .article-body-wrapper h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.25em; margin: 4rem 0 1.5rem 0; color: var(--text-light); font-weight: 500; display: flex; align-items: center; gap: 1rem; }
-        .article-body-wrapper h3::before { content: ""; width: 6px; height: 6px; background: #30d158; border-radius: 50%; display: inline-block; }
+        .article-text p { font-family: var(--font-editorial); font-size: 1.35rem; color: rgba(255,255,255,0.85); margin-bottom: 2rem; font-weight: 300; }
+        .article-text p:first-of-type::first-letter { font-size: 4.5rem; font-family: var(--font-editorial); float: left; margin-right: 0.8rem; line-height: 0.9; font-weight: 400; color: var(--text-light); }
+        
+        .article-text h2 { font-family: var(--font-editorial); font-size: 2.1rem; font-weight: 400; margin: 4rem 0 1.8rem 0; letter-spacing: -0.01em; }
+        
+        .inline-photo { width: 100%; aspect-ratio: 16/9; background: #070708; margin: 4rem 0; overflow: hidden; border: 1px solid rgba(255,255,255,0.01); }
+        .inline-photo img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
 
-        /* Precise List Structure Modifications */
-        .spec-list { list-style: none; margin-bottom: 3rem; padding-left: 1.5rem; border-left: 1px solid var(--border-heavy); }
-        .spec-list li { font-size: 0.95rem; color: rgba(255,255,255,0.5); margin-bottom: 1rem; font-weight: 300; }
-        .spec-list li strong { color: var(--text-light); font-weight: 400; }
+        .spec-sidebar { background: rgba(255,255,255,0.01); border: 1px solid rgba(255,255,255,0.02); padding: 2.2rem; height: fit-content; position: sticky; top: 7rem; }
+        .spec-sidebar h4 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-muted); margin-bottom: 1.8rem; padding-bottom: 0.6rem; border-bottom: 1px solid rgba(255,255,255,0.04); font-weight: 400; }
+        .spec-row { display: flex; justify-content: space-between; font-size: 0.85rem; padding: 0.8rem 0; border-bottom: 1px solid rgba(255,255,255,0.02); letter-spacing: 0.02em; }
+        .spec-label { color: var(--text-muted); }
+        .spec-value { font-weight: 300; color: var(--text-light); text-align: right; }
 
-        /* Blockquote Styling */
-        blockquote { margin: 5rem -4rem; padding: 3rem 4rem; border-top: 1px dashed var(--border-heavy); border-bottom: 1px dashed var(--border-heavy); font-family: var(--font-editorial); font-size: 1.6rem; font-style: italic; color: rgba(255,255,255,0.85); line-height: 1.4; text-align: center; position: relative; }
-        blockquote cite { display: block; font-family: var(--font-accent); font-size: 0.6rem; font-style: normal; text-transform: uppercase; letter-spacing: 0.3em; color: var(--text-muted); margin-top: 1.5rem; }
-
-        /* Spec Comparison Grid / Table Component */
-        .data-matrix-container { margin: 5rem 0; border: 1px solid var(--border-color); background: rgba(255,255,255,0.002); width: 100%; border-collapse: collapse; }
-        .data-matrix-container th { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.25em; font-weight: 500; text-align: left; padding: 1.5rem; border-bottom: 1px solid var(--border-heavy); color: var(--text-muted); }
-        .data-matrix-container td { padding: 1.5rem; font-size: 0.88rem; font-weight: 300; border-bottom: 1px solid var(--border-color); color: rgba(255,255,255,0.65); }
-        .data-matrix-container tr:last-child td { border-bottom: none; }
-        .data-matrix-container td strong { color: var(--text-light); font-weight: 400; }
-
-        /* Integrated Video Stream Module */
-        .stream-module { border: 1px solid var(--border-color); background: #000; padding: 2rem; margin: 6rem 0; text-align: center; }
-        .stream-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.3em; margin-bottom: 1rem; font-weight: 500; }
-        .stream-btn { display: inline-block; border: 1px solid rgba(255,255,255,0.2); color: var(--text-light); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.25em; padding: 1rem 2rem; text-decoration: none; transition: var(--transition-main); font-weight: 500; margin-top: 1rem; }
-        .stream-btn:hover { background: #fff; color: #000; border-color: #fff; }
-
-        /* Global Footer Block */
-        footer { padding: 8rem 5% 5rem 5%; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 0.68rem; letter-spacing: 0.25em; color: var(--text-muted); text-transform: uppercase; font-weight: 400; }
-        .footer-closing { font-family: var(--font-editorial); font-style: italic; text-transform: none; letter-spacing: 0; color: rgba(255,255,255,0.4); font-size: 0.95rem; }
-
-        @media (max-width: 900px) {
-            blockquote { margin: 4rem 0; padding: 2rem 1.5rem; font-size: 1.3rem; }
-            .article-hero { min-height: 60vh; padding-bottom: 4rem; }
-            .article-meta-header { flex-direction: column; gap: 0.8rem; }
-            .data-matrix-container { display: block; overflow-x: auto; }
-        }
+        footer { padding: 4rem 10%; border-top: 1px solid rgba(255,255,255,0.02); display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; }
+        @media (max-width: 968px) { .article-body { grid-template-columns: 1fr; gap: 5rem; } .spec-sidebar { position: static; } }
     </style>
 </head>
 <body>
 
-    <!-- MINIMAL NAV FRAME (ADJUSTED FOR SUBDIRECTORY) -->
     <header>
-        <a href="../index.html" class="nav-back-link">← Registry</a>
         <div class="nav-logo">
             <img src="../imagestuff/logostuff/mainweblogo.png" alt="TYSON">
         </div>
+        <a href="../index.html" class="back-btn">← Back to Journal</a>
     </header>
 
-    <main style="padding-top: 6rem;">
-
-        <!-- ARTICLE HERO LAYOUT -->
-        <article>
-            <section class="article-hero">
-                <div class="article-meta-header">
-                    <span>Registry Location // <strong>TYSON Media Group</strong></span>
-                    <span>Classification // <strong>Real Life Architecture</strong></span>
-                    <span>Date Logged // <strong>June 2026</strong></span>
-                </div>
-                <h1 class="article-title">Three Pedals, One Mission: Subaru Confirms Three New Manual Transmission Models for Japan</h1>
-                <p class="article-lead">In an automotive landscape increasingly dominated by digital delegation and mandatory automatic gearboxes, Subaru's newly minted Sports Vehicle Planning Office is tracing a defiant line in the sand.</p>
-            </section>
-
-            <!-- CINEMATIC LOCAL THUMBNAIL SPLASH -->
-            <div class="article-splash-frame">
-                <img src="../imagestuff/articlesTHMB/subarumodels1.jpg" alt="Subaru Manual Development Lineup">
-                <div class="splash-caption">Fuji Speedway Analysis Grid // Sector 03-MT</div>
+    <main>
+        <section class="article-hero">
+            <!-- Grayscale moody background representing the motorsport development -->
+            <img src="https://images.unsplash.com/photo-1542282088-fe8426682b8f?auto=format&fit=crop&w=1600&q=80" alt="Subaru Motorsports Development" class="article-hero-bg">
+            <div class="hero-title-area">
+                <div class="article-meta">Special Report • Sports Vehicle Planning Office</div>
+                <h1>Three Pedals, No Compromise: Subaru’s New Manual Trio</h1>
             </div>
+        </section>
 
-            <!-- CORE EDITORIAL PROSE -->
-            <div class="article-body-wrapper">
-                <p>The announcement dropped with deliberate impact over the weekend at the <strong>Fuji 24 Hours Race</strong> (part of Japan’s grueling Super Taikyu endurance series). Rather than treating the traditional manual gearbox as an outdated liability or a regulatory hurdle, Subaru is repositioning three pedals and a shift lever as premium, unyielding brand equity for driving purists.</p>
+        <div class="article-body">
+            <article class="article-text">
+                <p>Subaru has handed driving purists a massive reason to celebrate, officially confirming that three brand-new manual-transmission models are slated to arrive. Orchestrated by their newly minted Sports Vehicle Planning Office, this tactical trio skips hybridization entirely, leaning heavily into pure mechanical connection and track-bred engineering honed through the grueling Super Taikyu endurance racing series.</p>
                 
-                <p>The project is spearheaded by Subaru's newly structured <strong>Sports Vehicle Planning Office</strong>, an internal engineering collective designated to ensure analog mechanical platforms survive alongside next-generation safety architectures. Their immediate roadmap outlines three distinct manual-transmission (MT) variants designated for release on the Japanese domestic website by 2027.</p>
+                <p>First in line is a hardcore revival of the WRX sedan. Shunning the lighter-duty gearboxes of standard current models, Subaru is reviving the legendary, bulletproof TY85 heavy-duty 6-speed manual straight from the previous-generation WRX STI to handle raw power with maximum durability. Accompanying the sedan is a bespoke, ultra-lightweight BRZ "Complete Car" variant heavily inspired by the track-focused STI Sport Type RA—shedding mass to focus entirely on precision dynamics.</p>
 
-                <!-- SECTION 1 -->
-                <h2>1. The WRX Sedan: Re-incorporating the Legendary STI Iron Giant</h2>
-                <p>For the current "VB" iteration of the global WRX, purists have had to contend with compromises: either the lighter-duty TY75 6-speed layout or the heavily pushed sport-tuned CVT. In Japan, the current top-spec WRX S4 models have historically been exclusively automatic. That paradigm shifts permanently with this rollout.</p>
-                
-                <p>Subaru is officially engineering the mechanical integration of the mythical <strong>TY85 6-speed manual gearbox</strong> into the modern platform. Sourced directly from the legendary vaults of the previous-generation WRX STI, the TY85 is an iron-cased, heavy-duty masterpiece designed to handle monumental torque loads and unrelenting tracking stress.</p>
-                
-                <ul class="spec-list">
-                    <li><strong>Mechanical Synchronization:</strong> The deployment includes a full recalibration of Subaru's tactile Driver Controlled Center Differential (DCCD).</li>
-                    <li><strong>Safety Engineering:</strong> Internal scripts confirm engineers are successfully mating the physical DCCD and manual linkage with the stereo-camera EyeSight safety grid for the first time on this specific heavy-duty transmission framework.</li>
-                </ul>
-
-                <!-- SECTION 2 -->
-                <h2>2. The BRZ Special Edition: Radical Rotational Mass Optimization</h2>
-                <p>Instead of chasing a superficial horsepower peak via forced induction—which would compromise the structural balance and lightweight narrative of the rear-wheel-drive boxer layout—the upcoming manual BRZ shifts focus entirely toward raw throttle response and structural blueprinting.</p>
-                
-                <p>The vehicle directly inherits development traces from the limited, track-focused <strong>STI Sport TYPE RA</strong> architecture. Engineers have implemented a lightweight flywheel and matching organic clutch assembly that slashes rotational mass by an unprecedented <strong>67%</strong>.</p>
-                
-                <p>Furthermore, these models undergo precision blueprinting tolerances at the factory level, optimizing weight variances across the crankshaft, high-compression pistons, and connecting rods. The result is a naturally aspirated 2.4-liter engine that climbs its rev band with an immediate, frictionless nature that mimics an open-wheel racing engine.</p>
-
-                <blockquote>
-                    "We are building an attainable base car configured explicitly to give car-loving engineers, tuners, and independent builders a structural platform to bring their own automotive ideas to life."
-                    <cite>— Tetsuro Fujinuki, Subaru Chief Technology Officer</cite>
-                </blockquote>
-
-                <!-- SECTION 3 -->
-                <h2>3. The 5-Door Hatchback: Bringing the Performance-B Concept to Production</h2>
-                <p>Perhaps the most unexpected revelation from the Fuji speedway press conference was the greenlighting of a pure five-door hatchback platform. This model represents the direct engineering evolution of the aggressive <strong>Performance-B STI Concept</strong> which initially debuted at the 2025 Japan Mobility Show.</p>
-                
-                <p>Rather than designing an ultra-exclusive, out-of-reach hyper-hatch, Subaru is deliberately calculating a return to the foundational hot-hatch ethos. The car will strip out excess acoustic deadening materials and luxury interior trims to prioritize a lower center of gravity, physical lightness, and clean modularity.</p>
-                
-                <p>Slated to sit directly between the daily-driver Impreza line and the high-output WRX, this hatchback provides a blank canvas for enthusiasts to tune, adjust, and mechanically configure their daily commutes.</p>
-
-                <!-- STRUCTURAL SPECIFICATION DATA MATRIX -->
-                <h2>System Specifications Matrix</h2>
-                <table class="data-matrix-container">
-                    <thead>
-                        <tr>
-                            <th>Platform Framework</th>
-                            <th>Aesthetic & Philosophy</th>
-                            <th>Core Engineering Focus</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>WRX Sedan MT</strong></td>
-                            <td>Heavy-Duty Analog Rally Legacy</td>
-                            <td>TY85 STI Transmission / Active DCCD Integration</td>
-                        </tr>
-                        <tr>
-                            <td><strong>BRZ Complete Car</strong></td>
-                            <td>High-Response Kinetic Balance</td>
-                            <td>67% Rotational Mass Reduction / Blueprinted Internals</td>
-                        </tr>
-                        <tr>
-                            <td><strong>5-Door Hatchback</strong></td>
-                            <td>Attainable Engineering Canvas</td>
-                            <td>Production Translation of Performance-B STI Concept</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <p>While these assignments are currently explicitly mapped out for the Japanese Domestic Market (JDM) website, the systemic ripples are global. By deploying specialized mechanical assets to cultivate analog engineering spaces, Subaru is occupying an emotional, highly lucrative enthusiast niche that competitors are abandoning wholesale.</p>
-
-                <!-- VIDEO HUB ENCLOSURE -->
-                <div class="stream-module">
-                    <h4 class="stream-title">Supplemental Video Log // Technical Deep Dive</h4>
-                    <p style="font-size: 0.88rem; margin-bottom: 1.5rem; color: var(--text-muted);">Analyze the official JDM press conference footage, structural transmission teardowns, and engineering layout breakdowns recorded live at Fuji Speedway.</p>
-                    <a href="https://www.youtube.com/watch?v=LMv3NhnDtoM" target="_blank" class="stream-btn">Launch External Video Track →</a>
+                <div class="inline-photo">
+                    <img src="https://images.unsplash.com/photo-1617469767053-d3b523a0b982?auto=format&fit=crop&w=1200&q=80" alt="Subaru Manual Shifter Mechanical">
                 </div>
 
-            </div>
-        </article>
+                <h2>The Return of the Hot Hatch</h2>
+                <p>The most unexpected curveball of the announcement is the development of an all-new 5-door hatchback. Described by Chief Technology Officer Tetsuro Fujinuki as an "affordable base car," this vehicle is being custom-built to let engineers turn raw performance concepts into reality. With distinctive hood scoops pointing to un-electrified, turbocharged boxer power, early indicators suggest this aggressive hatch could lay the perfect groundwork for a spiritual WRX STI flagship successor.</p>
+            </article>
+
+            <aside class="spec-sidebar">
+                <h4>The Manual Trio</h4>
+                <div class="spec-row">
+                    <span class="spec-label">Model 1</span>
+                    <span class="spec-value">WRX Sedan (TY85 Heavy-Duty Tech)</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-label">Model 2</span>
+                    <span class="spec-value">Lightweight BRZ "Complete Car"</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-label">Model 3</span>
+                    <span class="spec-value">Affordable 5-Door Turbo Hatch</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-label">Powertrains</span>
+                    <span class="spec-value">Non-Electrified Turbo Boxers</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-label">Timeline</span>
+                    <span class="spec-value">Rolling Out Rollout by 2027</span>
+                </div>
+            </aside>
+        </div>
     </main>
 
-    <!-- SYSTEM FOOTER -->
     <footer>
         <p>&copy; 2026 TYSON Media Group.</p>
-        <p class="footer-closing">Stillness in Motion.</p>
+        <p>Stillness in Motion.</p>
     </footer>
 
 </body>
