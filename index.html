@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TYSON Media Group | Automotive Journal</title>
+    <title>TYSON Media Group | Flagship Portal</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,183 +24,254 @@
             background-color: var(--bg-black); color: var(--text-light);
             font-family: var(--font-accent); font-weight: 200; line-height: 1.7; overflow-x: hidden;
         }
+        body.intro-active { overflow: hidden; height: 100vh; }
 
+        /* Cinematic Film Intro Canvas Overlay */
+        #preloader-canvas {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background-color: var(--bg-black); z-index: 99999;
+            display: flex; justify-content: center; align-items: center; overflow: hidden;
+            opacity: 1; transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        #preloader-canvas video { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Structural Grain Texture */
         body::before {
             content: ""; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; opacity: 0.02; pointer-events: none; z-index: 9999;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
-        /* Fixed Navigation */
+        /* Fixed Navigation Framework */
         header {
-            position: fixed; top: 0; left: 0; width: 100%; padding: 2rem 4%; display: flex; justify-content: space-between; align-items: center; z-index: 100;
+            position: fixed; top: 0; left: 0; width: 100%; padding: 2.2rem 4%; display: flex; justify-content: space-between; align-items: center; z-index: 100;
             background: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0)); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-            border-bottom: 1px solid rgba(255,255,255,0.03);
+            border-bottom: 1px solid rgba(255,255,255,0.02);
         }
-        .nav-logo img { height: 13px; width: auto; display: block; opacity: 0.9; }
+        .nav-logo img { height: 15px; width: auto; display: block; opacity: 0.85; }
         
-        /* Integrated Search Input */
+        .nav-right-cluster { display: flex; align-items: center; gap: 3rem; }
+        nav a { color: var(--text-light); text-decoration: none; font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; opacity: 0.5; transition: opacity 0.4s; }
+        nav a:hover { opacity: 1; }
+
         .search-container { position: relative; display: flex; align-items: center; }
         .search-input {
             background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.1);
-            color: var(--text-light); font-family: var(--font-accent); font-size: 0.75rem; font-weight: 300;
-            padding: 0.4rem 0.8rem 0.4rem 0; width: 180px; letter-spacing: 0.1em;
-            transition: width 0.4s, border-color 0.4s;
+            color: var(--text-light); font-family: var(--font-accent); font-size: 0.72rem; font-weight: 300;
+            padding: 0.4rem 0.5rem 0.4rem 0; width: 140px; letter-spacing: 0.1em; transition: width 0.4s, border-color 0.4s;
         }
-        .search-input:focus { outline: none; width: 240px; border-color: rgba(255,255,255,0.5); }
-        .search-input::placeholder { color: rgba(255,255,255,0.2); text-transform: uppercase; font-size: 0.65rem; letter-spacing: 0.2em; }
+        .search-input:focus { outline: none; width: 220px; border-color: rgba(255,255,255,0.5); }
+        .search-input::placeholder { color: rgba(255,255,255,0.25); text-transform: uppercase; font-size: 0.65rem; letter-spacing: 0.2em; }
 
-        /* Split-Screen Hero Carousel */
-        .carousel-hero { 
-            height: 85vh; width: 100vw; display: grid; grid-template-columns: 1.2fr 1.8fr; 
-            border-bottom: 1px solid rgba(255,255,255,0.05); position: relative; background: #050505;
+        /* Section Layout Presets */
+        section { padding: 9rem 8%; max-width: 1600px; margin: 0 auto; }
+        .section-tag { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.35em; color: var(--text-muted); display: block; margin-bottom: 3.5rem; }
+
+        /* Hero Deck: Upgraded Logo Scale Layout */
+        .hero-deck { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 6%; position: relative; }
+        .hero-logo-container {
+            max-width: 1100px; /* Enhanced maximum visibility scaling profile */
+            width: 92%;
+            margin-bottom: 4.5rem;
+            opacity: 0.95;
+            filter: drop-shadow(0 0 50px rgba(255,255,255,0.02));
         }
+        .hero-logo-container img { width: 100%; height: auto; display: block; }
+        .hero-deck h1 { font-family: var(--font-editorial); font-size: calc(1.6rem + 1.2vw); font-weight: 300; font-style: italic; max-width: 850px; color: rgba(255,255,255,0.75); letter-spacing: -0.01em; }
+
+        /* Media Division: Film Broadcast Component */
+        .broadcast-hub { background: #040405; border-top: 1px solid rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.03); max-width: 100%; padding: 9rem 8%; }
+        .video-canvas-container { width: 100%; aspect-ratio: 21/9; background: #000; position: relative; border: 1px solid rgba(255,255,255,0.02); overflow: hidden; }
+        .video-canvas-container iframe, .video-canvas-container video { width: 100%; height: 100%; object-fit: cover; border: none; opacity: 0.6; }
+
+        /* Dynamic Carousel Section Grid */
+        .carousel-deck { display: grid; grid-template-columns: 1.2fr 1.8fr; border: 1px solid rgba(255,255,255,0.03); background: #050505; position: relative; padding: 0; margin-bottom: 4rem; }
+        .carousel-meta-pane { padding: 5rem 10%; display: flex; flex-direction: column; justify-content: center; position: relative; border-right: 1px solid rgba(255,255,255,0.03); }
+        .carousel-title { font-family: var(--font-editorial); font-size: calc(1.8rem + 1vw); font-weight: 300; line-height: 1.2; margin-bottom: 1.5rem; }
+        .carousel-excerpt { color: var(--text-muted); font-size: 0.88rem; font-weight: 300; margin-bottom: 3rem; }
+        .carousel-link { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--text-light); text-decoration: none; }
         
-        .carousel-meta-pane { 
-            padding: 12% 10% 8% 10%; display: flex; flex-direction: column; 
-            justify-content: center; position: relative; border-right: 1px solid rgba(255,255,255,0.03); 
-        }
-        .carousel-tag { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.3em; color: var(--text-muted); margin-bottom: 1.5rem; }
-        .carousel-title { font-family: var(--font-editorial); font-size: calc(2rem + 1vw); font-weight: 300; line-height: 1.2; margin-bottom: 1.5rem; letter-spacing: -0.01em; }
-        .carousel-excerpt { color: var(--text-muted); font-size: 0.9rem; font-weight: 300; margin-bottom: 3rem; max-width: 420px; }
-        .carousel-link { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--text-light); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; transition: opacity 0.3s; }
-        .carousel-link:hover { opacity: 0.7; }
-
-        /* Carousel Navigation Mechanics */
         .carousel-controls { position: absolute; bottom: 3rem; left: 10%; display: flex; gap: 1.5rem; align-items: center; }
-        .ctrl-btn { background: none; border: none; color: var(--text-muted); font-size: 0.85rem; cursor: pointer; transition: color 0.3s; padding: 0.5rem; }
-        .ctrl-btn:hover { color: var(--text-light); }
-        .carousel-counter { font-size: 0.75rem; letter-spacing: 0.15em; color: rgba(255,255,255,0.2); font-weight: 400; }
+        .ctrl-btn { background: none; border: none; color: var(--text-muted); font-size: 0.85rem; cursor: pointer; }
+        .carousel-counter { font-size: 0.72rem; letter-spacing: 0.15em; color: rgba(255,255,255,0.2); }
 
-        /* Visual Frame Window */
-        .carousel-visual-pane { position: relative; width: 100%; height: 100%; overflow: hidden; }
-        .carousel-img-track { width: 100%; height: 100%; position: relative; }
-        .carousel-img-item { 
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-            object-fit: cover; opacity: 0; transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1); 
-            filter: grayscale(15%) contrast(95%); pointer-events: none;
-        }
-        .carousel-img-item.active { opacity: 0.5; pointer-events: auto; }
+        .carousel-visual-pane { position: relative; width: 100%; min-height: 450px; overflow: hidden; }
+        .carousel-img-item { position: absolute; top:0; left:0; width:100%; height:100%; object-fit: cover; opacity:0; transition: opacity 0.8s ease; }
+        .carousel-img-item.active { opacity: 0.45; }
 
-        /* Journal Database Catalog Grid */
-        .catalog-section { padding: 7rem 6%; max-width: 1600px; margin: 0 auto; }
+        /* Global Archive Database Grid Architecture */
         .catalog-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4rem; border-bottom: 1px solid rgba(255,255,255,0.02); padding-bottom: 1rem; }
-        .section-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.3em; color: var(--text-muted); }
-        .results-count { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: rgba(255,255,255,0.3); }
-
-        .grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 4.5rem 3rem; transition: opacity 0.3s; }
-        
-        /* Grid Cards built for high inventory */
-        .item-card { text-decoration: none; color: inherit; display: flex; flex-direction: column; animation: fadeIn 0.5s ease-out forwards; }
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 5rem 3rem; }
+        .item-card { text-decoration: none; color: inherit; display: flex; flex-direction: column; }
         .img-wrapper { width: 100%; aspect-ratio: 16/10; background: #09090a; margin-bottom: 1.5rem; overflow: hidden; border: 1px solid rgba(255,255,255,0.01); }
-        .item-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.45; filter: grayscale(30%); transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s; }
-        .item-card:hover img { transform: scale(1.02); opacity: 0.75; filter: grayscale(0%); }
-        
-        .card-meta { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-muted); margin-bottom: 0.6rem; }
-        .card-title { font-family: var(--font-editorial); font-size: 1.65rem; font-weight: 400; line-height: 1.3; margin-bottom: 0.5rem; }
+        .item-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.45; filter: grayscale(20%); transition: transform 0.6s, opacity 0.6s; }
+        .item-card:hover img { transform: scale(1.02); opacity: 0.75; }
+        .card-title { font-family: var(--font-editorial); font-size: 1.6rem; font-weight: 400; margin-bottom: 0.5rem; }
         .card-excerpt { color: var(--text-muted); font-size: 0.85rem; font-weight: 300; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .no-results { display: none; text-align: center; padding: 5rem 0; font-family: var(--font-editorial); font-size: 1.5rem; color: var(--text-muted); font-style: italic; }
 
-        .no-results { display: none; text-align: center; padding: 6rem 0; font-family: var(--font-editorial); font-size: 1.8rem; font-style: italic; color: var(--text-muted); }
+        /* corporate Matrix Infrastructure Links */
+        .matrix-deck { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; border-top: 1px solid rgba(255,255,255,0.03); padding-top: 6rem; }
+        .matrix-cell { border: 1px solid rgba(255,255,255,0.02); background: rgba(255,255,255,0.01); padding: 3rem 2rem; text-decoration: none; color: inherit; transition: border-color 0.4s; }
+        .matrix-cell:hover { border-color: rgba(255,255,255,0.1); }
+        .matrix-cell h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 1rem; color: var(--text-light); }
+        .matrix-cell p { font-size: 0.85rem; color: var(--text-muted); font-weight: 300; }
 
-        footer { padding: 5rem 6% 4rem 6%; border-top: 1px solid rgba(255,255,255,0.03); display: flex; justify-content: space-between; font-size: 0.72rem; letter-spacing: 0.15em; color: var(--text-muted); text-transform: uppercase; }
+        footer { padding: 6rem 8% 4rem 8%; border-top: 1px solid rgba(255,255,255,0.02); display: flex; justify-content: space-between; font-size: 0.72rem; letter-spacing: 0.15em; color: var(--text-muted); text-transform: uppercase; }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        @media (max-width: 968px) { .carousel-hero { grid-template-columns: 1fr; height: auto; } .carousel-meta-pane { padding: 8rem 6% 4rem 6%; border-right: none; } .carousel-visual-pane { height: 45vh; } .carousel-controls { bottom: 1.5rem; left: 6%; } }
+        @media (max-width: 968px) { 
+            .carousel-deck { grid-template-columns: 1fr; } 
+            .matrix-deck { grid-template-columns: 1fr; }
+            .nav-right-cluster { gap: 1.5rem; }
+            nav { display: none; }
+        }
     </style>
 </head>
-<body>
+<body class="intro-active">
+
+    <!-- FILMED MOTION INTRO CANVAS LAYER -->
+    <div id="preloader-canvas">
+        <video autoplay muted playsinline id="intro-video">
+            <source src="preload/asfdjkl;.mp4" type="video/mp4">
+        </video>
+    </div>
 
     <header>
         <div class="nav-logo">
             <img src="imagestuff/logostuff/mainweblogo.png" alt="TYSON">
         </div>
-        <div class="search-container">
-            <input type="text" id="journalSearch" class="search-input" placeholder="Search Index...">
+        <div class="nav-right-cluster">
+            <nav>
+                <a href="#broadcast">Broadcast</a>
+                <a href="#catalog">Publications</a>
+                <a href="#divisions">Divisions</a>
+            </nav>
+            <div class="search-container">
+                <input type="text" id="journalSearch" class="search-input" placeholder="Search Index...">
+            </div>
         </div>
     </header>
 
-    <main style="padding-top: 5.5rem;">
+    <main>
         
-        <!-- TOP FEATURED CAROUSEL DEEP TIE-IN -->
-        <section class="carousel-hero">
-            <div class="carousel-meta-pane">
-                <div id="carouselMeta" class="carousel-tag"></div>
-                <h2 id="carouselTitle" class="carousel-title"></h2>
-                <p id="carouselExcerpt" class="carousel-excerpt"></p>
-                <a href="#" id="carouselLink" class="carousel-link">Read Analysis →</a>
-                
-                <div class="carousel-controls">
-                    <button class="ctrl-btn" id="prevBtn">←</button>
-                    <span class="carousel-counter" id="carouselCounter">01 / 02</span>
-                    <button class="ctrl-btn" id="nextBtn">→</button>
-                </div>
+        <!-- FLAGSHIP HERO DECK: LOGO AT MASSIVE VISUAL WEIGHT SCALE -->
+        <section class="hero-deck">
+            <div class="hero-logo-container">
+                <img src="imagestuff/logostuff/mainweblogo.png" alt="TYSON Media Group">
             </div>
-            
-            <div class="carousel-visual-pane">
-                <div class="carousel-img-track" id="imageTrack">
-                    <!-- Dynamic images populate here to track active state changes natively -->
+            <h1>A multidisciplinary holding firm focusing on automotive analysis, cinema production, and historical preservation.</h1>
+        </section>
+
+        <!-- CINEMA STREAMING DISTRIBUTION HUB -->
+        <section id="broadcast" class="broadcast-hub">
+            <span class="section-tag">Featured Broadcast / Film Portfolio</span>
+            <div class="video-canvas-container">
+                <!-- Swap with your absolute Vimeo / YouTube / Self-Hosted stream deployment path safely -->
+                <video autoplay muted loop playsinline>
+                    <source src="preload/asfdjkl;.mp4" type="video/mp4">
+                </video>
+            </div>
+        </section>
+
+        <!-- DYNAMIC CAROUSEL SLIDER ENGINE -->
+        <section id="catalog" style="padding-bottom: 0;">
+            <span class="section-tag">Latest Editorial Releases</span>
+            <div class="carousel-deck">
+                <div class="carousel-meta-pane">
+                    <div id="carouselMeta" style="font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-muted); margin-bottom: 1rem;"></div>
+                    <h2 id="carouselTitle" class="carousel-title"></h2>
+                    <p id="carouselExcerpt" class="carousel-excerpt"></p>
+                    <a href="#" id="carouselLink" class="carousel-link">Access Asset →</a>
+                    
+                    <div class="carousel-controls">
+                        <button class="ctrl-btn" id="prevBtn">←</button>
+                        <span class="carousel-counter" id="carouselCounter">01 / 01</span>
+                        <button class="ctrl-btn" id="nextBtn">→</button>
+                    </div>
+                </div>
+                <div class="carousel-visual-pane">
+                    <div id="imageTrack" style="width: 100%; height: 100%;"></div>
                 </div>
             </div>
         </section>
 
-        <!-- AUTOMATED CATALOG ARCHIVE GRID WITH SYSTEM FILTERS -->
-        <section class="catalog-section">
+        <!-- EXPANDED SEARCHABLE SYSTEM REGISTRY -->
+        <section style="padding-top: 4rem;">
             <div class="catalog-header">
-                <h3 class="section-title">The Journal Catalog</h3>
-                <span id="resultsCount" class="results-count">0 items</span>
+                <h3 style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--text-muted);">Media Group Index</h3>
+                <span id="resultsCount" style="font-size: 0.72rem; text-transform: uppercase; color: rgba(255,255,255,0.2);">0 components</span>
             </div>
             
-            <div id="gridContainer" class="grid-container">
-                <!-- JavaScript handles population seamlessly -->
+            <div id="gridContainer" class="grid-container"></div>
+            <div id="noResults" class="no-results">No records found matching query criteria.</div>
+        </section>
+
+        <!-- DIVISIONAL MULTIPLEX PLATFORM MATRIX -->
+        <section id="divisions">
+            <span class="section-tag">Ecosystem Matrix</span>
+            <div class="matrix-deck">
+                <a href="#" class="matrix-cell">
+                    <h4>TYSON Labs</h4>
+                    <p>Engineering experimental web environments, custom asset deployment pipelines, and premium spatial user experiences.</p>
+                </a>
+                <a href="#" class="matrix-cell">
+                    <h4>Cinema Collective</h4>
+                    <p>Independent production wing capturing historical transportation design via modern ultra-wide cinematic formats.</p>
+                </a>
+                <a href="#" class="matrix-cell">
+                    <h4>Print & Journal</h4>
+                    <p>Our archival print publication division dealing with physical distribution curves and quarterly hardbound journals.</p>
+                </a>
             </div>
-            <div id="noResults" class="no-results">No indices match your query.</div>
         </section>
 
     </main>
 
     <footer>
         <p>&copy; 2026 TYSON Media Group.</p>
-        <p>Stillness in Motion.</p>
+        <p>Architects of Stillness.</p>
     </footer>
 
-    <!-- ENGINE SCRIPTS -->
     <script>
+        // Preloader System
+        window.addEventListener('DOMContentLoaded', () => {
+            const canvas = document.getElementById('preloader-canvas');
+            setTimeout(() => {
+                canvas.style.opacity = '0';
+                document.body.classList.remove('intro-active');
+                setTimeout(() => { canvas.remove(); }, 1200); 
+            }, 5000); // Set to length of your dynamic MP4 file
+        });
+
+        // Core Ecosystem Data Controller
         let journalData = [];
         let featuredData = [];
         let currentCarouselIndex = 0;
 
-        // Fetch Master JSON Archive
-        async function loadJournalEngine() {
+        async function initGlobalEcosystem() {
             try {
                 const response = await fetch('reviews.json');
                 journalData = await response.json();
-                
-                // Segment data components
                 featuredData = journalData.filter(item => item.featured);
                 
                 initCarousel();
                 renderGrid(journalData);
                 
-                // Attach Search Listener
                 document.getElementById('journalSearch').addEventListener('input', handleSearch);
-            } catch (error) {
-                console.error("Failed to interface with journal data repository:", error);
+            } catch (err) {
+                console.error("System structural data failure:", err);
             }
         }
 
-        // --- CAROUSEL SUBSYSTEM ---
         function initCarousel() {
             if(!featuredData.length) return;
-            
-            const imageTrack = document.getElementById('imageTrack');
-            imageTrack.innerHTML = '';
+            const track = document.getElementById('imageTrack');
+            track.innerHTML = '';
 
-            // Map images directly into the structural node path
             featuredData.forEach((item, idx) => {
                 const img = document.createElement('img');
                 img.src = item.image;
-                img.alt = item.title;
                 img.className = `carousel-img-item ${idx === 0 ? 'active' : ''}`;
-                imageTrack.appendChild(img);
+                track.appendChild(img);
             });
 
             updateCarouselDisplay();
@@ -216,33 +287,30 @@
         }
 
         function updateCarouselDisplay() {
-            const currentItem = featuredData[currentCarouselIndex];
-            if(!currentItem) return;
+            const item = featuredData[currentCarouselIndex];
+            if(!item) return;
 
-            // Shift Typography Nodes
-            document.getElementById('carouselMeta').innerText = `${currentItem.tag} • ${currentItem.issue}`;
-            document.getElementById('carouselTitle').innerText = currentItem.title;
-            document.getElementById('carouselExcerpt').innerText = currentItem.excerpt;
-            document.getElementById('carouselLink').href = currentItem.url;
+            document.getElementById('carouselMeta').innerText = `${item.tag} • ${item.issue}`;
+            document.getElementById('carouselTitle').innerText = item.title;
+            document.getElementById('carouselExcerpt').innerText = item.excerpt;
+            document.getElementById('carouselLink').href = item.url;
             document.getElementById('carouselCounter').innerText = `${String(currentCarouselIndex + 1).padStart(2, '0')} / ${String(featuredData.length).padStart(2, '0')}`;
 
-            // Shift Graphic Layout States
             const images = document.querySelectorAll('.carousel-img-item');
             images.forEach((img, idx) => {
                 img.classList.toggle('active', idx === currentCarouselIndex);
             });
         }
 
-        // --- DYNAMIC GRID CATALOG & LIVE FILTERING ---
         function renderGrid(dataset) {
-            const grid = document.getElementById('gridContainer');
+            const container = document.getElementById('gridContainer');
             const noResults = document.getElementById('noResults');
-            const counter = document.getElementById('resultsCount');
+            const count = document.getElementById('resultsCount');
             
-            grid.innerHTML = '';
-            counter.innerText = `${dataset.length} ${dataset.length === 1 ? 'item' : 'items'}`;
+            container.innerHTML = '';
+            count.innerText = `${dataset.length} structural records`;
 
-            if(dataset.length === 0) {
+            if(!dataset.length) {
                 noResults.style.display = 'block';
                 return;
             }
@@ -253,29 +321,26 @@
                 card.href = item.url;
                 card.className = 'item-card';
                 card.innerHTML = `
-                    <div class="img-wrapper">
-                        <img src="${item.image}" alt="${item.title}">
-                    </div>
-                    <div class="card-meta">${item.tag} • ${item.issue}</div>
+                    <div class="img-wrapper"><img src="${item.image}" alt="${item.title}"></div>
+                    <div style="font-size:0.65rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--text-muted); margin-bottom:0.5rem;">${item.tag}</div>
                     <h4 class="card-title">${item.title}</h4>
                     <p class="card-excerpt">${item.excerpt}</p>
                 `;
-                grid.appendChild(card);
+                container.appendChild(card);
             });
         }
 
         function handleSearch(e) {
-            const query = e.target.value.toLowerCase().trim();
+            const q = e.target.value.toLowerCase().trim();
             const filtered = journalData.filter(item => {
-                return item.title.toLowerCase().includes(query) || 
-                       item.excerpt.toLowerCase().includes(query) ||
-                       item.issue.toLowerCase().includes(query);
+                return item.title.toLowerCase().includes(q) || 
+                       item.excerpt.toLowerCase().includes(q) || 
+                       item.tag.toLowerCase().includes(q);
             });
             renderGrid(filtered);
         }
 
-        // Ignition
-        window.addEventListener('DOMContentLoaded', loadJournalEngine);
+        window.addEventListener('DOMContentLoaded', initGlobalEcosystem);
     </script>
 </body>
 </html>
