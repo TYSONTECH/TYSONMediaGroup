@@ -1,0 +1,22 @@
+[
+  {
+    "id": "porsche-911",
+    "title": "Porsche 911 (964): Midnight Shadows",
+    "url": "reviews/porsche-911.html",
+    "image": "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=1200&q=80",
+    "tag": "Road Test",
+    "issue": "Issue 04",
+    "excerpt": "An exploration of classic air-cooled geometry set against the desolate backdrop of concrete rest stations at dusk.",
+    "featured": true
+  },
+  {
+    "id": "bmw-e9",
+    "title": "Chasing Fog in the BMW E9 CSL",
+    "url": "reviews/bmw-e9.html",
+    "image": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80",
+    "tag": "Road Test",
+    "issue": "Issue 03",
+    "excerpt": "Tracing the legendary pillarless silhouette through the morning haze of winding coastal highways.",
+    "featured": true
+  }
+]
