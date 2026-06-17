@@ -22,13 +22,13 @@
             --border-heavy: rgba(255, 255, 255, 0.08);
             --font-editorial: 'Cormorant Garamond', Georgia, serif;
             --font-accent: 'Montserrat', sans-serif;
-            --transition-main: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-main: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         body {
             background-color: var(--bg-black); color: var(--text-light);
             font-family: var(--font-accent); font-weight: 200; line-height: 1.65; overflow-x: hidden;
-            letter-spacing: -0.01em;
+            letter-spacing: -0.01em; -webkit-font-smoothing: antialiased;
         }
         body.intro-active { overflow: hidden; height: 100vh; }
 
@@ -37,7 +37,7 @@
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             background-color: var(--bg-deep); z-index: 99999;
             display: flex; justify-content: center; align-items: center; overflow: hidden;
-            opacity: 1; transition: opacity 1.6s cubic-bezier(0.25, 1, 0.5, 1);
+            opacity: 1; transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1);
             pointer-events: none;
         }
         #preloader-canvas video { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.7); }
@@ -48,192 +48,231 @@
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
-        /* Minimal Fixed Header Navigation */
+        /* Scalable Multi-Brand Header System */
         header {
-            position: fixed; top: 0; left: 0; width: 100%; padding: 2.2rem 5%; display: flex; justify-content: space-between; align-items: center; z-index: 100;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.95) 60%, rgba(0,0,0,0)); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            position: fixed; top: 0; left: 0; width: 100%; padding: 1.5rem 4%; display: flex; flex-direction: column; gap: 1.2rem; z-index: 100;
+            background: linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0)); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-color);
         }
-        .nav-brand-container { display: flex; align-items: center; gap: 1rem; }
-        .nav-logo img { height: 12px; width: auto; display: block; opacity: 0.95; letter-spacing: 0.05em; }
         
-        .nav-right-cluster { display: flex; align-items: center; gap: 4.5rem; }
-        nav { display: flex; gap: 3.5rem; }
-        nav a { color: var(--text-light); text-decoration: none; font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase; opacity: 0.4; transition: var(--transition-main); font-weight: 400; }
+        .header-top-row { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+
+        /* Multi-Subdomain Brand Routing Architecture */
+        .subdomain-routing-deck { display: flex; align-items: center; gap: 2rem; }
+        .brand-route-node { display: block; opacity: 0.35; transition: var(--transition-main); min-height: 44px; display: flex; align-items: center; }
+        .brand-route-node:hover { opacity: 1; }
+        .brand-route-node.active-core { opacity: 1; pointer-events: none; }
+        .brand-route-node img { height: 11px; width: auto; display: block; filter: brightness(1); }
+
+        .nav-right-cluster { display: flex; align-items: center; gap: 3rem; }
+        nav { display: flex; gap: 2.5rem; }
+        nav a { color: var(--text-light); text-decoration: none; font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase; opacity: 0.4; transition: var(--transition-main); font-weight: 400; padding: 0.5rem 0; }
         nav a:hover { opacity: 1; }
 
-        .search-container { position: relative; display: flex; align-items: center; border-left: 1px solid var(--border-color); padding-left: 2rem; }
+        /* Interactive Multi-State Search Component */
+        .search-container { position: relative; display: flex; align-items: center; background: rgba(255,255,255,0.01); border: 1px solid var(--border-color); padding: 0 1rem; border-radius: 2px; }
         .search-input {
-            background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.05);
+            background: transparent; border: none;
             color: var(--text-light); font-family: var(--font-accent); font-size: 0.7rem; font-weight: 300;
-            padding: 0.3rem 0.5rem 0.3rem 0; width: 120px; letter-spacing: 0.15em; transition: var(--transition-main);
+            padding: 0.6rem 2rem 0.6rem 0; width: 160px; letter-spacing: 0.15em; transition: var(--transition-main);
         }
-        .search-input:focus { outline: none; width: 200px; border-color: rgba(255,255,255,0.3); }
-        .search-input::placeholder { color: rgba(255,255,255,0.18); text-transform: uppercase; font-size: 0.58rem; letter-spacing: 0.25em; }
+        .search-input:focus { outline: none; width: 240px; }
+        .search-input::placeholder { color: rgba(255,255,255,0.2); text-transform: uppercase; font-size: 0.58rem; letter-spacing: 0.25em; }
+        .search-clear-btn { position: absolute; right: 0.8rem; background: none; border: none; color: var(--text-muted); font-size: 0.75rem; cursor: pointer; opacity: 0; pointer-events: none; transition: opacity 0.3s; padding: 0.2rem; }
+        .search-clear-btn.visible { opacity: 1; pointer-events: all; }
 
-        /* Layout Framework Sub-sections */
-        section { padding: 12rem 5%; max-width: 1750px; margin: 0 auto; position: relative; }
-        .section-tag-line { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 4.5rem; }
+        /* Framework Sections */
+        section { padding: 10rem 4% 6rem 4%; max-width: 1750px; margin: 0 auto; position: relative; }
+        .section-tag-line { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 4rem; }
         .section-tag { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.45em; color: var(--text-muted); font-weight: 500; }
         .section-line { height: 1px; flex-grow: 1; background: var(--border-color); }
 
-        /* Massive Hero Brand Canvas */
-        .hero-deck { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 4%; position: relative; background: var(--bg-deep); }
+        /* Hero Brand Frame Canvas */
+        .hero-deck { height: 95vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 4%; position: relative; background: var(--bg-deep); }
         .hero-logo-container {
-            max-width: 1350px;
-            width: 95%;
-            margin-bottom: 5.5rem;
-            opacity: 0;
-            transform: translateY(25px);
-            animation: revealBrand 2s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+            max-width: 1100px; width: 90%; margin-bottom: 4.5rem; opacity: 0; transform: translateY(20px);
+            animation: revealBrand 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
         }
         .hero-logo-container img { width: 100%; height: auto; display: block; }
         
         .hero-deck h1 { 
-            font-family: var(--font-editorial); font-size: calc(1.4rem + 1.4vw); font-weight: 300; font-style: italic; 
-            max-width: 1000px; color: rgba(255,255,255,0.65); letter-spacing: -0.01em; line-height: 1.35;
-            opacity: 0; transform: translateY(20px);
-            animation: revealBrand 2s cubic-bezier(0.16, 1, 0.3, 1) 0.9s forwards;
+            font-family: var(--font-editorial); font-size: calc(1.3rem + 1.2vw); font-weight: 300; font-style: italic; 
+            max-width: 950px; color: rgba(255,255,255,0.6); letter-spacing: -0.01em; line-height: 1.4;
+            opacity: 0; transform: translateY(15px);
+            animation: revealBrand 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards;
         }
-        .scroll-indicator { position: absolute; bottom: 4rem; font-size: 0.6rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--text-muted); animation: microPulse 2s infinite ease-in-out; }
+        .scroll-indicator { position: absolute; bottom: 3.5rem; font-size: 0.58rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--text-muted); animation: microPulse 2s infinite ease-in-out; }
 
-        /* Widescreen Custom Cinema Screening Interface */
-        .broadcast-hub { max-width: 100%; padding: 6rem 5% 12rem 5%; background: linear-gradient(to bottom, var(--bg-deep), var(--bg-black)); }
-        .video-canvas-wrapper { border: 1px solid var(--border-color); background: #000; padding: 0.5rem; position: relative; cursor: pointer; }
-        .video-canvas-container { width: 100%; aspect-ratio: 21/9; position: relative; overflow: hidden; }
-        .video-canvas-container video { width: 100%; height: 100%; object-fit: cover; opacity: 0.55; filter: contrast(102%) grayscale(10%); transition: var(--transition-main); }
-        .video-canvas-wrapper:hover video { opacity: 0.7; }
-        
-        .video-interface-overlay { position: absolute; bottom: 2rem; left: 2rem; right: 2rem; display: flex; justify-content: space-between; align-items: center; pointer-events: none; opacity: 0.7; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-light); }
-        .video-status { display: flex; align-items: center; gap: 0.6rem; }
-        .video-status span { width: 6px; height: 6px; background: #ff3b30; border-radius: 50%; display: inline-block; }
-
-        /* Full-Bleed Cinema Strip Slider Subsystem */
+        /* Cinema Strip Slider Subsystem */
         .carousel-deck { position: relative; width: 100%; aspect-ratio: 21/9; border: 1px solid var(--border-color); overflow: hidden; background: #020203; }
         .carousel-visual-pane { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
-        .carousel-img-item { position: absolute; top:0; left:0; width:100%; height:100%; object-fit: cover; opacity:0; scale: 1.04; transition: opacity 1.4s cubic-bezier(0.25, 1, 0.5, 1), scale 1.8s cubic-bezier(0.25, 1, 0.5, 1); filter: grayscale(15%) brightness(35%); }
+        .carousel-img-item { position: absolute; top:0; left:0; width:100%; height:100%; object-fit: cover; opacity:0; scale: 1.03; transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), scale 1.5s cubic-bezier(0.25, 1, 0.5, 1); filter: grayscale(15%) brightness(30%); }
         .carousel-img-item.active { opacity: 0.65; scale: 1; }
 
         .carousel-content-overlay {
-            position: absolute; bottom: 0; left: 0; width: 100%; padding: 5rem; z-index: 2;
+            position: absolute; bottom: 0; left: 0; width: 100%; padding: 4rem 5%; z-index: 2;
             display: flex; justify-content: space-between; align-items: flex-end;
-            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0) 100%);
         }
-        .carousel-text-box { max-width: 700px; }
-        .carousel-title { font-family: var(--font-editorial); font-size: calc(1.8rem + 1.4vw); font-weight: 300; line-height: 1.15; margin-bottom: 1.2rem; letter-spacing: -0.01em; }
-        .carousel-excerpt { color: rgba(255,255,255,0.45); font-size: 0.92rem; font-weight: 300; max-width: 550px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.6; }
+        .carousel-text-box { max-width: 750px; }
+        .carousel-title { font-family: var(--font-editorial); font-size: calc(1.6rem + 1.3vw); font-weight: 300; line-height: 1.2; margin-bottom: 1rem; letter-spacing: -0.01em; }
+        .carousel-excerpt { color: rgba(255,255,255,0.45); font-size: 0.9rem; font-weight: 300; max-width: 580px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.6; }
         
-        .carousel-nav-interface { display: flex; flex-direction: column; align-items: flex-end; gap: 2rem; }
+        .carousel-nav-interface { display: flex; flex-direction: column; align-items: flex-end; gap: 1.5rem; }
         .carousel-link { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.3em; color: var(--text-light); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 0.3rem; transition: var(--transition-main); font-weight: 500; cursor: pointer; }
-        .carousel-link:hover { border-color: var(--text-light); opacity: 0.8; }
+        .carousel-link:hover { border-color: var(--text-light); }
         
-        .carousel-controls { display: flex; align-items: center; gap: 2.5rem; }
+        .carousel-controls { display: flex; align-items: center; gap: 2rem; }
         .ctrl-btn { background: none; border: none; color: rgba(255,255,255,0.3); font-size: 1rem; cursor: pointer; padding: 0.5rem; transition: color 0.3s; }
         .ctrl-btn:hover { color: var(--text-light); }
-        .carousel-counter { font-size: 0.68rem; letter-spacing: 0.25em; color: rgba(255,255,255,0.18); font-weight: 400; }
+        .carousel-counter { font-size: 0.68rem; letter-spacing: 0.25em; color: rgba(255,255,255,0.2); font-weight: 400; }
 
-        /* Advanced Tab Matrix System Filter Header */
-        .catalog-matrix-controls { display: flex; gap: 2rem; margin-bottom: 4.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; overflow-x: auto; white-space: nowrap; -ms-overflow-style: none; scrollbar-width: none; }
+        /* Advanced Data Grid Configuration Controls Layer */
+        .system-dashboard-control-panel {
+            background: rgba(255,255,255,0.01); border: 1px solid var(--border-color);
+            padding: 1.5rem 2rem; margin-bottom: 3.5rem; display: flex; flex-wrap: wrap;
+            justify-content: space-between; align-items: center; gap: 1.5rem;
+        }
+        
+        .catalog-matrix-controls { display: flex; gap: 1.8rem; overflow-x: auto; white-space: nowrap; -ms-overflow-style: none; scrollbar-width: none; }
         .catalog-matrix-controls::-webkit-scrollbar { display: none; }
-        .matrix-tab { background: none; border: none; color: var(--text-muted); font-family: var(--font-accent); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.25em; cursor: pointer; padding-bottom: 1rem; position: relative; transition: var(--transition-main); font-weight: 500; }
+        .matrix-tab { background: none; border: none; color: var(--text-muted); font-family: var(--font-accent); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.25em; cursor: pointer; padding: 0.4rem 0; position: relative; transition: var(--transition-main); font-weight: 500; min-height: 44px; }
         .matrix-tab:hover { color: var(--text-light); }
         .matrix-tab.active { color: var(--text-light); }
-        .matrix-tab.active::after { content: ""; position: absolute; bottom: -1px; left: 0; width: 100%; height: 1px; background: #fff; }
+        .matrix-tab.active::after { content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 1px; background: #fff; }
+
+        .dashboard-filtering-options-node { display: flex; align-items: center; gap: 1.5rem; }
+        .selector-label-group { display: flex; align-items: center; gap: 0.6rem; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-muted); }
         
-        .catalog-header-meta { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2rem; }
-        .results-counter-node { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.2em; color: rgba(255,255,255,0.15); }
+        .interactive-dropdown-node {
+            background: #000; color: var(--text-light); border: 1px solid var(--border-color);
+            font-family: var(--font-accent); font-size: 0.65rem; letter-spacing: 0.15em;
+            text-transform: uppercase; padding: 0.5rem 2rem 0.5rem 0.8rem; cursor: pointer;
+            outline: none; border-radius: 2px; transition: var(--transition-main);
+            -webkit-appearance: none; -moz-appearance: none; appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z' fill='%236e6e73'/%3E%3C/svg%3E");
+            background-repeat: no-repeat; background-position: right 0.6rem center; background-size: 14px;
+        }
+        .interactive-dropdown-node:hover { border-color: rgba(255,255,255,0.15); color: #fff; }
+
+        .catalog-header-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; padding: 0 0.5rem; }
+        .results-counter-node { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-muted); font-weight: 500; }
 
         /* Premium Print Layout Catalog Grid */
-        .grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 6.5rem 3.5rem; }
-        .item-card { text-decoration: none; color: inherit; display: flex; flex-direction: column; opacity: 0; transform: translateY(15px); animation: itemReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; cursor: pointer; }
-        .img-wrapper { width: 100%; aspect-ratio: 16/10; background: #080809; margin-bottom: 2rem; overflow: hidden; border: 1px solid var(--border-color); position: relative; }
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 5rem 3rem; min-height: 400px; }
+        .item-card { text-decoration: none; color: inherit; display: flex; flex-direction: column; opacity: 0; transform: translateY(15px); animation: itemReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; cursor: pointer; }
+        .img-wrapper { width: 100%; aspect-ratio: 16/10; background: #080809; margin-bottom: 1.5rem; overflow: hidden; border: 1px solid var(--border-color); position: relative; }
         
-        /* Play State Overlay */
-        .img-wrapper::after { content: "PLAY"; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 0.6rem; letter-spacing: 0.4em; font-weight: 500; color: #fff; opacity: 0; transition: var(--transition-main); z-index: 2; border: 1px solid rgba(255,255,255,0.2); padding: 0.8rem 1.4rem; background: rgba(0,0,0,0.4); backdrop-filter: blur(5px); }
+        .img-wrapper::after { content: "STREAM"; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 0.6rem; letter-spacing: 0.4em; font-weight: 500; color: #fff; opacity: 0; transition: var(--transition-main); z-index: 2; border: 1px solid rgba(255,255,255,0.2); padding: 0.8rem 1.4rem; background: rgba(0,0,0,0.5); backdrop-filter: blur(5px); }
         .item-card:hover .img-wrapper::after { opacity: 1; letter-spacing: 0.5em; }
 
-        /* Editorial State Shift: Changes hover state text to READ instead of PLAY */
-        .img-wrapper.editorial-node::after { content: "READ"; }
-
-        .item-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.5; filter: grayscale(15%); transition: var(--transition-main); }
+        .item-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.45; filter: grayscale(15%); transition: var(--transition-main); }
         .item-card:hover img { transform: scale(1.02); opacity: 0.75; filter: grayscale(0%); }
         
-        .card-meta { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--text-muted); margin-bottom: 0.9rem; font-weight: 500; display: flex; justify-content: space-between; }
-        .card-meta-chan { color: rgba(255,255,255,0.25); }
-        .card-title { font-family: var(--font-editorial); font-size: 1.85rem; font-weight: 400; line-height: 1.25; margin-bottom: 0.7rem; letter-spacing: -0.005em; }
-        .card-excerpt { color: var(--text-muted); font-size: 0.88rem; font-weight: 300; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.65; }
-        .no-results { display: none; text-align: center; padding: 9rem 0; font-family: var(--font-editorial); font-size: 1.8rem; color: var(--text-muted); font-style: italic; border: 1px dashed var(--border-color); }
+        .card-meta { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--text-muted); margin-bottom: 0.8rem; font-weight: 500; display: flex; justify-content: space-between; }
+        .card-meta-chan { color: rgba(255,255,255,0.2); }
+        .card-title { font-family: var(--font-editorial); font-size: 1.75rem; font-weight: 400; line-height: 1.25; margin-bottom: 0.6rem; letter-spacing: -0.005em; color: rgba(255,255,255,0.9); }
+        .card-excerpt { color: var(--text-muted); font-size: 0.88rem; font-weight: 300; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.6; }
+        .no-results { display: none; text-align: center; padding: 8rem 0; font-family: var(--font-editorial); font-size: 1.6rem; color: var(--text-muted); font-style: italic; border: 1px dashed var(--border-color); }
 
-        /* Broadcast Divisions Network System Matrix */
-        .matrix-deck { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; }
-        .matrix-cell { border: 1px solid var(--border-color); background: rgba(255,255,255,0.002); padding: 4.5rem 3.5rem; text-decoration: none; color: inherit; transition: var(--transition-main); display: flex; flex-direction: column; justify-content: space-between; min-height: 350px; position: relative; }
+        /* Dynamic Pagination Interface Controls */
+        .pagination-container-deck { display: flex; justify-content: center; align-items: center; gap: 1.5rem; margin-top: 6rem; padding-top: 3rem; border-top: 1px solid var(--border-color); }
+        .pagination-btn { background: none; border: 1px solid var(--border-color); color: var(--text-muted); font-family: var(--font-accent); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.2em; padding: 0.7rem 1.4rem; cursor: pointer; transition: var(--transition-main); min-height: 44px; display: flex; align-items: center; }
+        .pagination-btn:hover:not(:disabled) { border-color: rgba(255,255,255,0.2); color: var(--text-light); }
+        .pagination-btn:disabled { opacity: 0.15; cursor: not-allowed; }
+        .pagination-tracker-label { font-size: 0.68rem; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase; }
+
+        /* Broadcast Divisions Network Layout */
+        .matrix-deck { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+        .matrix-cell { border: 1px solid var(--border-color); background: rgba(255,255,255,0.002); padding: 4rem 3rem; text-decoration: none; color: inherit; transition: var(--transition-main); display: flex; flex-direction: column; justify-content: space-between; min-height: 340px; position: relative; }
         .matrix-cell:hover { border-color: var(--border-heavy); background: rgba(255,255,255,0.01); }
         
-        .matrix-cell-arrow { position: absolute; top: 3rem; right: 3rem; font-size: 0.8rem; opacity: 0.15; transition: var(--transition-main); }
+        .matrix-cell-arrow { position: absolute; top: 2.5rem; right: 2.5rem; font-size: 0.8rem; opacity: 0.15; transition: var(--transition-main); }
         .matrix-cell:hover .matrix-cell-arrow { opacity: 0.8; transform: translate(3px, -3px); }
 
-        .matrix-cell h4 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.25em; margin-bottom: 1.5rem; color: var(--text-light); font-weight: 500; }
-        .matrix-cell p { font-size: 0.9rem; color: var(--text-muted); font-weight: 300; line-height: 1.65; margin-bottom: auto; }
+        .matrix-cell h4 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.25em; margin-bottom: 1.2rem; color: var(--text-light); font-weight: 500; }
+        .matrix-cell p { font-size: 0.88rem; color: var(--text-muted); font-weight: 300; line-height: 1.6; margin-bottom: auto; }
         
-        .matrix-status { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--text-light); margin-top: 3rem; display: flex; align-items: center; gap: 0.6rem; opacity: 0.5; font-weight: 500; }
+        .matrix-status { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--text-light); margin-top: 2.5rem; display: flex; align-items: center; gap: 0.6rem; opacity: 0.5; font-weight: 500; }
         .matrix-status span { width: 5px; height: 5px; background: #fff; border-radius: 50%; display: inline-block; }
         .matrix-status.pulse span { background: #30d158; animation: microPulse 2s infinite ease-in-out; }
 
         /* High-End Collective Personnel Directory */
-        .roster-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 4.5rem 3.5rem; }
-        .roster-card { display: flex; flex-direction: column; justify-content: space-between; border-top: 1px solid var(--border-color); padding-top: 2rem; min-height: 250px; transition: var(--transition-main); }
-        .roster-card:hover { border-top-color: rgba(255,255,255,0.3); }
+        .roster-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 4rem 3rem; }
+        .roster-card { display: flex; flex-direction: column; justify-content: space-between; border-top: 1px solid var(--border-color); padding-top: 1.8rem; min-height: 240px; transition: var(--transition-main); }
+        .roster-card:hover { border-top-color: rgba(255,255,255,0.25); }
         
-        .roster-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.2rem; }
+        .roster-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
         .roster-identity-stack { display: flex; flex-direction: column; }
-        .roster-name { font-family: var(--font-editorial); font-size: 1.8rem; font-weight: 400; color: var(--text-light); letter-spacing: -0.01em; line-height: 1.1; }
+        .roster-name { font-family: var(--font-editorial); font-size: 1.75rem; font-weight: 400; color: var(--text-light); letter-spacing: -0.01em; line-height: 1.1; }
         .roster-pronoun { font-size: 0.58rem; font-weight: 400; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-muted); margin-top: 0.3rem; display: block; }
-        .roster-role { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-muted); font-weight: 600; margin-top: 0.5rem; }
+        .roster-role { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-muted); font-weight: 600; margin-top: 0.4rem; }
         
-        /* Premium Inline SVG YouTube Component Execution */
         .youtube-icon-wrapper { color: var(--text-muted); opacity: 0.3; transition: var(--transition-main); display: inline-flex; align-items: center; padding: 0.5rem; margin-top: -0.5rem; margin-right: -0.5rem; }
         .youtube-icon-wrapper:hover { color: #ff0000; opacity: 1; transform: scale(1.05); }
-        .yt-svg-node { width: 20px; height: 20px; fill: currentColor; display: block; }
+        .yt-svg-node { width: 18px; height: 18px; fill: currentColor; display: block; }
+        .roster-bio { font-size: 0.88rem; color: var(--text-muted); font-weight: 300; line-height: 1.6; margin-bottom: auto; }
 
-        .roster-bio { font-size: 0.88rem; color: var(--text-muted); font-weight: 300; line-height: 1.65; margin-bottom: auto; }
-
-        /* CINEMATIC BROADCAST LIGHTBOX OVERLAY */
-        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(3,3,3,0.98); z-index: 10000; display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        /* Cinematic Broadcast Lightbox Overlay */
+        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(3,3,3,0.98); z-index: 10000; display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
         .lightbox-overlay.active { opacity: 1; pointer-events: all; }
         
-        .lightbox-container { width: 90%; max-width: 1200px; display: flex; flex-direction: column; gap: 1.5rem; transform: scale(0.97); transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        .lightbox-container { width: 92%; max-width: 1200px; display: flex; flex-direction: column; gap: 1.5rem; transform: scale(0.98); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
         .lightbox-overlay.active .lightbox-container { transform: scale(1); }
         
         .lightbox-video-frame { width: 100%; aspect-ratio: 16/9; background: #000; border: 1px solid rgba(255,255,255,0.05); position: relative; }
         .lightbox-video-frame iframe { width: 100%; height: 100%; border: none; display: block; }
         
         .lightbox-meta-footer { display: flex; justify-content: space-between; align-items: flex-start; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1.5rem; }
-        .lightbox-title-stack { max-width: 70%; }
-        .lightbox-title { font-family: var(--font-editorial); font-size: 1.8rem; font-weight: 400; letter-spacing: -0.01em; margin-bottom: 0.5rem; }
+        .lightbox-title-stack { max-width: 75%; }
+        .lightbox-title { font-family: var(--font-editorial); font-size: 1.75rem; font-weight: 400; letter-spacing: -0.01em; margin-bottom: 0.4rem; }
         .lightbox-desc { font-size: 0.85rem; color: var(--text-muted); font-weight: 300; line-height: 1.5; }
         
-        .lightbox-close-btn { background: none; border: 1px solid rgba(255,255,255,0.1); color: var(--text-light); font-family: var(--font-accent); font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; padding: 0.8rem 1.6rem; cursor: pointer; transition: var(--transition-main); }
+        .lightbox-close-btn { background: none; border: 1px solid rgba(255,255,255,0.1); color: var(--text-light); font-family: var(--font-accent); font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; padding: 0.8rem 1.6rem; cursor: pointer; transition: var(--transition-main); min-height: 44px; }
         .lightbox-close-btn:hover { background: #fff; color: #000; border-color: #fff; }
 
         /* Global Footer Block */
-        footer { padding: 8rem 5% 5rem 5%; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 0.68rem; letter-spacing: 0.25em; color: var(--text-muted); text-transform: uppercase; font-weight: 400; }
-        .footer-closing { font-family: var(--font-editorial); font-style: italic; text-transform: none; letter-spacing: 0; color: rgba(255,255,255,0.4); font-size: 0.95rem; }
+        footer { padding: 7rem 4% 4rem 4%; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 0.65rem; letter-spacing: 0.25em; color: var(--text-muted); text-transform: uppercase; font-weight: 400; }
+        .footer-closing { font-family: var(--font-editorial); font-style: italic; text-transform: none; letter-spacing: 0; color: rgba(255,255,255,0.35); font-size: 0.95rem; }
 
-        /* Structural Kinetic Animations */
+        /* Kinetic Animations */
         @keyframes revealBrand { to { opacity: 1; transform: translateY(0); } }
         @keyframes itemReveal { to { opacity: 1; transform: translateY(0); } }
         @keyframes microPulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
         
+        /* 📱 RESPONSIVE MOBILE OPTIMIZATION OVERHAUL CSS */
         @media (max-width: 1140px) {
-            .matrix-deck { grid-template-columns: 1fr; gap: 2rem; }
-            .carousel-deck { aspect-ratio: 16/9; }
-            .carousel-content-overlay { padding: 3rem; flex-direction: column; align-items: flex-start; gap: 2.5rem; }
-            .carousel-nav-interface { align-items: flex-start; }
-            nav { display: none; }
-            .search-container { border-left: none; padding-left: 0; }
-            .nav-right-cluster { gap: 2rem; }
-            .lightbox-meta-footer { flex-direction: column; gap: 2rem; }
+            header { padding: 1.2rem 5%; gap: 1rem; position: absolute; }
+            .header-top-row { flex-direction: column; gap: 1.2rem; align-items: flex-start; }
+            .subdomain-routing-deck { width: 100%; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 0.8rem; }
+            .brand-route-node img { height: 9.5px; }
+            .nav-right-cluster { width: 100%; justify-content: space-between; gap: 1rem; }
+            nav { display: none; } /* Kept clean desktop layout links hidden on tiny mobile Viewports */
+            .search-container { flex-grow: 1; width: 100%; }
+            .search-input { width: 100% !important; }
+            
+            main { padding-top: 7rem !important; }
+            section { padding: 6rem 5% 4rem 5%; }
+            .hero-deck { height: auto; min-height: 70vh; padding: 8rem 5% 4rem 5%; }
+            .hero-logo-container { margin-bottom: 2.5rem; }
+            
+            .carousel-deck { aspect-ratio: 16/10; }
+            .carousel-content-overlay { padding: 2rem; flex-direction: column; align-items: flex-start; gap: 2rem; }
+            .carousel-nav-interface { align-items: flex-start; width: 100%; }
+            .carousel-controls { width: 100%; justify-content: space-between; }
+
+            .system-dashboard-control-panel { padding: 1rem; flex-direction: column; align-items: stretch; gap: 1.2rem; }
+            .catalog-matrix-controls { width: 100%; }
+            .dashboard-filtering-options-node { flex-direction: column; align-items: stretch; gap: 1rem; }
+            .selector-label-group { justify-content: space-between; }
+            .interactive-dropdown-node { width: 100%; }
+
+            .grid-container { grid-template-columns: 1fr; gap: 3.5rem; }
+            .matrix-deck { grid-template-columns: 1fr; gap: 1.5rem; }
+            .lightbox-meta-footer { flex-direction: column; gap: 1.5rem; }
             .lightbox-title-stack { max-width: 100%; }
+            .lightbox-close-btn { width: 100%; text-align: center; }
+            footer { flex-direction: column; gap: 1.5rem; text-align: center; }
         }
     </style>
 </head>
@@ -253,72 +292,60 @@
             <div class="lightbox-meta-footer">
                 <div class="lightbox-title-stack">
                     <h3 id="lightboxTitle" class="lightbox-title">Transmission</h3>
-                    <p id="lightboxDesc" class="lightbox-desc">Syncing data stream...</p>
+                    <p id="lightboxDesc" class="lightbox-desc">Syncing operational data stream...</p>
                 </div>
-                <button id="closeLightbox" class="lightbox-close-btn">Disconnect // Close</button>
+                <button id="closeLightbox" class="lightbox-close-btn">Disconnect Frame</button>
             </div>
         </div>
     </div>
 
     <header>
-        <div class="nav-brand-container">
-            <div class="nav-logo">
-                <img src="imagestuff/logostuff/mainweblogo.png" alt="TYSON">
+        <div class="header-top-row">
+            <div class="subdomain-routing-deck">
+                <a href="https://tysonmediagroup.org" class="brand-route-node active-core" title="TYSON Media Group Flagship Platform">
+                    <img src="imagestuff/logostuff/mainweblogo.png" alt="TYSON">
+                </a>
+                <a href="https://aviation.tysonmediagroup.org" class="brand-route-node" title="Route to TYSON Aviation Network">
+                    <img src="imagestuff/logostuff/aviationlogo.png" alt="AVIATION">
+                </a>
+                <a href="https://atlantis.tysonmediagroup.org" class="brand-route-node" title="Route to TYSON Atlantis Audio Repository">
+                    <img src="imagestuff/logostuff/atlantislogo.png" alt="ATLANTIS">
+                </a>
             </div>
-        </div>
-        <div class="nav-right-cluster">
-            <nav>
-                <a href="#broadcast">Broadcast</a>
-                <a href="#journal">Transmission Registry</a>
-                <a href="#network">Network</a>
-                <a href="#collective">Collective</a>
-            </nav>
-            <div class="search-container">
-                <input type="text" id="journalSearch" class="search-input" placeholder="Search Broadcasts...">
+
+            <div class="nav-right-cluster">
+                <nav>
+                    <a href="#broadcast">Featured</a>
+                    <a href="#journal">Registry</a>
+                    <a href="#network">Networks</a>
+                    <a href="#collective">Collective</a>
+                </nav>
+                <div class="search-container">
+                    <input type="text" id="journalSearch" class="search-input" placeholder="Search Index Matrix...">
+                    <button id="clearSearchBtn" class="search-clear-btn" title="Clear configuration filters">×</button>
+                </div>
             </div>
         </div>
     </header>
 
-    <main style="padding-top: 4rem;">
+    <main style="padding-top: 6.5rem;">
         
         <section class="hero-deck">
             <div class="hero-logo-container">
                 <img src="imagestuff/logostuff/mainweblogo.png" alt="TYSON Media Group">
             </div>
-            <h1>Stillness in motion.</h1>
-            <div class="scroll-indicator">Scroll to Interface</div>
+            <h1>A multi-divisional production ecosystem focusing on advanced mechanical analysis, custom sound design archives, and aviation media deployment.</h1>
+            <div class="scroll-indicator">Initialize Core Interface</div>
         </section>
 
-        <section id="broadcast" class="broadcast-hub">
+        <section id="broadcast" class="broadcast-hub" style="padding-top: 4rem;">
             <div class="section-tag-line">
-                <span class="section-tag" style="color: #30d158;">★ Specialized Division Launch Priority</span>
+                <span class="section-tag" style="color: #30d158;">★ Spotlight Broadcast Streams</span>
                 <div class="section-line" style="background: rgba(48, 209, 88, 0.15);"></div>
             </div>
             
-            <div class="video-canvas-wrapper" onclick="launchLightbox('XBhHj-1K8YU', 'TYSON Aviation | Official Channel Launch Announcement', 'Welcome to TYSON Aviation. The official programmatic expansion establishing flight deck documentation, mechanical aerospace design analysis, and airborne cinematic essays.')">
-                <div class="video-canvas-container">
-                    <video autoplay muted loop playsinline>
-                        <source src="preload/aviation_teaser.mp4" type="video/mp4">
-                        <source src="preload/asfdjkl;.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <div class="video-interface-overlay">
-                    <div class="video-status"><span style="background: #30d158;"></span>TYSON Aviation Inaugural Screening Loop [CLICK TO EXPAND]</div>
-                    <div>Aspect 21 : 9 // RAW SOURCE SECTOR</div>
-                </div>
-            </div>
-        </section>
-
-        <section id="journal" style="padding-bottom: 4rem;">
-            <div class="section-tag-line">
-                <span class="section-tag">Network Spotlight Broadcasts</span>
-                <div class="section-line"></div>
-            </div>
-            
             <div class="carousel-deck">
-                <div class="carousel-visual-pane" id="imageTrack">
-                    </div>
-                
+                <div class="carousel-visual-pane" id="imageTrack"></div>
                 <div class="carousel-content-overlay">
                     <div class="carousel-text-box">
                         <div id="carouselMeta" style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--text-muted); margin-bottom: 0.8rem; font-weight:500;"></div>
@@ -338,13 +365,40 @@
             </div>
         </section>
 
-        <section style="padding-top: 2rem;">
-            <div class="catalog-matrix-controls">
-                <button class="matrix-tab active" onclick="filterCategory('all', this)">All Feeds</button>
-                <button class="matrix-tab" onclick="filterCategory('aviation', this)">TYSON Aviation</button>
-                <button class="matrix-tab" onclick="filterCategory('flagship', this)">TYSON Media Group</button>
-                <button class="matrix-tab" onclick="filterCategory('atlantis', this)">TYSON Atlantis</button>
-                <button class="matrix-tab" onclick="filterCategory('collective', this)">Creative Collective</button>
+        <section id="journal" style="padding-top: 2rem;">
+            <div class="section-tag-line">
+                <span class="section-tag">Programmatic Resource Database</span>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="system-dashboard-control-panel">
+                <div class="catalog-matrix-controls">
+                    <button class="matrix-tab active" data-category="all">All Feeds</button>
+                    <button class="matrix-tab" data-category="aviation">TYSON Aviation</button>
+                    <button class="matrix-tab" data-category="flagship">TYSON Media Group</button>
+                    <button class="matrix-tab" data-category="atlantis">TYSON Atlantis</button>
+                </div>
+                
+                <div class="dashboard-filtering-options-node">
+                    <div class="selector-label-group">
+                        <label for="sortSelector">Sort Sequence:</label>
+                        <select id="sortSelector" class="interactive-dropdown-node">
+                            <option value="newest" selected>Release: Newest First</option>
+                            <option value="oldest">Release: Oldest First</option>
+                            <option value="alpha">Alphanumeric: A - Z</option>
+                        </select>
+                    </div>
+
+                    <div class="selector-label-group">
+                        <label for="limitSelector">Display Density:</label>
+                        <select id="limitSelector" class="interactive-dropdown-node">
+                            <option value="6" selected>6 per page</option>
+                            <option value="12">12 per page</option>
+                            <option value="24">24 per page</option>
+                            <option value="48">48 per page</option>
+                        </select>
+                    </div>
+                </div>
             </div>
             
             <div class="catalog-header-meta">
@@ -353,6 +407,12 @@
             
             <div id="gridContainer" class="grid-container"></div>
             <div id="noResults" class="no-results">No active video indexes match configuration matrix filters.</div>
+
+            <div class="pagination-container-deck" id="paginationBlock">
+                <button class="pagination-btn" id="prevPageBtn">← Previous Page</button>
+                <span class="pagination-tracker-label" id="paginationTrackerNode">Page 1 of 1</span>
+                <button class="pagination-btn" id="nextPageBtn">Next Page →</button>
+            </div>
         </section>
 
         <section id="network">
@@ -362,7 +422,7 @@
             </div>
             
             <div class="matrix-deck">
-                <a href="https://www.youtube.com/@tysonmediagroup-aviation" target="_blank" class="matrix-cell" style="border-color: rgba(48, 209, 88, 0.25);">
+                <a href="https://aviation.tysonmediagroup.org" class="matrix-cell" style="border-color: rgba(48, 209, 88, 0.25);">
                     <span class="matrix-cell-arrow" style="opacity: 0.6; color: #30d158;">↗</span>
                     <div>
                         <h4 style="color: #30d158;">TYSON Aviation</h4>
@@ -371,7 +431,7 @@
                     <div class="matrix-status pulse"><span></span>Deployment Stage Active</div>
                 </a>
 
-                <a href="https://www.youtube.com/@TYSONMediaGroup" target="_blank" class="matrix-cell">
+                <a href="https://tysonmediagroup.org" class="matrix-cell">
                     <span class="matrix-cell-arrow">↗</span>
                     <div>
                         <h4>TYSON Media Group</h4>
@@ -380,7 +440,7 @@
                     <div class="matrix-status"><span></span>Primary Core Station</div>
                 </a>
                 
-                <a href="https://www.youtube.com/@tysonatlantis" target="_blank" class="matrix-cell">
+                <a href="https://atlantis.tysonmediagroup.org" class="matrix-cell">
                     <span class="matrix-cell-arrow">↗</span>
                     <div>
                         <h4>TYSON Atlantis</h4>
@@ -391,14 +451,13 @@
             </div>
         </section>
 
-        <section id="collective" style="padding-bottom: 14rem;">
+        <section id="collective" style="padding-bottom: 10rem;">
             <div class="section-tag-line">
                 <span class="section-tag">The Network Collective</span>
                 <div class="section-line"></div>
             </div>
             
             <div class="roster-grid">
-                
                 <div class="roster-card">
                     <div class="roster-header">
                         <div class="roster-identity-stack">
@@ -465,10 +524,8 @@
                     </div>
                     <p class="roster-bio">Directs incoming aerodynamic research and production structures. Sets system specifications for the deployment of the upcoming TYSON Aviation program channel matrix.</p>
                 </div>
-
             </div>
         </section>
-
     </main>
 
     <footer>
@@ -477,22 +534,19 @@
     </footer>
 
     <script>
-        // Kinetic Film Intro Playback Lifecycle Control
+        // Preloader Handling
         window.addEventListener('DOMContentLoaded', () => {
             const canvas = document.getElementById('preloader-canvas');
             setTimeout(() => {
                 if(canvas) {
                     canvas.style.opacity = '0';
                     document.body.classList.remove('intro-active');
-                    setTimeout(() => { canvas.remove(); }, 1600); 
+                    setTimeout(() => { canvas.remove(); }, 1200); 
                 }
-            }, 4000); 
+            }, 3000); 
         });
 
-        /* MASTER PLATFORM INTEGRATED BROADCAST DATABASE 
-           AUTOMATED THUMBNAILS: System automatically pulls the official maxres cover for each video using its ID.
-           EDITORIAL MAPPING: Added localUrl and localThumb options to gracefully bypass the lightbox structure for written columns.
-        */
+        /* GLOBAL DATABANK FEED REGISTRY [SCALABLE SYSTEM SOURCE] */
         const broadcastMasterRegistry = [
             {
                 "id": "tmg-aviation-launch",
@@ -500,7 +554,8 @@
                 "ytId": "XBhHj-1K8YU", 
                 "tag": "aviation",
                 "channelName": "@tysonmediagroup-aviation",
-                "issue": "Video Game • Launch Feature", 
+                "issue": "Video Game • Launch Feature",
+                "timestamp": 1780444800, // Programmatic Unix Timestamp Tracking
                 "excerpt": "Welcome to TYSON Aviation. The official programmatic expansion establishing flight deck documentation, mechanical aerospace design analysis, and airborne cinematic essays.",
                 "featured": true
             },
@@ -510,11 +565,10 @@
                 "ytId": "LMv3NhnDtoM", 
                 "tag": "flagship",
                 "channelName": "@TYSONMediaGroup",
-                "issue": "Real Life! • June, 2026", 
-                "excerpt": "Subaru's newly formed Sports Vehicle Planning Office drops a massive bombshell: three brand-new manual transmission platforms are slate to launch by 2027.",
-                "featured": true,
-                "localUrl": "reviews/subaru-manuals.html",
-                "localThumb": "imagestuff/articlesTHMB/subarumodels1.jpg"
+                "issue": "Real Life! • June, 2026",
+                "timestamp": 1780272000,
+                "excerpt": "Subaru's newly formed Sports Vehicle Planning Office drops a massive bombshell: three brand-new manual transmission platforms are slated to launch by 2027.",
+                "featured": true
             },
             {
                 "id": "tmg-forza-announcement",
@@ -523,6 +577,7 @@
                 "tag": "flagship",
                 "channelName": "@TYSONMediaGroup",
                 "issue": "Video Game • Jun 3, 2026",
+                "timestamp": 1779148800,
                 "excerpt": "Incoming architectural updates documenting expanded telemetry grids, customized sound packages, and structural gameplay additions inside Forza Motorsport.",
                 "featured": false
             },
@@ -533,6 +588,7 @@
                 "tag": "flagship",
                 "channelName": "@TYSONMediaGroup",
                 "issue": "Video Game • May 31, 2026",
+                "timestamp": 1778889600,
                 "excerpt": "The official promotional trailer asset documenting the upcoming deployment of TYSON Racing tracks.",
                 "featured": false
             },
@@ -543,6 +599,7 @@
                 "tag": "flagship",
                 "channelName": "@TYSONMediaGroup",
                 "issue": "Video Game • May 23, 2026",
+                "timestamp": 1778198400,
                 "excerpt": "In this video, TYSON takes this amazing 2019 ford F-150 out for a no talking POV drive!",
                 "featured": false
             },
@@ -553,70 +610,59 @@
                 "tag": "flagship",
                 "channelName": "@TYSONMediaGroup",
                 "issue": "Real Life! • May 19, 2026",
+                "timestamp": 1777852800,
                 "excerpt": "In this video, we start the all-new redesigned Outback! Overall, a very very refined wagon-ish SUV...",
                 "featured": false
             }
         ];
 
+        // System Interface Processing Variables
         let featuredData = [];
         let currentCarouselIndex = 0;
+        
+        // RE-ENGINEERED STATE VARIABLES FOR SCALING REGISTRIES
         let activeCategoryFilter = 'all';
+        let currentPageIndex = 1;
+        let displayLimitPerPage = 6;
+        let activeSortSequence = 'newest';
 
         function initGlobalEcosystem() {
             featuredData = broadcastMasterRegistry.filter(item => item.featured);
             
             initCarousel();
+            initControlDashboardListeners();
             executeRegistryRender();
             initLightboxEvents();
-            
-            document.getElementById('journalSearch').addEventListener('input', executeRegistryRender);
         }
 
-        // Helper function to extract high-quality YouTube thumbnails dynamically
         function getYoutubeThumbnail(ytId) {
             return `https://img.youtube.com/vi/${ytId}/maxresdefault.jpg`;
         }
 
-        // --- LIGHTBOX INTERFACE ARCHITECTURE JS ---
+        // Lightbox System Logic
         function initLightboxEvents() {
             const lightbox = document.getElementById('videoLightbox');
-            const closeBtn = document.getElementById('closeLightbox');
-            
-            closeBtn.addEventListener('click', closeLightboxSystem);
-            
-            lightbox.addEventListener('click', (e) => {
-                if(e.target === lightbox) closeLightboxSystem();
-            });
-            
-            document.addEventListener('keydown', (e) => {
-                if(e.key === 'Escape' && lightbox.classList.contains('active')) closeLightboxSystem();
-            });
+            document.getElementById('closeLightbox').addEventListener('click', closeLightboxSystem);
+            lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeLightboxSystem(); });
+            document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && lightbox.classList.contains('active')) closeLightboxSystem(); });
         }
 
         function launchLightbox(youtubeId, title, description) {
             const iframe = document.getElementById('lightboxIframe');
-            const titleNode = document.getElementById('lightboxTitle');
-            const descNode = document.getElementById('lightboxDesc');
-            const lightbox = document.getElementById('videoLightbox');
-            
+            document.getElementById('lightboxTitle').innerText = title;
+            document.getElementById('lightboxDesc').innerText = description;
             iframe.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&modestbranding=1&rel=0`;
-            titleNode.innerText = title;
-            descNode.innerText = description;
-            
-            lightbox.classList.add('active');
+            document.getElementById('videoLightbox').classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
         function closeLightboxSystem() {
-            const lightbox = document.getElementById('videoLightbox');
-            const iframe = document.getElementById('lightboxIframe');
-            
-            lightbox.classList.remove('active');
-            iframe.src = ''; 
+            document.getElementById('videoLightbox').classList.remove('active');
+            document.getElementById('lightboxIframe').src = ''; 
             document.body.style.overflow = '';
         }
 
-        // --- CINEMA STRIP SLIDER SUBSYSTEM ---
+        // Spotlights Banner Strip System
         function initCarousel() {
             if(!featuredData.length) return;
             const track = document.getElementById('imageTrack');
@@ -624,8 +670,7 @@
 
             featuredData.forEach((item, idx) => {
                 const img = document.createElement('img');
-                // Uses custom local thumbnail if defined, falls back to YouTube asset
-                img.src = item.localThumb || getYoutubeThumbnail(item.ytId);
+                img.src = getYoutubeThumbnail(item.ytId);
                 img.alt = item.title;
                 img.className = `carousel-img-item ${idx === 0 ? 'active' : ''}`;
                 track.appendChild(img);
@@ -641,44 +686,90 @@
                 currentCarouselIndex = (currentCarouselIndex - 1 + featuredData.length) % featuredData.length;
                 updateCarouselDisplay();
             });
-            
             document.getElementById('carouselLink').addEventListener('click', () => {
                 const currentItem = featuredData[currentCarouselIndex];
-                // Intercepts and redirects if it maps to an editorial page
-                if (currentItem.localUrl) {
-                    window.location.href = currentItem.localUrl;
-                } else {
-                    launchLightbox(currentItem.ytId, currentItem.title, currentItem.excerpt);
-                }
+                launchLightbox(currentItem.ytId, currentItem.title, currentItem.excerpt);
             });
         }
 
         function updateCarouselDisplay() {
             const item = featuredData[currentCarouselIndex];
             if(!item) return;
-
             document.getElementById('carouselMeta').innerText = `${item.channelName} • ${item.issue}`;
             document.getElementById('carouselTitle').innerText = item.title;
             document.getElementById('carouselExcerpt').innerText = item.excerpt;
             document.getElementById('carouselCounter').innerText = `${String(currentCarouselIndex + 1).padStart(2, '0')} / ${String(featuredData.length).padStart(2, '0')}`;
-            
-            // Adjust label based on whether target is an external stream or internal page
-            document.getElementById('carouselLink').innerText = item.localUrl ? 'Read Review →' : 'Launch Stream →';
-
-            const images = document.querySelectorAll('.carousel-img-item');
-            images.forEach((img, idx) => {
+            document.querySelectorAll('.carousel-img-item').forEach((img, idx) => {
                 img.classList.toggle('active', idx === currentCarouselIndex);
             });
         }
 
-        // --- SORTABLE BROADCAST REGISTRY FILTER ENGINE ---
+        // --- EXTENDED OPTIMIZED SYSTEM ENGINE LOGIC ---
+        function initControlDashboardListeners() {
+            // Live Search Inputs
+            const searchInput = document.getElementById('journalSearch');
+            const clearBtn = document.getElementById('clearSearchBtn');
+
+            searchInput.addEventListener('input', () => {
+                clearBtn.classList.toggle('visible', searchInput.value.length > 0);
+                currentPageIndex = 1; // Reset view states
+                executeRegistryRender();
+            });
+
+            clearBtn.addEventListener('click', () => {
+                searchInput.value = '';
+                clearBtn.classList.remove('visible');
+                currentPageIndex = 1;
+                executeRegistryRender();
+            });
+
+            // Tab Filters Matrix Setup
+            document.querySelectorAll('.matrix-tab').forEach(tab => {
+                tab.addEventListener('click', (e) => {
+                    document.querySelectorAll('.matrix-tab').forEach(t => t.classList.remove('active'));
+                    e.target.classList.add('active');
+                    activeCategoryFilter = e.target.getAttribute('data-category');
+                    currentPageIndex = 1;
+                    executeRegistryRender();
+                });
+            });
+
+            // Select Dropdown Nodes Interactivity
+            document.getElementById('sortSelector').addEventListener('change', (e) => {
+                activeSortSequence = e.target.value;
+                executeRegistryRender();
+            });
+
+            document.getElementById('limitSelector').addEventListener('change', (e) => {
+                displayLimitPerPage = parseInt(e.target.value);
+                currentPageIndex = 1;
+                executeRegistryRender();
+            });
+
+            // Pagination Controls Triggers
+            document.getElementById('prevPageBtn').addEventListener('click', () => {
+                if (currentPageIndex > 1) {
+                    currentPageIndex--;
+                    executeRegistryRender();
+                    document.getElementById('journal').scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+
+            document.getElementById('nextPageBtn').addEventListener('click', () => {
+                currentPageIndex++;
+                executeRegistryRender();
+                document.getElementById('journal').scrollIntoView({ behavior: 'smooth' });
+            });
+        }
+
         function executeRegistryRender() {
             const container = document.getElementById('gridContainer');
             const noResults = document.getElementById('noResults');
             const countNode = document.getElementById('resultsCount');
             const searchQuery = document.getElementById('journalSearch').value.toLowerCase().trim();
             
-            const filteredDataset = broadcastMasterRegistry.filter(item => {
+            // Phase 1: Filter Evaluation
+            let processedDataset = broadcastMasterRegistry.filter(item => {
                 const matchesCategory = (activeCategoryFilter === 'all') || (item.tag === activeCategoryFilter);
                 const matchesSearch = item.title.toLowerCase().includes(searchQuery) || 
                                       item.excerpt.toLowerCase().includes(searchQuery) || 
@@ -687,33 +778,52 @@
                 return matchesCategory && matchesSearch;
             });
 
-            container.innerHTML = '';
-            countNode.innerText = `${filteredDataset.length} broadcast units indexed`;
+            // Phase 2: Algorithmic Sorting Engine Calculations
+            if (activeSortSequence === 'newest') {
+                processedDataset.sort((a, b) => b.timestamp - a.timestamp);
+            } else if (activeSortSequence === 'oldest') {
+                processedDataset.sort((a, b) => a.timestamp - b.timestamp);
+            } else if (activeSortSequence === 'alpha') {
+                processedDataset.sort((a, b) => a.title.localeCompare(b.title));
+            }
 
-            if(!filteredDataset.length) {
+            // Phase 3: Pagination Core Math Calculations
+            const totalMatchingUnits = processedDataset.length;
+            const maxCalculatedPages = Math.ceil(totalMatchingUnits / displayLimitPerPage) || 1;
+            
+            if (currentPageIndex > maxCalculatedPages) currentPageIndex = maxCalculatedPages;
+
+            const sliceStartIndex = (currentPageIndex - 1) * displayLimitPerPage;
+            const sliceEndIndex = sliceStartIndex + displayLimitPerPage;
+            const paginatedDatasetSlice = processedDataset.slice(sliceStartIndex, sliceEndIndex);
+
+            // Phase 4: UI Modification Render Loops
+            container.innerHTML = '';
+            countNode.innerText = `${totalMatchingUnits} entries found • showing page ${currentPageIndex} of ${maxCalculatedPages}`;
+
+            if (!totalMatchingUnits) {
                 noResults.style.display = 'block';
+                document.getElementById('paginationBlock').style.display = 'none';
                 return;
             }
+            
             noResults.style.display = 'none';
+            document.getElementById('paginationBlock').style.display = totalMatchingUnits > displayLimitPerPage ? 'flex' : 'none';
 
-            filteredDataset.forEach((item, index) => {
+            // Pagination Visuals Processing
+            document.getElementById('paginationTrackerNode').innerText = `Page ${currentPageIndex} of ${maxCalculatedPages}`;
+            document.getElementById('prevPageBtn').disabled = (currentPageIndex === 1);
+            document.getElementById('nextPageBtn').disabled = (currentPageIndex === maxCalculatedPages);
+
+            // Injecting Dynamic Render Stream Cards
+            paginatedDatasetSlice.forEach((item, index) => {
                 const card = document.createElement('div');
                 card.className = 'item-card';
-                card.style.animationDelay = `${index * 0.04}s`;
-                
-                // Routes click target intelligently based on presence of a local file path
-                if (item.localUrl) {
-                    card.onclick = () => window.location.href = item.localUrl;
-                } else {
-                    card.onclick = () => launchLightbox(item.ytId, item.title, item.excerpt);
-                }
-                
-                // Appends unique overlay class if target is written content instead of streaming video
-                const imgWrapperClass = item.localUrl ? 'img-wrapper editorial-node' : 'img-wrapper';
-                const thumbSrc = item.localThumb || getYoutubeThumbnail(item.ytId);
+                card.style.animationDelay = `${index * 0.03}s`;
+                card.onclick = () => launchLightbox(item.ytId, item.title, item.excerpt);
                 
                 card.innerHTML = `
-                    <div class="${imgWrapperClass}"><img src="${thumbSrc}" alt="${item.title}"></div>
+                    <div class="img-wrapper"><img src="${getYoutubeThumbnail(item.ytId)}" alt="${item.title}"></div>
                     <div class="card-meta">
                         <span>${item.issue}</span>
                         <span class="card-meta-chan">${item.channelName}</span>
@@ -723,16 +833,6 @@
                 `;
                 container.appendChild(card);
             });
-        }
-
-        function filterCategory(category, element) {
-            activeCategoryFilter = category;
-            
-            const tabs = document.querySelectorAll('.matrix-tab');
-            tabs.forEach(tab => tab.classList.remove('active'));
-            element.classList.add('active');
-            
-            executeRegistryRender();
         }
 
         window.addEventListener('DOMContentLoaded', initGlobalEcosystem);
