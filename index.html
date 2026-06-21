@@ -32,13 +32,11 @@
         }
         body.intro-active { overflow: hidden; height: 100vh; }
 
-        /* Fine Grain Texture Layer */
         body::before {
             content: ""; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; opacity: 0.022; pointer-events: none; z-index: 9999;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
-        /* Scalable Multi-Brand Header System */
         header {
             position: fixed; top: 0; left: 0; width: 100%; padding: 1.8rem 4%; display: flex; flex-direction: column; gap: 1.5rem; z-index: 100;
             background: linear-gradient(to bottom, rgba(0,0,0,1) 80%, rgba(0,0,0,0)); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
@@ -47,13 +45,11 @@
         
         .header-top-row { display: flex; justify-content: space-between; align-items: center; width: 100%; gap: 2rem; }
 
-        /* Multi-Subdomain Brand Routing Deck */
         .subdomain-routing-deck { display: flex; align-items: center; gap: 3rem; flex-wrap: nowrap; }
         .brand-route-node { display: block; opacity: 0.65; transition: var(--transition-main); display: flex; align-items: center; text-decoration: none; }
         .brand-route-node:hover { opacity: 1; }
         .brand-route-node.active-core { opacity: 1; pointer-events: none; }
         
-        /* Fixed Sizing Parameters for Widescreen Banners */
         .brand-route-node img { height: 38px; width: auto; display: block; filter: brightness(1); mix-blend-mode: lighten; }
 
         .nav-right-cluster { display: flex; align-items: center; gap: 3rem; }
@@ -61,7 +57,6 @@
         nav a { color: var(--text-light); text-decoration: none; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: none; opacity: 0.5; transition: var(--transition-main); font-weight: 400; padding: 0.5rem 0; }
         nav a:hover { opacity: 1; }
 
-        /* Relocated and Polished Search Component */
         .search-container { position: relative; display: flex; align-items: center; background: rgba(0,0,0,0.4); border: 1px solid var(--border-color); padding: 0 1.2rem; border-radius: 4px; width: 320px; }
         .search-input {
             background: transparent; border: none;
@@ -73,13 +68,11 @@
         .search-clear-btn { position: absolute; right: 0.8rem; background: none; border: none; color: var(--text-muted); font-size: 0.9rem; cursor: pointer; opacity: 0; pointer-events: none; transition: opacity 0.3s; padding: 0.2rem; }
         .search-clear-btn.visible { opacity: 1; pointer-events: all; }
 
-        /* Framework Sections */
         section { padding: 12rem 4% 6rem 4%; max-width: 1750px; margin: 0 auto; position: relative; }
         .section-tag-line { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 4rem; }
         .section-tag { font-size: 0.85rem; text-transform: none; letter-spacing: 0.1em; color: var(--text-muted); font-weight: 500; }
         .section-line { height: 1px; flex-grow: 1; background: var(--border-color); }
 
-        /* Hero Brand Frame Canvas */
         .hero-deck { height: 95vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 4%; position: relative; background: var(--bg-deep); }
         .hero-logo-container {
             max-width: 900px; width: 85%; margin-bottom: 3.5rem; opacity: 0; transform: translateY(20px);
@@ -95,7 +88,6 @@
         }
         .scroll-indicator { position: absolute; bottom: 3.5rem; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: none; color: var(--text-muted); animation: microPulse 2s infinite ease-in-out; }
 
-        /* Cinema Strip Slider Subsystem */
         .carousel-deck { position: relative; width: 100%; aspect-ratio: 21/9; border: 1px solid var(--border-color); overflow: hidden; background: #020203; }
         .carousel-visual-pane { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
         .carousel-img-item { position: absolute; top:0; left:0; width:100%; height:100%; object-fit: cover; opacity:0; scale: 1.03; transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), scale 1.5s cubic-bezier(0.25, 1, 0.5, 1); filter: grayscale(15%) brightness(35%); }
@@ -119,7 +111,6 @@
         .ctrl-btn:hover { color: var(--text-light); }
         .carousel-counter { font-size: 0.75rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.2); font-weight: 400; }
 
-        /* Filter Control Panel */
         .system-dashboard-control-panel {
             background: rgba(255,255,255,0.01); border: 1px solid var(--border-color);
             padding: 1.5rem 2rem; margin-bottom: 3.5rem; display: flex; flex-wrap: wrap;
@@ -150,7 +141,6 @@
         .catalog-header-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; padding: 0 0.5rem; }
         .results-counter-node { font-size: 0.75rem; text-transform: none; letter-spacing: 0.05em; color: var(--text-muted); font-weight: 500; }
 
-        /* Premium Editorial Articles Layout Catalog Grid */
         .grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 6rem 3.5rem; min-height: 400px; }
         .item-card { text-decoration: none; color: inherit; display: flex; flex-direction: column; opacity: 0; transform: translateY(15px); animation: itemReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; cursor: pointer; }
         .img-wrapper { width: 100%; aspect-ratio: 16/10; background: #080809; margin-bottom: 1.8rem; overflow: hidden; border: 1px solid var(--border-color); position: relative; }
@@ -168,14 +158,12 @@
         .card-excerpt { color: var(--text-muted); font-size: 0.92rem; font-weight: 300; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.65; }
         .no-results { display: none; text-align: center; padding: 8rem 0; font-family: var(--font-editorial); font-size: 1.6rem; color: var(--text-muted); font-style: italic; border: 1px dashed var(--border-color); }
 
-        /* Pagination Interface */
         .pagination-container-deck { display: flex; justify-content: center; align-items: center; gap: 1.5rem; margin-top: 6rem; padding-top: 3rem; border-top: 1px solid var(--border-color); }
         .pagination-btn { background: none; border: 1px solid var(--border-color); color: var(--text-muted); font-family: var(--font-accent); font-size: 0.72rem; text-transform: none; letter-spacing: 0.1em; padding: 0.7rem 1.4rem; cursor: pointer; transition: var(--transition-main); min-height: 44px; display: flex; align-items: center; }
         .pagination-btn:hover:not(:disabled) { border-color: rgba(255,255,255,0.2); color: var(--text-light); }
         .pagination-btn:disabled { opacity: 0.15; cursor: not-allowed; }
         .pagination-tracker-label { font-size: 0.72rem; letter-spacing: 0.05em; color: var(--text-muted); text-transform: none; }
 
-        /* TYSON Brands Grid - Powered by Official Banners */
         .matrix-deck { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
         .matrix-cell { border: 1px solid var(--border-color); background: rgba(255,255,255,0.002); padding: 3.5rem 2.5rem; text-decoration: none; color: inherit; transition: var(--transition-main); display: flex; flex-direction: column; justify-content: space-between; min-height: 380px; position: relative; }
         .matrix-cell:hover { border-color: var(--border-heavy); background: rgba(255,255,255,0.01); }
@@ -193,7 +181,6 @@
         .matrix-status span { width: 5px; height: 5px; background: #fff; border-radius: 50%; display: inline-block; }
         .matrix-status.pulse span { background: #30d158; animation: microPulse 2s infinite ease-in-out; }
 
-        /* The TYSON Team Roster */
         .roster-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 4rem 3rem; }
         .roster-card { display: flex; flex-direction: column; justify-content: space-between; border-top: 1px solid var(--border-color); padding-top: 1.8rem; min-height: 240px; transition: var(--transition-main); }
         .roster-card:hover { border-top-color: rgba(255,255,255,0.25); }
@@ -209,7 +196,6 @@
         .yt-svg-node { width: 18px; height: 18px; fill: currentColor; display: block; }
         .roster-bio { font-size: 0.88rem; color: var(--text-muted); font-weight: 300; line-height: 1.6; margin-bottom: auto; }
 
-        /* Cinematic Lightbox Frame Overlay */
         .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(3,3,3,0.98); z-index: 10000; display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
         .lightbox-overlay.active { opacity: 1; pointer-events: all; }
         
@@ -232,16 +218,13 @@
         .lightbox-close-btn { background: none; border: 1px solid rgba(255,255,255,0.1); color: var(--text-light); font-family: var(--font-accent); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: none; padding: 0.8rem 1.6rem; cursor: pointer; transition: var(--transition-main); min-height: 44px; }
         .lightbox-close-btn:hover { background: #fff; color: #000; border-color: #fff; }
 
-        /* Footer */
         footer { padding: 7rem 4% 4rem 4%; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 0.75rem; letter-spacing: 0.1em; color: var(--text-muted); text-transform: none; font-weight: 400; }
         .footer-closing { font-family: var(--font-editorial); font-style: italic; text-transform: none; letter-spacing: 0; color: rgba(255,255,255,0.35); font-size: 0.95rem; }
 
-        /* Kinetic Animations */
         @keyframes revealBrand { to { opacity: 1; transform: translateY(0); } }
         @keyframes itemReveal { to { opacity: 1; transform: translateY(0); } }
         @keyframes microPulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
         
-        /* Responsive Mobile Layouts */
         @media (max-width: 1200px) {
             header { padding: 1.2rem 4%; gap: 1rem; position: absolute; }
             .header-top-row { flex-direction: column; gap: 1.2rem; align-items: flex-start; }
@@ -288,19 +271,14 @@
 </head>
 <body>
 
-    <!-- Global Dual-Mode Lightbox Frames -->
     <div id="videoLightbox" class="lightbox-overlay">
         <div class="lightbox-container">
-            <!-- Video Player Block -->
             <div id="lightboxVideoFrame" class="lightbox-video-frame">
                 <iframe id="lightboxIframe" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
-            
-            <!-- Written Article Content Block -->
             <div id="lightboxArticleView" class="lightbox-article-view">
                 <div id="lightboxArticleBody" class="lightbox-article-body"></div>
             </div>
-
             <div class="lightbox-meta-footer">
                 <div class="lightbox-title-stack">
                     <h3 id="lightboxTitle" class="lightbox-title">Transmission</h3>
@@ -311,7 +289,6 @@
         </div>
     </div>
 
-    <!-- Navigation Header Layer -->
     <header>
         <div class="header-top-row">
             <div class="subdomain-routing-deck">
@@ -338,8 +315,6 @@
     </header>
 
     <main>
-        
-        <!-- Hero Core Segment -->
         <section class="hero-deck">
             <div class="hero-logo-container">
                 <img src="imagestuff/TYSONMediaGroupBanner.png" alt="TYSON Media Group">
@@ -348,7 +323,6 @@
             <div class="scroll-indicator">Explore Featured Work</div>
         </section>
 
-        <!-- Dynamic Featured Banner Segment -->
         <section id="broadcast" class="broadcast-hub" style="padding-top: 4rem;">
             <div class="section-tag-line">
                 <span class="section-tag" style="color: #30d158;">★ Spotlight Features</span>
@@ -376,14 +350,12 @@
             </div>
         </section>
 
-        <!-- Re-engineered Articles Directory -->
         <section id="journal" style="padding-top: 2rem;">
             <div class="section-tag-line">
                 <span class="section-tag">Resource Directory</span>
                 <div class="section-line"></div>
             </div>
 
-            <!-- Configuration Control Panel with Relocated Search Box -->
             <div class="system-dashboard-control-panel">
                 <div class="catalog-matrix-controls">
                     <button class="matrix-tab active" data-category="all">All Feeds</button>
@@ -393,7 +365,6 @@
                 </div>
                 
                 <div class="dashboard-filtering-options-node">
-                    <!-- Context-Aware Search Element -->
                     <div class="search-container">
                         <input type="text" id="journalSearch" class="search-input" placeholder="Search articles and media...">
                         <button id="clearSearchBtn" class="search-clear-btn" title="Clear search values">×</button>
@@ -423,11 +394,9 @@
                 <span id="resultsCount" class="results-counter-node">0 entries cataloged</span>
             </div>
             
-            <!-- Target Execution Containers -->
             <div id="gridContainer" class="grid-container"></div>
             <div id="noResults" class="no-results">No active entries match selected layout parameters.</div>
 
-            <!-- Dynamic Pagination Block Layer -->
             <div class="pagination-container-deck" id="paginationBlock">
                 <button class="pagination-btn" id="prevPageBtn">← Previous Page</button>
                 <span class="pagination-tracker-label" id="paginationTrackerNode">Page 1 of 1</span>
@@ -443,42 +412,44 @@
             </div>
             
             <div class="matrix-deck">
+                <!-- TYSON Aviation Box -->
                 <a href="https://aviation.tysonmediagroup.org" class="matrix-cell" style="border-color: rgba(48, 209, 88, 0.25);">
                     <span class="matrix-cell-arrow" style="opacity: 0.6; color: #30d158;">↗</span>
                     <div>
                         <div class="matrix-brand-banner-wrap">
                             <img src="imagestuff/TYSONAviationBanner.png" alt="TYSON Aviation">
                         </div>
-                        <p>The newly established aerospace division. Configured to capture flight deck documentation, mechanical aerospace structures, and airborne cinematic essays.</p>
+                        <p>Mainly YouTube content centered around Microsoft Flight Simulator and VATSIM networks. Featuring smooth, long flights perfect for sleep, delivered with an overall pleasing and relaxed aesthetic.</p>
                     </div>
                     <div class="matrix-status pulse"><span></span>Deployment Stage Active</div>
                 </a>
 
+                <!-- TYSON Media Group Box -->
                 <a href="https://tysonmediagroup.org" class="matrix-cell">
                     <span class="matrix-cell-arrow">↗</span>
                     <div>
                         <div class="matrix-brand-banner-wrap">
                             <img src="imagestuff/TYSONMediaGroupBanner.png" alt="TYSON Media Group">
                         </div>
-                        <p>The primary digital publication powerhouse. Specializing in highly stylized automotive features, detailed track reviews, and structural historical design documentation.</p>
+                        <p>The core overarching parent organization behind the network, serving as the main corporate house for automotive productions—the fundamental focus of the TYSON identity.</p>
                     </div>
                     <div class="matrix-status"><span></span>Primary Core Station</div>
                 </a>
                 
+                <!-- TYSON Atlantis Box -->
                 <a href="https://atlantis.tysonmediagroup.org" class="matrix-cell">
                     <span class="matrix-cell-arrow">↗</span>
                     <div>
                         <div class="matrix-brand-banner-wrap">
                             <img src="imagestuff/TYSONAtlantisBanner.png" alt="TYSON Atlantis">
                         </div>
-                        <p>A specialized atmospheric audio repository dealing in precise structural modulation—reformatting tempos, scales, and curves for tailored auditory experiences.</p>
+                        <p>A dedicated audio playground producing custom music tracks. Sped up, tuned, slowed, and pitched to absolute perfection—crafted and delivered with love from TYSON.</p>
                     </div>
                     <div class="matrix-status"><span></span>Acoustic Sub-Station</div>
                 </a>
             </div>
         </section>
 
-        <!-- Team Personnel Roster Segment -->
         <section id="collective" style="padding-bottom: 10rem;">
             <div class="section-tag-line">
                 <span class="section-tag">The TYSON Team</span>
@@ -561,7 +532,6 @@
         <p class="footer-closing">Stillness in motion.</p>
     </footer>
 
-    <!-- Master Global Script Engine -->
     <script>
         const broadcastMasterRegistry = [
             {
@@ -753,7 +723,6 @@
                 currentPageIndex = 1; 
                 executeRegistryRender();
                 
-                // Intelligently auto-scroll to the dynamic grid if a user begins typing a search
                 if(searchInput.value.length === 1) {
                     document.getElementById('journal').scrollIntoView({ behavior: 'smooth' });
                 }
