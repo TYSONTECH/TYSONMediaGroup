@@ -58,25 +58,25 @@
 
         .nav-right-cluster { display: flex; align-items: center; gap: 3rem; }
         nav { display: flex; gap: 2.5rem; }
-        nav a { color: var(--text-light); text-decoration: none; font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase; opacity: 0.5; transition: var(--transition-main); font-weight: 400; padding: 0.5rem 0; }
+        nav a { color: var(--text-light); text-decoration: none; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: none; opacity: 0.5; transition: var(--transition-main); font-weight: 400; padding: 0.5rem 0; }
         nav a:hover { opacity: 1; }
 
-        /* Interactive Search Component */
-        .search-container { position: relative; display: flex; align-items: center; background: rgba(255,255,255,0.01); border: 1px solid var(--border-color); padding: 0 1rem; border-radius: 2px; }
+        /* Relocated and Polished Search Component */
+        .search-container { position: relative; display: flex; align-items: center; background: rgba(0,0,0,0.4); border: 1px solid var(--border-color); padding: 0 1.2rem; border-radius: 4px; width: 320px; }
         .search-input {
             background: transparent; border: none;
-            color: var(--text-light); font-family: var(--font-accent); font-size: 0.7rem; font-weight: 300;
-            padding: 0.6rem 2rem 0.6rem 0; width: 180px; letter-spacing: 0.12em; transition: var(--transition-main);
+            color: var(--text-light); font-family: var(--font-accent); font-size: 0.78rem; font-weight: 300;
+            padding: 0.7rem 2rem 0.7rem 0; width: 100%; letter-spacing: 0.05em; transition: var(--transition-main);
         }
-        .search-input:focus { outline: none; width: 260px; }
-        .search-input::placeholder { color: rgba(255,255,255,0.3); text-transform: uppercase; font-size: 0.58rem; letter-spacing: 0.2em; }
-        .search-clear-btn { position: absolute; right: 0.8rem; background: none; border: none; color: var(--text-muted); font-size: 0.75rem; cursor: pointer; opacity: 0; pointer-events: none; transition: opacity 0.3s; padding: 0.2rem; }
+        .search-input:focus { outline: none; }
+        .search-input::placeholder { color: rgba(255,255,255,0.3); text-transform: none; font-size: 0.78rem; letter-spacing: 0.05em; }
+        .search-clear-btn { position: absolute; right: 0.8rem; background: none; border: none; color: var(--text-muted); font-size: 0.9rem; cursor: pointer; opacity: 0; pointer-events: none; transition: opacity 0.3s; padding: 0.2rem; }
         .search-clear-btn.visible { opacity: 1; pointer-events: all; }
 
         /* Framework Sections */
         section { padding: 12rem 4% 6rem 4%; max-width: 1750px; margin: 0 auto; position: relative; }
         .section-tag-line { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 4rem; }
-        .section-tag { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.45em; color: var(--text-muted); font-weight: 500; }
+        .section-tag { font-size: 0.85rem; text-transform: none; letter-spacing: 0.1em; color: var(--text-muted); font-weight: 500; }
         .section-line { height: 1px; flex-grow: 1; background: var(--border-color); }
 
         /* Hero Brand Frame Canvas */
@@ -93,7 +93,7 @@
             opacity: 0; transform: translateY(15px);
             animation: revealBrand 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
         }
-        .scroll-indicator { position: absolute; bottom: 3.5rem; font-size: 0.58rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--text-muted); animation: microPulse 2s infinite ease-in-out; }
+        .scroll-indicator { position: absolute; bottom: 3.5rem; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: none; color: var(--text-muted); animation: microPulse 2s infinite ease-in-out; }
 
         /* Cinema Strip Slider Subsystem */
         .carousel-deck { position: relative; width: 100%; aspect-ratio: 21/9; border: 1px solid var(--border-color); overflow: hidden; background: #020203; }
@@ -111,15 +111,15 @@
         .carousel-excerpt { color: rgba(255,255,255,0.45); font-size: 0.9rem; font-weight: 300; max-width: 580px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.6; }
         
         .carousel-nav-interface { display: flex; flex-direction: column; align-items: flex-end; gap: 1.5rem; }
-        .carousel-link { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.3em; color: var(--text-light); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 0.3rem; transition: var(--transition-main); font-weight: 500; cursor: pointer; }
+        .carousel-link { font-size: 0.75rem; text-transform: none; letter-spacing: 0.1em; color: var(--text-light); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 0.3rem; transition: var(--transition-main); font-weight: 500; cursor: pointer; }
         .carousel-link:hover { border-color: var(--text-light); }
         
         .carousel-controls { display: flex; align-items: center; gap: 2rem; }
         .ctrl-btn { background: none; border: none; color: rgba(255,255,255,0.3); font-size: 1rem; cursor: pointer; padding: 0.5rem; transition: color 0.3s; }
         .ctrl-btn:hover { color: var(--text-light); }
-        .carousel-counter { font-size: 0.68rem; letter-spacing: 0.25em; color: rgba(255,255,255,0.2); font-weight: 400; }
+        .carousel-counter { font-size: 0.75rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.2); font-weight: 400; }
 
-        /* Filter Control Panel Panel */
+        /* Filter Control Panel */
         .system-dashboard-control-panel {
             background: rgba(255,255,255,0.01); border: 1px solid var(--border-color);
             padding: 1.5rem 2rem; margin-bottom: 3.5rem; display: flex; flex-wrap: wrap;
@@ -128,18 +128,18 @@
         
         .catalog-matrix-controls { display: flex; gap: 1.8rem; overflow-x: auto; white-space: nowrap; -ms-overflow-style: none; scrollbar-width: none; }
         .catalog-matrix-controls::-webkit-scrollbar { display: none; }
-        .matrix-tab { background: none; border: none; color: var(--text-muted); font-family: var(--font-accent); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.25em; cursor: pointer; padding: 0.4rem 0; position: relative; transition: var(--transition-main); font-weight: 500; min-height: 44px; }
+        .matrix-tab { background: none; border: none; color: var(--text-muted); font-family: var(--font-accent); font-size: 0.75rem; text-transform: none; letter-spacing: 0.08em; cursor: pointer; padding: 0.4rem 0; position: relative; transition: var(--transition-main); font-weight: 500; min-height: 44px; }
         .matrix-tab:hover { color: var(--text-light); }
         .matrix-tab.active { color: var(--text-light); }
         .matrix-tab.active::after { content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 1px; background: #fff; }
 
         .dashboard-filtering-options-node { display: flex; align-items: center; gap: 1.5rem; }
-        .selector-label-group { display: flex; align-items: center; gap: 0.6rem; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-muted); }
+        .selector-label-group { display: flex; align-items: center; gap: 0.6rem; font-size: 0.72rem; text-transform: none; letter-spacing: 0.05em; color: var(--text-muted); }
         
         .interactive-dropdown-node {
             background: #000; color: var(--text-light); border: 1px solid var(--border-color);
-            font-family: var(--font-accent); font-size: 0.65rem; letter-spacing: 0.15em;
-            text-transform: uppercase; padding: 0.5rem 2rem 0.5rem 0.8rem; cursor: pointer;
+            font-family: var(--font-accent); font-size: 0.72rem; letter-spacing: 0.05em;
+            text-transform: none; padding: 0.5rem 2rem 0.5rem 0.8rem; cursor: pointer;
             outline: none; border-radius: 2px; transition: var(--transition-main);
             -webkit-appearance: none; -moz-appearance: none; appearance: none;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z' fill='%236e6e73'/%3E%3C/svg%3E");
@@ -148,21 +148,21 @@
         .interactive-dropdown-node:hover { border-color: rgba(255,255,255,0.15); color: #fff; }
 
         .catalog-header-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; padding: 0 0.5rem; }
-        .results-counter-node { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-muted); font-weight: 500; }
+        .results-counter-node { font-size: 0.75rem; text-transform: none; letter-spacing: 0.05em; color: var(--text-muted); font-weight: 500; }
 
         /* Premium Editorial Articles Layout Catalog Grid */
         .grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 6rem 3.5rem; min-height: 400px; }
         .item-card { text-decoration: none; color: inherit; display: flex; flex-direction: column; opacity: 0; transform: translateY(15px); animation: itemReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; cursor: pointer; }
         .img-wrapper { width: 100%; aspect-ratio: 16/10; background: #080809; margin-bottom: 1.8rem; overflow: hidden; border: 1px solid var(--border-color); position: relative; }
         
-        .img-wrapper::after { content: "READ ARTICLE"; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 0.6rem; letter-spacing: 0.4em; font-weight: 500; color: #fff; opacity: 0; transition: var(--transition-main); z-index: 2; border: 1px solid rgba(255,255,255,0.2); padding: 0.8rem 1.4rem; background: rgba(0,0,0,0.65); backdrop-filter: blur(5px); }
-        .item-card.video-format .img-wrapper::after { content: "WATCH VIDEO"; }
-        .item-card:hover .img-wrapper::after { opacity: 1; letter-spacing: 0.45em; }
+        .img-wrapper::after { content: "Read Article"; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 0.75rem; letter-spacing: 0.15em; font-weight: 500; color: #fff; opacity: 0; transition: var(--transition-main); z-index: 2; border: 1px solid rgba(255,255,255,0.2); padding: 0.8rem 1.4rem; background: rgba(0,0,0,0.65); backdrop-filter: blur(5px); text-transform: none; }
+        .item-card.video-format .img-wrapper::after { content: "Watch Video"; }
+        .item-card:hover .img-wrapper::after { opacity: 1; letter-spacing: 0.18em; }
 
         .item-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.55; filter: grayscale(10%); transition: var(--transition-main); }
         .item-card:hover img { transform: scale(1.015); opacity: 0.85; filter: grayscale(0%); }
         
-        .card-meta { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--text-muted); margin-bottom: 1rem; font-weight: 500; display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 0.5rem; }
+        .card-meta { font-size: 0.72rem; text-transform: none; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 1rem; font-weight: 500; display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 0.5rem; }
         .card-meta-chan { color: rgba(255,255,255,0.3); }
         .card-title { font-family: var(--font-editorial); font-size: 2rem; font-weight: 400; line-height: 1.25; margin-bottom: 0.8rem; letter-spacing: -0.01em; color: rgba(255,255,255,0.95); }
         .card-excerpt { color: var(--text-muted); font-size: 0.92rem; font-weight: 300; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.65; }
@@ -170,27 +170,30 @@
 
         /* Pagination Interface */
         .pagination-container-deck { display: flex; justify-content: center; align-items: center; gap: 1.5rem; margin-top: 6rem; padding-top: 3rem; border-top: 1px solid var(--border-color); }
-        .pagination-btn { background: none; border: 1px solid var(--border-color); color: var(--text-muted); font-family: var(--font-accent); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.2em; padding: 0.7rem 1.4rem; cursor: pointer; transition: var(--transition-main); min-height: 44px; display: flex; align-items: center; }
+        .pagination-btn { background: none; border: 1px solid var(--border-color); color: var(--text-muted); font-family: var(--font-accent); font-size: 0.72rem; text-transform: none; letter-spacing: 0.1em; padding: 0.7rem 1.4rem; cursor: pointer; transition: var(--transition-main); min-height: 44px; display: flex; align-items: center; }
         .pagination-btn:hover:not(:disabled) { border-color: rgba(255,255,255,0.2); color: var(--text-light); }
         .pagination-btn:disabled { opacity: 0.15; cursor: not-allowed; }
-        .pagination-tracker-label { font-size: 0.68rem; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase; }
+        .pagination-tracker-label { font-size: 0.72rem; letter-spacing: 0.05em; color: var(--text-muted); text-transform: none; }
 
-        /* Broadcast Divisions Network Layout */
+        /* TYSON Brands Grid - Powered by Official Banners */
         .matrix-deck { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
-        .matrix-cell { border: 1px solid var(--border-color); background: rgba(255,255,255,0.002); padding: 4rem 3rem; text-decoration: none; color: inherit; transition: var(--transition-main); display: flex; flex-direction: column; justify-content: space-between; min-height: 340px; position: relative; }
+        .matrix-cell { border: 1px solid var(--border-color); background: rgba(255,255,255,0.002); padding: 3.5rem 2.5rem; text-decoration: none; color: inherit; transition: var(--transition-main); display: flex; flex-direction: column; justify-content: space-between; min-height: 380px; position: relative; }
         .matrix-cell:hover { border-color: var(--border-heavy); background: rgba(255,255,255,0.01); }
         
-        .matrix-cell-arrow { position: absolute; top: 2.5rem; right: 2.5rem; font-size: 0.8rem; opacity: 0.15; transition: var(--transition-main); }
+        .matrix-cell-arrow { position: absolute; top: 2rem; right: 2rem; font-size: 0.8rem; opacity: 0.15; transition: var(--transition-main); }
         .matrix-cell:hover .matrix-cell-arrow { opacity: 0.8; transform: translate(3px, -3px); }
 
-        .matrix-cell h4 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.25em; margin-bottom: 1.2rem; color: var(--text-light); font-weight: 500; }
-        .matrix-cell p { font-size: 0.88rem; color: var(--text-muted); font-weight: 300; line-height: 1.6; margin-bottom: auto; }
+        .matrix-brand-banner-wrap { width: 100%; max-width: 240px; margin-bottom: 2rem; display: block; mix-blend-mode: lighten; }
+        .matrix-brand-banner-wrap img { width: 100%; height: auto; display: block; filter: brightness(0.95); transition: var(--transition-main); }
+        .matrix-cell:hover .matrix-brand-banner-wrap img { filter: brightness(1); }
+
+        .matrix-cell p { font-size: 0.88rem; color: var(--text-muted); font-weight: 300; line-height: 1.65; margin-bottom: auto; }
         
-        .matrix-status { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--text-light); margin-top: 2.5rem; display: flex; align-items: center; gap: 0.6rem; opacity: 0.5; font-weight: 500; }
+        .matrix-status { font-size: 0.68rem; text-transform: none; letter-spacing: 0.08em; color: var(--text-light); margin-top: 2.5rem; display: flex; align-items: center; gap: 0.6rem; opacity: 0.5; font-weight: 500; }
         .matrix-status span { width: 5px; height: 5px; background: #fff; border-radius: 50%; display: inline-block; }
         .matrix-status.pulse span { background: #30d158; animation: microPulse 2s infinite ease-in-out; }
 
-        /* Collective Personnel Roster */
+        /* The TYSON Team Roster */
         .roster-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 4rem 3rem; }
         .roster-card { display: flex; flex-direction: column; justify-content: space-between; border-top: 1px solid var(--border-color); padding-top: 1.8rem; min-height: 240px; transition: var(--transition-main); }
         .roster-card:hover { border-top-color: rgba(255,255,255,0.25); }
@@ -198,15 +201,15 @@
         .roster-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
         .roster-identity-stack { display: flex; flex-direction: column; }
         .roster-name { font-family: var(--font-editorial); font-size: 1.75rem; font-weight: 400; color: var(--text-light); letter-spacing: -0.01em; line-height: 1.1; }
-        .roster-pronoun { font-size: 0.58rem; font-weight: 400; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-muted); margin-top: 0.3rem; display: block; }
-        .roster-role { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-muted); font-weight: 600; margin-top: 0.4rem; }
+        .roster-pronoun { font-size: 0.68rem; font-weight: 400; text-transform: none; letter-spacing: 0.05em; color: var(--text-muted); margin-top: 0.3rem; display: block; }
+        .roster-role { font-size: 0.72rem; text-transform: none; letter-spacing: 0.05em; color: var(--text-muted); font-weight: 600; margin-top: 0.4rem; }
         
         .youtube-icon-wrapper { color: var(--text-muted); opacity: 0.3; transition: var(--transition-main); display: inline-flex; align-items: center; padding: 0.5rem; margin-top: -0.5rem; margin-right: -0.5rem; }
         .youtube-icon-wrapper:hover { color: #ff0000; opacity: 1; transform: scale(1.05); }
         .yt-svg-node { width: 18px; height: 18px; fill: currentColor; display: block; }
         .roster-bio { font-size: 0.88rem; color: var(--text-muted); font-weight: 300; line-height: 1.6; margin-bottom: auto; }
 
-        /* Cinematic Broadcast Lightbox Overlay (Dual Mode: Video or Written Article Content) */
+        /* Cinematic Lightbox Frame Overlay */
         .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(3,3,3,0.98); z-index: 10000; display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
         .lightbox-overlay.active { opacity: 1; pointer-events: all; }
         
@@ -216,7 +219,6 @@
         .lightbox-video-frame { width: 100%; aspect-ratio: 16/9; background: #000; border: 1px solid rgba(255,255,255,0.05); position: relative; display: none; }
         .lightbox-video-frame iframe { width: 100%; height: 100%; border: none; display: block; }
         
-        /* Written Article View Elements inside Lightbox Frame */
         .lightbox-article-view { width: 100%; max-height: 60vh; overflow-y: auto; background: #0a0a0b; border: 1px solid rgba(255,255,255,0.05); padding: 3.5rem 4rem; display: none; }
         .lightbox-article-body { font-family: var(--font-editorial); font-size: 1.35rem; font-weight: 300; line-height: 1.7; color: rgba(255,255,255,0.85); }
         .lightbox-article-body p { margin-bottom: 2rem; }
@@ -227,11 +229,11 @@
         .lightbox-title { font-family: var(--font-editorial); font-size: 2.2rem; font-weight: 400; letter-spacing: -0.01em; margin-bottom: 0.5rem; line-height: 1.2; }
         .lightbox-desc { font-size: 0.9rem; color: var(--text-muted); font-weight: 300; line-height: 1.5; }
         
-        .lightbox-close-btn { background: none; border: 1px solid rgba(255,255,255,0.1); color: var(--text-light); font-family: var(--font-accent); font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; padding: 0.8rem 1.6rem; cursor: pointer; transition: var(--transition-main); min-height: 44px; }
+        .lightbox-close-btn { background: none; border: 1px solid rgba(255,255,255,0.1); color: var(--text-light); font-family: var(--font-accent); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: none; padding: 0.8rem 1.6rem; cursor: pointer; transition: var(--transition-main); min-height: 44px; }
         .lightbox-close-btn:hover { background: #fff; color: #000; border-color: #fff; }
 
         /* Footer */
-        footer { padding: 7rem 4% 4rem 4%; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 0.65rem; letter-spacing: 0.25em; color: var(--text-muted); text-transform: uppercase; font-weight: 400; }
+        footer { padding: 7rem 4% 4rem 4%; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 0.75rem; letter-spacing: 0.1em; color: var(--text-muted); text-transform: none; font-weight: 400; }
         .footer-closing { font-family: var(--font-editorial); font-style: italic; text-transform: none; letter-spacing: 0; color: rgba(255,255,255,0.35); font-size: 0.95rem; }
 
         /* Kinetic Animations */
@@ -239,7 +241,7 @@
         @keyframes itemReveal { to { opacity: 1; transform: translateY(0); } }
         @keyframes microPulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
         
-        /* 📱 RESPONSIVE MOBILE OPTIMIZATION CSS */
+        /* Responsive Mobile Layouts */
         @media (max-width: 1200px) {
             header { padding: 1.2rem 4%; gap: 1rem; position: absolute; }
             .header-top-row { flex-direction: column; gap: 1.2rem; align-items: flex-start; }
@@ -255,15 +257,12 @@
             .brand-route-node { justify-content: center; width: 100%; opacity: 0.8; }
             .brand-route-node img { height: auto; width: 100%; max-height: 24px; object-fit: contain; }
             
-            .nav-right-cluster { width: 100%; justify-content: space-between; gap: 1rem; }
+            .nav-right-cluster { width: 100%; }
             nav { display: none; } 
-            .search-container { flex-grow: 1; width: 100%; }
-            .search-input { width: 100% !important; }
             
             main { padding-top: 9rem !important; }
             section { padding: 6rem 4% 4rem 4%; }
             .hero-deck { height: auto; min-height: 65vh; padding: 10rem 4% 4rem 4%; }
-            .hero-logo-container { margin-bottom: 2.5rem; }
             
             .carousel-deck { aspect-ratio: 16/10; }
             .carousel-content-overlay { padding: 2rem; flex-direction: column; align-items: flex-start; gap: 2rem; }
@@ -272,6 +271,7 @@
 
             .system-dashboard-control-panel { padding: 1rem; flex-direction: column; align-items: stretch; gap: 1.2rem; }
             .catalog-matrix-controls { width: 100%; }
+            .search-container { width: 100%; }
             .dashboard-filtering-options-node { flex-direction: column; align-items: stretch; gap: 1rem; }
             .selector-label-group { justify-content: space-between; }
             .interactive-dropdown-node { width: 100%; }
@@ -288,7 +288,7 @@
 </head>
 <body>
 
-    <!-- Global Dual-Mode Lightbox (Handles Iframe Player OR Editorial Text Layouts) -->
+    <!-- Global Dual-Mode Lightbox Frames -->
     <div id="videoLightbox" class="lightbox-overlay">
         <div class="lightbox-container">
             <!-- Video Player Block -->
@@ -311,7 +311,7 @@
         </div>
     </div>
 
-    <!-- Brand Cross-Routing Navigation Header -->
+    <!-- Navigation Header Layer -->
     <header>
         <div class="header-top-row">
             <div class="subdomain-routing-deck">
@@ -330,13 +330,9 @@
                 <nav>
                     <a href="#broadcast">Featured</a>
                     <a href="#journal">Registry</a>
-                    <a href="#network">Networks</a>
-                    <a href="#collective">Collective</a>
+                    <a href="#network">TYSON</a>
+                    <a href="#collective">The TYSON Team</a>
                 </nav>
-                <div class="search-container">
-                    <input type="text" id="journalSearch" class="search-input" placeholder="Search articles and media...">
-                    <button id="clearSearchBtn" class="search-clear-btn" title="Clear configuration filters">×</button>
-                </div>
             </div>
         </div>
     </header>
@@ -363,7 +359,7 @@
                 <div class="carousel-visual-pane" id="imageTrack"></div>
                 <div class="carousel-content-overlay">
                     <div class="carousel-text-box">
-                        <div id="carouselMeta" style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--text-muted); margin-bottom: 0.8rem; font-weight:500;"></div>
+                        <div id="carouselMeta" style="font-size: 0.72rem; text-transform: none; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 0.8rem; font-weight:500;"></div>
                         <h2 id="carouselTitle" class="carousel-title"></h2>
                         <p id="carouselExcerpt" class="carousel-excerpt"></p>
                     </div>
@@ -387,7 +383,7 @@
                 <div class="section-line"></div>
             </div>
 
-            <!-- Configuration Control Panel -->
+            <!-- Configuration Control Panel with Relocated Search Box -->
             <div class="system-dashboard-control-panel">
                 <div class="catalog-matrix-controls">
                     <button class="matrix-tab active" data-category="all">All Feeds</button>
@@ -397,6 +393,12 @@
                 </div>
                 
                 <div class="dashboard-filtering-options-node">
+                    <!-- Context-Aware Search Element -->
+                    <div class="search-container">
+                        <input type="text" id="journalSearch" class="search-input" placeholder="Search articles and media...">
+                        <button id="clearSearchBtn" class="search-clear-btn" title="Clear search values">×</button>
+                    </div>
+
                     <div class="selector-label-group">
                         <label for="sortSelector">Sort Sequence:</label>
                         <select id="sortSelector" class="interactive-dropdown-node">
@@ -407,7 +409,7 @@
                     </div>
 
                     <div class="selector-label-group">
-                        <label for="limitSelector">Display Density:</label>
+                        <label for="limitSelector">Density:</label>
                         <select id="limitSelector" class="interactive-dropdown-node">
                             <option value="6" selected>6 per page</option>
                             <option value="12">12 per page</option>
@@ -433,10 +435,10 @@
             </div>
         </section>
 
-        <!-- Network Divisions Core -->
+        <!-- Brand Network Matrix Section -->
         <section id="network">
             <div class="section-tag-line">
-                <span class="section-tag">Network Divisions</span>
+                <span class="section-tag">TYSON</span>
                 <div class="section-line"></div>
             </div>
             
@@ -444,7 +446,9 @@
                 <a href="https://aviation.tysonmediagroup.org" class="matrix-cell" style="border-color: rgba(48, 209, 88, 0.25);">
                     <span class="matrix-cell-arrow" style="opacity: 0.6; color: #30d158;">↗</span>
                     <div>
-                        <h4 style="color: #30d158;">TYSON Aviation</h4>
+                        <div class="matrix-brand-banner-wrap">
+                            <img src="imagestuff/TYSONAviationBanner.png" alt="TYSON Aviation">
+                        </div>
                         <p>The newly established aerospace division. Configured to capture flight deck documentation, mechanical aerospace structures, and airborne cinematic essays.</p>
                     </div>
                     <div class="matrix-status pulse"><span></span>Deployment Stage Active</div>
@@ -453,7 +457,9 @@
                 <a href="https://tysonmediagroup.org" class="matrix-cell">
                     <span class="matrix-cell-arrow">↗</span>
                     <div>
-                        <h4>TYSON Media Group</h4>
+                        <div class="matrix-brand-banner-wrap">
+                            <img src="imagestuff/TYSONMediaGroupBanner.png" alt="TYSON Media Group">
+                        </div>
                         <p>The primary digital publication powerhouse. Specializing in highly stylized automotive features, detailed track reviews, and structural historical design documentation.</p>
                     </div>
                     <div class="matrix-status"><span></span>Primary Core Station</div>
@@ -462,7 +468,9 @@
                 <a href="https://atlantis.tysonmediagroup.org" class="matrix-cell">
                     <span class="matrix-cell-arrow">↗</span>
                     <div>
-                        <h4>TYSON Atlantis</h4>
+                        <div class="matrix-brand-banner-wrap">
+                            <img src="imagestuff/TYSONAtlantisBanner.png" alt="TYSON Atlantis">
+                        </div>
                         <p>A specialized atmospheric audio repository dealing in precise structural modulation—reformatting tempos, scales, and curves for tailored auditory experiences.</p>
                     </div>
                     <div class="matrix-status"><span></span>Acoustic Sub-Station</div>
@@ -470,10 +478,10 @@
             </div>
         </section>
 
-        <!-- Collective Personnel System Roster Core -->
+        <!-- Team Personnel Roster Segment -->
         <section id="collective" style="padding-bottom: 10rem;">
             <div class="section-tag-line">
-                <span class="section-tag">The Collective</span>
+                <span class="section-tag">The TYSON Team</span>
                 <div class="section-line"></div>
             </div>
             
@@ -555,7 +563,6 @@
 
     <!-- Master Global Script Engine -->
     <script>
-        /* GLOBAL ARCHIVE DATA REGISTRY */
         const broadcastMasterRegistry = [
             {
                 "id": "tmg-aviation-launch",
@@ -573,7 +580,7 @@
                 "id": "tmg-subaru-manuals-scoop",
                 "contentType": "article",
                 "title": "Three Pedals, One Mission: Subaru Confirms Three New Manual Models for Japan",
-                "ytId": "LMv3NhnDtoM", // fallback thumbnail use
+                "ytId": "LMv3NhnDtoM", 
                 "tag": "flagship",
                 "channelName": "Editorial Division",
                 "issue": "Press Release • June, 2026",
@@ -649,7 +656,6 @@
 
         function initGlobalEcosystem() {
             featuredData = broadcastMasterRegistry.filter(item => item.featured);
-            
             initCarousel();
             initControlDashboardListeners();
             executeRegistryRender();
@@ -746,6 +752,11 @@
                 clearBtn.classList.toggle('visible', searchInput.value.length > 0);
                 currentPageIndex = 1; 
                 executeRegistryRender();
+                
+                // Intelligently auto-scroll to the dynamic grid if a user begins typing a search
+                if(searchInput.value.length === 1) {
+                    document.getElementById('journal').scrollIntoView({ behavior: 'smooth' });
+                }
             });
 
             clearBtn.addEventListener('click', () => {
