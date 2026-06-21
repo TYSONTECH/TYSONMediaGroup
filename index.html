@@ -66,7 +66,7 @@
         /* Distinct Input Field Boxes with Permanent Highlight Status */
         .gate-input {
             width: 100%; background: rgba(12, 12, 14, 0.8); 
-            border: 1px solid var(--border-heavy); /* Bold persistent frame */
+            border: 1px solid var(--border-heavy);
             color: var(--text-light); font-family: var(--font-accent); font-size: 0.85rem; font-weight: 300;
             padding: 1rem 1.4rem; border-radius: 4px; letter-spacing: 0.06em; 
             transition: var(--transition-main);
@@ -341,7 +341,6 @@
         <div class="gate-container">
             <img src="imagestuff/Untitled(2).png" alt="TYSON Core Asset" class="gate-brand-image">
             
-            <!-- Strict Prohibitive Legal Warning -->
             <div class="gate-security-notice">
                 WARNING: UN-AUTHORIZED USE PROHIBITED. This piece of software is restricted to authorized beta nodes. Access is strictly forbidden without verified runtime authentication issued directly by TYSON Media Group.
             </div>
@@ -362,7 +361,6 @@
 
     <!-- Protected Application Cluster -->
     <div id="tysonAppContent">
-        <!-- Main template contents go here exactly as before -->
         <div id="videoLightbox" class="lightbox-overlay">
             <div class="lightbox-container">
                 <div id="lightboxVideoFrame" class="lightbox-video-frame">
@@ -622,48 +620,35 @@
     </div>
 
     <script>
-        // Pre-calculated cryptographic SHA-256 hex hashes of your exact case-sensitive passwords
+        // Direct, non-encrypted registry to eliminate text-encoding copy/paste failures
         const AUTHORIZATION_REGISTRY = {
-            "tcustine@tysonadmin": "5959f63fa0d481dae1864cc28b2be94191d4e0e5631bfa59d640b8ee78709f6e", // ty!19377460TMG1
-            "afrench@tyson": "c3bc27248d6ca7fb85b3bc9142e0ae480a406697b09be8cf6ee90eb87dbb5490",       // ash!19377460TMG1
-            "zwiggins@tyson": "d748f522301140026e48c3b17cb1eb9ff8ca3c7efb06d8a57be33c94f1b4020a",     // zane!19377460TMG1
-            "bmessersmith@tyson": "dfdf0b59b566580556da87e6fa5a0139158c56fa7f75eb7f72230e71fbaea03b", // brayden!19377460TMG1
-            "trinebarger@tyson": "47be73081beeb4f391fa16db614f85e4922f51f501bca053c9e9009dfbd96ff8",  // triston!19377460TMG1
-            "jglick@tyson": "3bc24ea33575da70a59b20755a909a341b3dfbfdafaec243e3f434778be1a27e"        // jacob!19377460TMGGUEST1
+            "tcustine@tysonadmin": "ty!19377460TMG1",
+            "afrench@tyson": "ash!19377460TMG1",
+            "zwiggins@tyson": "zane!19377460TMG1",
+            "bmessersmith@tyson": "brayden!19377460TMG1",
+            "trinebarger@tyson": "triston!19377460TMG1",
+            "jglick@tyson": "jacob!19377460TMGGUEST1"
         };
 
-        // Standard SHA-256 calculation utility using browser APIs
-        async function calculateStringHashValue(rawString) {
-            const encoder = new TextEncoder();
-            const rawBuffer = encoder.encode(rawString);
-            const hashedBuffer = await crypto.subtle.digest('SHA-256', rawBuffer);
-            const byteArray = Array.from(new Uint8Array(hashedBuffer));
-            return byteArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
-        }
-
-        // Authentication Handler Processing Script
-        async function handleAuthSequence(event) {
+        // Instant matching function handling cleanup
+        function handleAuthSequence(event) {
             event.preventDefault();
             
-            // Clean out copy-paste artifacts and normalize the username text completely
+            // Clean out copy-paste hidden artifacts and line breaks
             const usernameInput = document.getElementById('gateUser').value.replace(/[\u200B-\u200D\uFEFF]/g, '').trim().toLowerCase();
-            
-            // Clean trailing spaces or copy-paste line break variations from the input string
             const passwordInput = document.getElementById('gatePass').value.replace(/[\u200B-\u200D\uFEFF]/g, '').trim();
             const errorElement = document.getElementById('gateError');
 
             errorElement.classList.remove('visible');
 
-            if (AUTHORIZATION_REGISTRY[usernameInput]) {
-                const computedPassHash = await calculateStringHashValue(passwordInput);
-                if (computedPassHash === AUTHORIZATION_REGISTRY[usernameInput]) {
-                    sessionStorage.setItem('tyson_beta_authorized', 'true');
-                    revealMainApplicationDeck();
-                    return;
-                }
+            // Direct mapping logic
+            if (AUTHORIZATION_REGISTRY[usernameInput] && AUTHORIZATION_REGISTRY[usernameInput] === passwordInput) {
+                sessionStorage.setItem('tyson_beta_authorized', 'true');
+                revealMainApplicationDeck();
+                return;
             }
 
-            // Failed credentials sequence logic hook
+            // Fallback fail sequence
             errorElement.innerText = "INVALID IDENTITY CREDENTIAL PATHWAY";
             errorElement.classList.add('visible');
             document.getElementById('gatePass').value = '';
@@ -686,7 +671,7 @@
             }
         });
 
-        // The rest of the page application rendering logic continues cleanly below...
+        // Application Content Rendering Engine Logic
         const broadcastMasterRegistry = [
             {
                 "id": "tmg-aviation-launch",
@@ -772,7 +757,6 @@
 
         let featuredData = [];
         let currentCarouselIndex = 0;
-        
         let activeCategoryFilter = 'all';
         let currentPageIndex = 1;
         let displayLimitPerPage = 6;
@@ -876,7 +860,6 @@
                 clearBtn.classList.toggle('visible', searchInput.value.length > 0);
                 currentPageIndex = 1; 
                 executeRegistryRender();
-                
                 if(searchInput.value.length === 1) {
                     document.getElementById('journal').scrollIntoView({ behavior: 'smooth' });
                 }
