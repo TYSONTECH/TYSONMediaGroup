@@ -7,7 +7,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500;1,600&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
@@ -16,9 +16,9 @@
             --bg-black: #000000;
             --bg-deep: #000000;
             --text-light: #ffffff;
-            --text-muted: #b3b3b3; /* Much higher contrast than old #86868b for readability */
+            --text-muted: #b3b3b3;
             --accent-glow: rgba(255, 255, 255, 0.2);
-            --border-color: rgba(255, 255, 255, 0.18); /* Crisper, visible borders */
+            --border-color: rgba(255, 255, 255, 0.18);
             --border-heavy: rgba(255, 255, 255, 0.45);
             --font-editorial: 'Cormorant Garamond', Georgia, serif;
             --font-accent: 'Montserrat', sans-serif;
@@ -53,9 +53,9 @@
 
         .nav-right-cluster { display: flex; align-items: center; gap: 3rem; }
         nav { display: flex; gap: 3rem; }
-        nav a { color: var(--text-light); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.7; transition: var(--transition-main); font-weight: 600; padding: 0.5rem 0; position: relative; }
+        nav a { color: var(--text-light); text-decoration: none; font-family: var(--font-editorial); font-size: 1.35rem; font-style: italic; text-transform: lowercase; opacity: 0.7; transition: var(--transition-main); font-weight: 400; padding: 0.5rem 0; position: relative; }
         nav a:hover { opacity: 1; }
-        nav a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: #fff; transition: var(--transition-main); }
+        nav a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: #fff; transition: var(--transition-main); }
         nav a:hover::after { width: 100%; }
 
         .search-container { position: relative; display: flex; align-items: center; background: rgba(0,0,0,0.8); border: 1px solid var(--border-color); padding: 0 1.2rem; border-radius: 6px; width: 340px; transition: var(--transition-main); }
@@ -72,7 +72,7 @@
 
         section { padding: 14rem 4% 8rem 4%; max-width: 1750px; margin: 0 auto; position: relative; }
         .section-tag-line { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 4rem; }
-        .section-tag { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-light); font-weight: 600; }
+        .section-tag { font-family: var(--font-editorial); font-size: 1.45rem; font-style: italic; text-transform: lowercase; color: var(--text-light); font-weight: 400; }
         .section-line { height: 1px; flex-grow: 1; background: var(--border-color); }
 
         .hero-deck { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 4%; position: relative; background: var(--bg-deep); }
@@ -89,18 +89,17 @@
             animation: revealBrand 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
         }
 
-        /* Highly Intentional Unmissable Action Button for Scrolling Intuition */
         .hero-explore-cta {
             opacity: 0; transform: translateY(15px);
             animation: revealBrand 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
-            background: #ffffff; color: #000000; border: none; padding: 1.2rem 2.5rem;
-            font-family: var(--font-accent); font-size: 0.9rem; font-weight: 600; text-transform: uppercase;
-            letter-spacing: 0.15em; border-radius: 4px; cursor: pointer; transition: var(--transition-main);
+            background: #ffffff; color: #000000; border: none; padding: 1rem 2.8rem;
+            font-family: var(--font-editorial); font-size: 1.4rem; font-style: italic; text-transform: lowercase;
+            border-radius: 4px; cursor: pointer; transition: var(--transition-main);
             box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15); z-index: 10;
         }
         .hero-explore-cta:hover { background: #e5e5e7; transform: translateY(-2px); box-shadow: 0 6px 25px rgba(255, 255, 255, 0.25); }
 
-        .scroll-indicator { position: absolute; bottom: 2.5rem; font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); animation: microPulse 2s infinite ease-in-out; cursor: pointer; font-weight: 500; }
+        .scroll-indicator { position: absolute; bottom: 2.5rem; font-family: var(--font-editorial); font-size: 1.25rem; font-style: italic; text-transform: lowercase; color: var(--text-muted); animation: microPulse 2s infinite ease-in-out; cursor: pointer; font-weight: 400; }
 
         .carousel-deck { position: relative; width: 100%; aspect-ratio: 21/9; border: 1px solid var(--border-color); overflow: hidden; background: #000000; border-radius: 4px; }
         .carousel-visual-pane { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
@@ -117,13 +116,13 @@
         .carousel-excerpt { color: #e5e5e7; font-size: 1.1rem; font-weight: 400; max-width: 680px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.6; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
         
         .carousel-nav-interface { display: flex; flex-direction: column; align-items: flex-end; gap: 2rem; }
-        .carousel-link { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.15em; color: #000000; background: #ffffff; padding: 0.8rem 1.6rem; border-radius: 4px; text-decoration: none; transition: var(--transition-main); font-weight: 600; cursor: pointer; }
-        .carousel-link:hover { background: #e5e5e7; letter-spacing: 0.18em; }
+        .carousel-link { font-family: var(--font-editorial); font-size: 1.3rem; font-style: italic; text-transform: lowercase; color: #000000; background: #ffffff; padding: 0.6rem 1.8rem; border-radius: 4px; text-decoration: none; transition: var(--transition-main); font-weight: 400; cursor: pointer; }
+        .carousel-link:hover { background: #e5e5e7; padding-right: 2.2rem; }
         
         .carousel-controls { display: flex; align-items: center; gap: 2rem; }
         .ctrl-btn { background: rgba(255,255,255,0.1); border: 1px solid var(--border-color); color: #ffffff; font-size: 1.3rem; cursor: pointer; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: var(--transition-main); }
         .ctrl-btn:hover { color: #000000; background: #ffffff; border-color: #ffffff; }
-        .carousel-counter { font-size: 0.9rem; letter-spacing: 0.1em; color: #ffffff; font-weight: 600; }
+        .carousel-counter { font-family: var(--font-editorial); font-style: italic; font-size: 1.25rem; color: #ffffff; font-weight: 400; text-transform: lowercase; }
 
         .system-dashboard-control-panel {
             background: rgba(255,255,255,0.02); border: 1px solid var(--border-color);
@@ -133,18 +132,18 @@
         
         .catalog-matrix-controls { display: flex; gap: 2rem; overflow-x: auto; white-space: nowrap; -ms-overflow-style: none; scrollbar-width: none; }
         .catalog-matrix-controls::-webkit-scrollbar { display: none; }
-        .matrix-tab { background: none; border: none; color: var(--text-muted); font-family: var(--font-accent); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.12em; cursor: pointer; padding: 0.6rem 0; position: relative; transition: var(--transition-main); font-weight: 600; min-height: 48px; }
+        .matrix-tab { background: none; border: none; color: var(--text-muted); font-family: var(--font-editorial); font-size: 1.35rem; font-style: italic; text-transform: lowercase; cursor: pointer; padding: 0.6rem 0; position: relative; transition: var(--transition-main); font-weight: 400; min-height: 48px; }
         .matrix-tab:hover { color: #ffffff; }
         .matrix-tab.active { color: #ffffff; }
-        .matrix-tab.active::after { content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: #fff; }
+        .matrix-tab.active::after { content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 1px; background: #fff; }
 
         .dashboard-filtering-options-node { display: flex; align-items: center; gap: 2rem; }
-        .selector-label-group { display: flex; align-items: center; gap: 0.8rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: #ffffff; font-weight: 500; }
+        .selector-label-group { display: flex; align-items: center; gap: 0.8rem; font-family: var(--font-editorial); font-size: 1.3rem; font-style: italic; text-transform: lowercase; color: #ffffff; font-weight: 400; }
         
         .interactive-dropdown-node {
             background: #000; color: #ffffff; border: 1px solid var(--border-color);
-            font-family: var(--font-accent); font-size: 0.85rem; letter-spacing: 0.05em;
-            padding: 0.7rem 2.5rem 0.7rem 1rem; cursor: pointer;
+            font-family: var(--font-editorial); font-size: 1.2rem; font-style: italic; text-transform: lowercase;
+            padding: 0.5rem 2.5rem 0.5rem 1rem; cursor: pointer;
             outline: none; border-radius: 4px; transition: var(--transition-main);
             -webkit-appearance: none; -moz-appearance: none; appearance: none;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z' fill='%23ffffff'/%3E%3C/svg%3E");
@@ -153,31 +152,31 @@
         .interactive-dropdown-node:hover { border-color: #ffffff; }
 
         .catalog-header-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem; padding: 0 0.5rem; }
-        .results-counter-node { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.08em; color: #ffffff; font-weight: 600; }
+        .results-counter-node { font-family: var(--font-editorial); font-size: 1.35rem; font-style: italic; text-transform: lowercase; color: #ffffff; font-weight: 400; }
 
         .grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(460px, 1fr)); gap: 6rem 4rem; min-height: 400px; }
         .item-card { text-decoration: none; color: inherit; display: flex; flex-direction: column; opacity: 0; transform: translateY(15px); animation: itemReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; cursor: pointer; }
         .img-wrapper { width: 100%; aspect-ratio: 16/10; background: #000000; margin-bottom: 2rem; overflow: hidden; border: 1px solid var(--border-color); position: relative; border-radius: 4px; }
         
-        .img-wrapper::after { content: "Read Article"; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 0.85rem; letter-spacing: 0.15em; font-weight: 600; color: #000000; opacity: 0; transition: var(--transition-main); z-index: 2; padding: 1rem 1.8rem; background: #ffffff; text-transform: uppercase; border-radius: 4px; }
-        .item-card.video-format .img-wrapper::after { content: "Watch Video"; }
-        .item-card:hover .img-wrapper::after { opacity: 1; letter-spacing: 0.18em; }
+        .img-wrapper::after { content: "read article"; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: var(--font-editorial); font-size: 1.3rem; font-style: italic; font-weight: 400; color: #000000; opacity: 0; transition: var(--transition-main); z-index: 2; padding: 0.6rem 1.8rem; background: #ffffff; text-transform: lowercase; border-radius: 4px; }
+        .item-card.video-format .img-wrapper::after { content: "watch video"; }
+        .item-card:hover .img-wrapper::after { opacity: 1; }
 
         .item-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: var(--transition-main); }
         .item-card:hover img { transform: scale(1.02); opacity: 1; }
         
-        .card-meta { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: #ffffff; margin-bottom: 1.2rem; font-weight: 600; display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-color); padding-bottom: 0.8rem; align-items: center; }
+        .card-meta { font-family: var(--font-editorial); font-size: 1.25rem; font-style: italic; text-transform: lowercase; color: #ffffff; margin-bottom: 1.2rem; font-weight: 400; display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-color); padding-bottom: 0.8rem; align-items: center; }
         .card-meta-chan { color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem; }
         .meta-format-icon { width: 14px; height: 14px; fill: currentColor; opacity: 0.8; }
         .card-title { font-family: var(--font-editorial); font-size: 2.4rem; font-weight: 400; line-height: 1.2; margin-bottom: 1rem; letter-spacing: -0.01em; color: #ffffff; }
         .card-excerpt { color: var(--text-muted); font-size: 1.05rem; font-weight: 400; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.65; }
-        .no-results { display: none; text-align: center; padding: 8rem 0; font-family: var(--font-editorial); font-size: 2rem; color: var(--text-muted); font-style: italic; border: 1px dashed var(--border-color); }
+        .no-results { display: none; text-align: center; padding: 8rem 0; font-family: var(--font-editorial); font-size: 2rem; color: var(--text-muted); font-style: italic; border: 1px dashed var(--border-color); text-transform: lowercase; }
 
         .pagination-container-deck { display: flex; justify-content: center; align-items: center; gap: 2rem; margin-top: 6rem; padding-top: 4rem; border-top: 1px solid var(--border-color); }
-        .pagination-btn { background: none; border: 1px solid var(--border-color); color: #ffffff; font-family: var(--font-accent); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.12em; padding: 0.9rem 1.8rem; cursor: pointer; transition: var(--transition-main); min-height: 48px; display: flex; align-items: center; border-radius: 4px; font-weight: 600; }
+        .pagination-btn { background: none; border: 1px solid var(--border-color); color: #ffffff; font-family: var(--font-editorial); font-size: 1.3rem; font-style: italic; text-transform: lowercase; padding: 0.6rem 2rem; cursor: pointer; transition: var(--transition-main); min-height: 48px; display: flex; align-items: center; border-radius: 4px; font-weight: 400; }
         .pagination-btn:hover:not(:disabled) { border-color: #ffffff; background: #ffffff; color: #000000; }
         .pagination-btn:disabled { opacity: 0.2; cursor: not-allowed; }
-        .pagination-tracker-label { font-size: 0.85rem; letter-spacing: 0.08em; color: #ffffff; text-transform: uppercase; font-weight: 600; }
+        .pagination-tracker-label { font-family: var(--font-editorial); font-size: 1.3rem; font-style: italic; color: #ffffff; text-transform: lowercase; font-weight: 400; }
 
         .matrix-deck { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; }
         .matrix-cell { border: 1px solid var(--border-color); background: rgba(255,255,255,0.01); padding: 4rem 3rem; text-decoration: none; color: inherit; transition: var(--transition-main); display: flex; flex-direction: column; justify-content: space-between; min-height: 420px; position: relative; border-radius: 4px; }
@@ -191,7 +190,7 @@
 
         .matrix-cell p { font-size: 1.05rem; color: #e5e5e7; font-weight: 400; line-height: 1.65; margin-bottom: auto; }
         
-        .matrix-status { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: #ffffff; margin-top: 3rem; display: flex; align-items: center; gap: 0.8rem; opacity: 0.8; font-weight: 600; }
+        .matrix-status { font-family: var(--font-editorial); font-size: 1.25rem; font-style: italic; text-transform: lowercase; color: #ffffff; margin-top: 3rem; display: flex; align-items: center; gap: 0.8rem; opacity: 0.8; font-weight: 400; }
         .matrix-status span { width: 8px; height: 8px; background: #fff; border-radius: 50%; display: inline-block; }
         .matrix-status.pulse span { background: #30d158; animation: microPulse 2s infinite ease-in-out; }
 
@@ -202,8 +201,8 @@
         .roster-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.2rem; }
         .roster-identity-stack { display: flex; flex-direction: column; }
         .roster-name { font-family: var(--font-editorial); font-size: 2rem; font-weight: 400; color: #ffffff; letter-spacing: -0.01em; line-height: 1.1; }
-        .roster-pronoun { font-size: 0.8rem; font-weight: 400; text-transform: none; letter-spacing: 0.05em; color: var(--text-muted); margin-top: 0.4rem; display: block; }
-        .roster-role { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: #ffffff; font-weight: 700; margin-top: 0.5rem; }
+        .roster-pronoun { font-family: var(--font-editorial); font-size: 1.15rem; font-style: italic; text-transform: lowercase; color: var(--text-muted); margin-top: 0.2rem; display: block; }
+        .roster-role { font-family: var(--font-editorial); font-size: 1.25rem; font-style: italic; text-transform: lowercase; color: #ffffff; font-weight: 400; margin-top: 0.3rem; }
         
         .youtube-icon-wrapper { color: var(--text-muted); opacity: 0.6; transition: var(--transition-main); display: inline-flex; align-items: center; padding: 0.5rem; margin-top: -0.5rem; margin-right: -0.5rem; }
         .youtube-icon-wrapper:hover { color: #ff0000; opacity: 1; transform: scale(1.1); }
@@ -227,42 +226,51 @@
         .lightbox-meta-footer { display: flex; justify-content: space-between; align-items: flex-start; border-top: 1px solid var(--border-color); padding-top: 2rem; }
         .lightbox-title-stack { max-width: 75%; }
         .lightbox-title { font-family: var(--font-editorial); font-size: 2.6rem; font-weight: 400; letter-spacing: -0.01em; margin-bottom: 0.6rem; line-height: 1.2; }
-        .lightbox-desc { font-size: 1rem; color: var(--text-muted); font-weight: 400; line-height: 1.5; }
+        .lightbox-desc { font-family: var(--font-editorial); font-size: 1.25rem; font-style: italic; text-transform: lowercase; color: var(--text-muted); font-weight: 400; line-height: 1.5; }
         
-        .lightbox-close-btn { background: #ffffff; border: 1px solid #ffffff; color: #000000; font-family: var(--font-accent); font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 1rem 2rem; cursor: pointer; transition: var(--transition-main); min-height: 48px; border-radius: 4px; font-weight: 600; }
+        .lightbox-close-btn { background: #ffffff; border: 1px solid #ffffff; color: #000000; font-family: var(--font-editorial); font-size: 1.3rem; font-style: italic; text-transform: lowercase; padding: 0.6rem 2rem; cursor: pointer; transition: var(--transition-main); min-height: 48px; border-radius: 4px; font-weight: 400; }
         .lightbox-close-btn:hover { background: #e5e5e7; border-color: #e5e5e7; }
 
-        /* Beautifully Realigned High-Contrast Footer Asset Placement */
+        /* Perfected High-Contrast Edge-to-Edge Lowercase Footer Signature */
         footer { 
             position: relative;
-            padding: 0 4%; 
-            height: 200px;
+            padding: 0; 
+            height: 240px;
             border-top: 1px solid var(--border-color); 
             display: flex; 
-            justify-content: space-between; 
             align-items: flex-end;
             background: #000000;
             overflow: hidden;
+            width: 100%;
         }
         .footer-left-logo {
             position: absolute;
-            left: 2%;
+            left: 0;
             bottom: 0;
             height: 110%;
             width: auto;
             object-fit: contain;
             object-position: left bottom;
             pointer-events: none;
-            opacity: 1; /* Maximum visibility */
+            opacity: 1;
             mix-blend-mode: lighten;
+            z-index: 2;
         }
-        .footer-right-brand {
-            height: 65px;
-            max-width: 45%;
-            margin-bottom: 2.5rem;
-            object-fit: contain;
-            object-position: right bottom;
-            mix-blend-mode: lighten;
+        .footer-center-text-signature {
+            width: 100%;
+            text-align: right;
+            padding-right: 4%;
+            padding-bottom: 2rem;
+            font-family: var(--font-editorial);
+            font-size: calc(2.5rem + 3.5vw);
+            font-style: italic;
+            font-weight: 300;
+            color: #ffffff;
+            text-transform: lowercase;
+            letter-spacing: -0.03em;
+            line-height: 0.9;
+            z-index: 1;
+            user-select: none;
         }
 
         @keyframes revealBrand { to { opacity: 1; transform: translateY(0); } }
@@ -310,9 +318,9 @@
             .lightbox-title-stack { max-width: 100%; }
             .lightbox-close-btn { width: 100%; text-align: center; }
             
-            footer { height: 160px; padding: 0 4%; }
-            .footer-left-logo { height: 100%; left: 0; }
-            .footer-right-brand { height: 45px; margin-bottom: 2rem; }
+            footer { height: 160px; }
+            .footer-left-logo { height: 100%; }
+            .footer-center-text-signature { padding-bottom: 1.2rem; font-size: calc(1.8rem + 3vw); }
         }
     </style>
 </head>
@@ -329,10 +337,10 @@
                 </div>
                 <div class="lightbox-meta-footer">
                     <div class="lightbox-title-stack">
-                        <h3 id="lightboxTitle" class="lightbox-title">Transmission</h3>
+                        <h3 id="lightboxTitle" class="lightbox-title">transmission</h3>
                         <p id="lightboxDesc" class="lightbox-desc"></p>
                     </div>
-                    <button id="closeLightbox" class="lightbox-close-btn">Close Frame</button>
+                    <button id="closeLightbox" class="lightbox-close-btn">close frame</button>
                 </div>
             </div>
         </div>
@@ -353,10 +361,10 @@
 
                 <div class="nav-right-cluster">
                     <nav>
-                        <a href="#broadcast">Featured</a>
-                        <a href="#journal">Registry</a>
-                        <a href="#network">Networks</a>
-                        <a href="#collective">Team</a>
+                        <a href="#broadcast">featured</a>
+                        <a href="#journal">registry</a>
+                        <a href="#network">networks</a>
+                        <a href="#collective">team</a>
                     </nav>
                 </div>
             </div>
@@ -369,15 +377,14 @@
                 </div>
                 <h1>Stillness in motion.</h1>
                 
-                <!-- Explicit, clear trigger button making scrolling obvious -->
-                <button class="hero-explore-cta" onclick="document.getElementById('broadcast').scrollIntoView({behavior: 'smooth'});">View Editorial Feed ↓</button>
+                <button class="hero-explore-cta" onclick="document.getElementById('broadcast').scrollIntoView({behavior: 'smooth'});">view editorial feed ↓</button>
                 
-                <div class="scroll-indicator" onclick="document.getElementById('broadcast').scrollIntoView({behavior: 'smooth'});">Explore Featured Work</div>
+                <div class="scroll-indicator" onclick="document.getElementById('broadcast').scrollIntoView({behavior: 'smooth'});">explore featured work</div>
             </section>
 
             <section id="broadcast" class="broadcast-hub" style="padding-top: 4rem;">
                 <div class="section-tag-line">
-                    <span class="section-tag" style="color: #30d158;">★ Spotlight Features</span>
+                    <span class="section-tag" style="color: #30d158;">★ spotlight features</span>
                     <div class="section-line" style="background: rgba(48, 209, 88, 0.3);"></div>
                 </div>
                 
@@ -385,13 +392,13 @@
                     <div class="carousel-visual-pane" id="imageTrack"></div>
                     <div class="carousel-content-overlay">
                         <div class="carousel-text-box">
-                            <div id="carouselMeta" style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: #ffffff; margin-bottom: 0.8rem; font-weight:600;"></div>
+                            <div id="carouselMeta" style="font-family: var(--font-editorial); font-size: 1.25rem; font-style: italic; text-transform: lowercase; color: #ffffff; margin-bottom: 0.8rem; font-weight:400;"></div>
                             <h2 id="carouselTitle" class="carousel-title"></h2>
                             <p id="carouselExcerpt" class="carousel-excerpt"></p>
                         </div>
                         
                         <div class="carousel-nav-interface">
-                            <span id="carouselLink" class="carousel-link">Open Content →</span>
+                            <span id="carouselLink" class="carousel-link">open content →</span>
                             <div class="carousel-controls">
                                 <button class="ctrl-btn" id="prevBtn">←</button>
                                 <span class="carousel-counter" id="carouselCounter">01 / 01</span>
@@ -404,16 +411,16 @@
 
             <section id="journal" style="padding-top: 2rem;">
                 <div class="section-tag-line">
-                    <span class="section-tag">Resource Directory</span>
+                    <span class="section-tag">resource directory</span>
                     <div class="section-line"></div>
                 </div>
 
                 <div class="system-dashboard-control-panel">
                     <div class="catalog-matrix-controls">
-                        <button class="matrix-tab active" data-category="all">All Feeds</button>
-                        <button class="matrix-tab" data-category="aviation">TYSON Aviation</button>
-                        <button class="matrix-tab" data-category="flagship">TYSON Media Group</button>
-                        <button class="matrix-tab" data-category="atlantis">TYSON Atlantis</button>
+                        <button class="matrix-tab active" data-category="all">all feeds</button>
+                        <button class="matrix-tab" data-category="aviation">tyson aviation</button>
+                        <button class="matrix-tab" data-category="flagship">tyson media group</button>
+                        <button class="matrix-tab" data-category="atlantis">tyson atlantis</button>
                     </div>
                     
                     <div class="dashboard-filtering-options-node">
@@ -423,16 +430,16 @@
                         </div>
 
                         <div class="selector-label-group">
-                            <label for="sortSelector">Sort Sequence:</label>
+                            <label for="sortSelector">sort sequence:</label>
                             <select id="sortSelector" class="interactive-dropdown-node">
-                                <option value="newest" selected>Release: Newest First</option>
-                                <option value="oldest">Release: Oldest First</option>
-                                <option value="alpha">Alphanumeric: A - Z</option>
+                                <option value="newest" selected>release: newest first</option>
+                                <option value="oldest">release: oldest first</option>
+                                <option value="alpha">alphanumeric: a - z</option>
                             </select>
                         </div>
 
                         <div class="selector-label-group">
-                            <label for="limitSelector">Density:</label>
+                            <label for="limitSelector">density:</label>
                             <select id="limitSelector" class="interactive-dropdown-node">
                                 <option value="6" selected>6 per page</option>
                                 <option value="12">12 per page</option>
@@ -447,18 +454,18 @@
                 </div>
                 
                 <div id="gridContainer" class="grid-container"></div>
-                <div id="noResults" class="no-results">No active entries match selected layout parameters.</div>
+                <div id="noResults" class="no-results">no active entries match selected layout parameters.</div>
 
                 <div class="pagination-container-deck" id="paginationBlock">
-                    <button class="pagination-btn" id="prevPageBtn">← Previous Page</button>
-                    <span class="pagination-tracker-label" id="paginationTrackerNode">Page 1 of 1</span>
-                    <button class="pagination-btn" id="nextPageBtn">Next Page →</button>
+                    <button class="pagination-btn" id="prevPageBtn">← previous page</button>
+                    <span class="pagination-tracker-label" id="paginationTrackerNode">page 1 of 1</span>
+                    <button class="pagination-btn" id="nextPageBtn">next page →</button>
                 </div>
             </section>
 
             <section id="network">
                 <div class="section-tag-line">
-                    <span class="section-tag">Network Architecture</span>
+                    <span class="section-tag">network architecture</span>
                     <div class="section-line"></div>
                 </div>
                 
@@ -471,7 +478,7 @@
                             </div>
                             <p>Mainly YouTube content centered around Microsoft Flight Simulator and VATSIM networks. Featuring smooth, long flights perfect for sleep, delivered with an overall pleasing and relaxed aesthetic.</p>
                         </div>
-                        <div class="matrix-status pulse"><span></span>Deployment Stage Active</div>
+                        <div class="matrix-status pulse"><span></span>deployment stage active</div>
                     </a>
 
                     <a href="https://tysonmediagroup.org" class="matrix-cell">
@@ -482,7 +489,7 @@
                             </div>
                             <p>The core overarching parent organization behind the network, serving as the main corporate house for automotive productions—the fundamental focus of the TYSON identity.</p>
                         </div>
-                        <div class="matrix-status"><span></span>Primary Core Station</div>
+                        <div class="matrix-status"><span></span>primary core station</div>
                     </a>
                     
                     <a href="https://atlantis.tysonmediagroup.org" class="matrix-cell">
@@ -493,14 +500,14 @@
                             </div>
                             <p>A dedicated audio playground producing custom music tracks. Sped up, tuned, slowed, and pitched to absolute perfection—crafted and delivered with love from TYSON.</p>
                         </div>
-                        <div class="matrix-status"><span></span>Acoustic Sub-Station</div>
+                        <div class="matrix-status"><span></span>acoustic sub-station</div>
                     </a>
                 </div>
             </section>
 
             <section id="collective" style="padding-bottom: 10rem;">
                 <div class="section-tag-line">
-                    <span class="section-tag">The TYSON Team</span>
+                    <span class="section-tag">the tyson team</span>
                     <div class="section-line"></div>
                 </div>
                 
@@ -509,8 +516,8 @@
                         <div class="roster-header">
                             <div class="roster-identity-stack">
                                 <span class="roster-name">Tyler</span>
-                                <span class="roster-pronoun">Pronouns: He / Him</span>
-                                <span class="roster-role">Founder & Director</span>
+                                <span class="roster-pronoun">pronouns: he / him</span>
+                                <span class="roster-role">founder & director</span>
                             </div>
                             <a href="https://www.youtube.com/@T-Custard-26" target="_blank" class="youtube-icon-wrapper" title="T-Custard-26 Channel">
                                 <svg class="yt-svg-node" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
@@ -523,8 +530,8 @@
                         <div class="roster-header">
                             <div class="roster-identity-stack">
                                 <span class="roster-name">Ash</span>
-                                <span class="roster-pronoun">Pronouns: They / Them</span>
-                                <span class="roster-role">Co-Director</span>
+                                <span class="roster-pronoun">pronouns: they / them</span>
+                                <span class="roster-role">co-director</span>
                             </div>
                             <a href="https://www.youtube.com/@THE-BlurrySyrup" target="_blank" class="youtube-icon-wrapper" title="THE-BlurrySyrup Channel">
                                 <svg class="yt-svg-node" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
@@ -537,8 +544,8 @@
                         <div class="roster-header">
                             <div class="roster-identity-stack">
                                 <span class="roster-name">Brayden</span>
-                                <span class="roster-pronoun">Pronouns: He / Him</span>
-                                <span class="roster-role">Creative Director</span>
+                                <span class="roster-pronoun">pronouns: he / him</span>
+                                <span class="roster-role">creative director</span>
                             </div>
                         </div>
                         <p class="roster-bio">Maintains aesthetic balance across production tracks. Specializes in anchoring core experimental engineering scripts to reality while optimizing system execution parameters.</p>
@@ -548,8 +555,8 @@
                         <div class="roster-header">
                             <div class="roster-identity-stack">
                                 <span class="roster-name">Triston</span>
-                                <span class="roster-pronoun">Pronouns: He / Him</span>
-                                <span class="roster-role">VR Content Lead</span>
+                                <span class="roster-pronoun">pronouns: he / him</span>
+                                <span class="roster-role">vr content lead</span>
                             </div>
                             <a href="https://www.youtube.com/@bubbavrgt1" target="_blank" class="youtube-icon-wrapper" title="BubbaVRGT1 Channel">
                                 <svg class="yt-svg-node" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
@@ -562,8 +569,8 @@
                         <div class="roster-header">
                             <div class="roster-identity-stack">
                                 <span class="roster-name">Zane</span>
-                                <span class="roster-pronoun">Pronouns: He / Him</span>
-                                <span class="roster-role">Aviation Content Lead</span>
+                                <span class="roster-pronoun">pronouns: he / him</span>
+                                <span class="roster-role">aviation content lead</span>
                             </div>
                             <a href="https://www.youtube.com/@AwesomeZ05/featured" target="_blank" class="youtube-icon-wrapper" title="AwesomeZ05 Channel">
                                 <svg class="yt-svg-node" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
@@ -575,10 +582,9 @@
             </section>
         </main>
 
-        <!-- Fixed Layout: footerlogo.png on LEFT, image (8).png on RIGHT -->
         <footer>
             <img src="imagestuff/footerlogo.png" alt="" class="footer-left-logo">
-            <img src="imagestuff/image (8).png" alt="TYSON Media Group" class="footer-right-brand">
+            <div class="footer-center-text-signature">tysonmediagroup.org</div>
         </footer>
     </div>
 
@@ -595,7 +601,7 @@
                 "ytId": "XBhHj-1K8YU", 
                 "tag": "aviation",
                 "channelName": "@tysonmediagroup-aviation",
-                "issue": "Video Game • Launch Feature",
+                "issue": "video game • launch feature",
                 "timestamp": 1780444800, 
                 "excerpt": "Welcome to TYSON Aviation. The official programmatic expansion establishing flight deck documentation, mechanical aerospace design analysis, and airborne cinematic essays.",
                 "featured": true
@@ -606,8 +612,8 @@
                 "title": "Three Pedals, One Mission: Subaru Confirms Three New Manual Models for Japan",
                 "ytId": "LMv3NhnDtoM", 
                 "tag": "flagship",
-                "channelName": "Editorial Division",
-                "issue": "Press Release • June, 2026",
+                "channelName": "editorial division",
+                "issue": "press release • june, 2026",
                 "timestamp": 1780272000,
                 "excerpt": "Subaru's newly formed Sports Vehicle Planning Office drops a massive bombshell: three brand-new manual transmission platforms are slated to launch by 2027.",
                 "featured": true,
@@ -627,7 +633,7 @@
                 "ytId": "v1S0mT4TdhQ", 
                 "tag": "flagship",
                 "channelName": "@TYSONMediaGroup",
-                "issue": "Video Game • Jun 3, 2026",
+                "issue": "video game • jun 3, 2026",
                 "timestamp": 1779148800,
                 "excerpt": "Incoming updates documenting expanded telemetry grids, customized sound packages, and structural gameplay additions inside Forza Motorsport.",
                 "featured": false
@@ -639,7 +645,7 @@
                 "ytId": "VEmux2kX6NQ",
                 "tag": "flagship",
                 "channelName": "@TYSONMediaGroup",
-                "issue": "Video Game • May 31, 2026",
+                "issue": "video game • may 31, 2026",
                 "timestamp": 1778889600,
                 "excerpt": "The official promotional trailer asset documenting the upcoming deployment of TYSON Racing tracks.",
                 "featured": false
@@ -651,7 +657,7 @@
                 "ytId": "tpca3zN2cOo",
                 "tag": "flagship",
                 "channelName": "@TYSONMediaGroup",
-                "issue": "Video Game • May 23, 2026",
+                "issue": "video game • may 23, 2026",
                 "timestamp": 1778198400,
                 "excerpt": "In this video, TYSON takes this amazing 2019 ford F-150 out for a no talking POV drive!",
                 "featured": false
@@ -663,7 +669,7 @@
                 "ytId": "bwrrfE51zb8",
                 "tag": "flagship",
                 "channelName": "@TYSONMediaGroup",
-                "issue": "Real Life! • May 19, 2026",
+                "issue": "real life! • may 19, 2026",
                 "timestamp": 1777852800,
                 "excerpt": "In this video, we start the all-new redesigned Outback! Overall, a very very refined wagon-ish SUV...",
                 "featured": false
@@ -702,7 +708,7 @@
             const iframe = document.getElementById('lightboxIframe');
             const articleBody = document.getElementById('lightboxArticleBody');
             
-            document.getElementById('lightboxTitle').innerText = item.title;
+            document.getElementById('lightboxTitle').innerText = item.title.toLowerCase();
             document.getElementById('lightboxDesc').innerText = `${item.channelName} • ${item.issue}`;
 
             if (item.contentType === 'article') {
@@ -722,7 +728,6 @@
         }
 
         function launchIndependentLink(item) {
-            // Optional routing fallback if you decide to jump out of lightboxes
             launchLightbox(item);
         }
 
@@ -764,7 +769,7 @@
             const item = featuredData[currentCarouselIndex];
             if(!item) return;
             document.getElementById('carouselMeta').innerText = `${item.channelName} • ${item.issue}`;
-            document.getElementById('carouselTitle').innerText = item.title;
+            document.getElementById('carouselTitle').innerText = item.title.toLowerCase();
             document.getElementById('carouselExcerpt').innerText = item.excerpt;
             document.getElementById('carouselCounter').innerText = `${String(currentCarouselIndex + 1).padStart(2, '0')} / ${String(featuredData.length).padStart(2, '0')}`;
             document.querySelectorAll('.carousel-img-item').forEach((img, idx) => {
@@ -869,7 +874,7 @@
             noResults.style.display = 'none';
             document.getElementById('paginationBlock').style.display = totalMatchingUnits > displayLimitPerPage ? 'flex' : 'none';
 
-            document.getElementById('paginationTrackerNode').innerText = `Page ${currentPageIndex} of ${maxCalculatedPages}`;
+            document.getElementById('paginationTrackerNode').innerText = `page ${currentPageIndex} of ${maxCalculatedPages}`;
             document.getElementById('prevPageBtn').disabled = (currentPageIndex === 1);
             document.getElementById('nextPageBtn').disabled = (currentPageIndex === maxCalculatedPages);
 
