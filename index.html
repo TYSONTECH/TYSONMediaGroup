@@ -7,278 +7,261 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500;1,600&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         
         :root {
-            --bg-black: #000000;
+            --bg-black: #050505;
             --bg-deep: #000000;
-            --text-light: #ffffff;
-            --text-muted: #b3b3b3;
-            --accent-glow: rgba(255, 255, 255, 0.2);
-            --border-color: rgba(255, 255, 255, 0.18);
-            --border-heavy: rgba(255, 255, 255, 0.45);
+            --text-light: #f5f5f7;
+            --text-muted: #86868b;
+            --accent-glow: rgba(255, 255, 255, 0.15);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-heavy: rgba(255, 255, 255, 0.25);
             --font-editorial: 'Cormorant Garamond', Georgia, serif;
             --font-accent: 'Montserrat', sans-serif;
-            --transition-main: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-main: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         body {
             background-color: var(--bg-black); color: var(--text-light);
-            font-family: var(--font-accent); font-weight: 300; line-height: 1.7; overflow-x: hidden;
+            font-family: var(--font-accent); font-weight: 200; line-height: 1.65; overflow-x: hidden;
             letter-spacing: -0.01em; -webkit-font-smoothing: antialiased;
         }
 
         body::before {
-            content: ""; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; opacity: 0.015; pointer-events: none; z-index: 9999;
+            content: ""; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; opacity: 0.022; pointer-events: none; z-index: 9999;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
         header {
-            position: fixed; top: 0; left: 0; width: 100%; padding: 1.8rem 4%; display: flex; flex-direction: column; gap: 1.2rem; z-index: 100;
-            background: rgba(0, 0, 0, 0.92); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
+            position: fixed; top: 0; left: 0; width: 100%; padding: 1.5rem 4%; display: flex; flex-direction: column; gap: 1.2rem; z-index: 100;
+            background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
             border-bottom: 1px solid var(--border-color); transition: var(--transition-main);
         }
         
         .header-top-row { display: flex; justify-content: space-between; align-items: center; width: 100%; gap: 2rem; }
 
-        .subdomain-routing-deck { display: flex; align-items: center; gap: 3.5rem; flex-wrap: nowrap; }
-        .brand-route-node { display: block; opacity: 0.75; transition: var(--transition-main); display: flex; align-items: center; text-decoration: none; }
-        .brand-route-node:hover { opacity: 1; filter: drop-shadow(0 0 8px rgba(255,255,255,0.2)); }
+        .subdomain-routing-deck { display: flex; align-items: center; gap: 3rem; flex-wrap: nowrap; }
+        .brand-route-node { display: block; opacity: 0.65; transition: var(--transition-main); display: flex; align-items: center; text-decoration: none; }
+        .brand-route-node:hover { opacity: 1; }
         .brand-route-node.active-core { opacity: 1; pointer-events: none; }
         
-        .brand-route-node img { height: 44px; width: auto; display: block; mix-blend-mode: lighten; }
+        .brand-route-node img { height: 38px; width: auto; display: block; filter: brightness(1); mix-blend-mode: lighten; }
 
         .nav-right-cluster { display: flex; align-items: center; gap: 3rem; }
-        nav { display: flex; gap: 3rem; }
-        nav a { color: var(--text-light); text-decoration: none; font-family: var(--font-editorial); font-size: 1.35rem; font-style: italic; text-transform: lowercase; opacity: 0.7; transition: var(--transition-main); font-weight: 400; padding: 0.5rem 0; position: relative; }
+        nav { display: flex; gap: 2.5rem; }
+        nav a { color: var(--text-light); text-decoration: none; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.5; transition: var(--transition-main); font-weight: 500; padding: 0.5rem 0; position: relative; }
         nav a:hover { opacity: 1; }
         nav a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: #fff; transition: var(--transition-main); }
         nav a:hover::after { width: 100%; }
 
-        .search-container { position: relative; display: flex; align-items: center; background: rgba(0,0,0,0.8); border: 1px solid var(--border-color); padding: 0 1.2rem; border-radius: 6px; width: 340px; transition: var(--transition-main); }
-        .search-container:focus-within { border-color: var(--border-heavy); box-shadow: 0 0 15px rgba(255,255,255,0.08); }
+        .search-container { position: relative; display: flex; align-items: center; background: rgba(0,0,0,0.4); border: 1px solid var(--border-color); padding: 0 1.2rem; border-radius: 4px; width: 320px; transition: var(--transition-main); }
+        .search-container:focus-within { border-color: var(--border-heavy); box-shadow: 0 0 10px rgba(255,255,255,0.03); }
         .search-input {
             background: transparent; border: none;
-            color: var(--text-light); font-family: var(--font-accent); font-size: 0.9rem; font-weight: 400;
-            padding: 0.8rem 2rem 0.8rem 0; width: 100%; letter-spacing: 0.05em; transition: var(--transition-main);
+            color: var(--text-light); font-family: var(--font-accent); font-size: 0.78rem; font-weight: 300;
+            padding: 0.7rem 2rem 0.7rem 0; width: 100%; letter-spacing: 0.05em; transition: var(--transition-main);
         }
         .search-input:focus { outline: none; }
-        .search-input::placeholder { color: rgba(255,255,255,0.5); font-size: 0.9rem; }
-        .search-clear-btn { position: absolute; right: 0.8rem; background: none; border: none; color: var(--text-light); font-size: 1.2rem; cursor: pointer; opacity: 0; pointer-events: none; transition: opacity 0.3s; padding: 0.2rem; }
+        .search-input::placeholder { color: rgba(255,255,255,0.3); font-size: 0.78rem; letter-spacing: 0.05em; }
+        .search-clear-btn { position: absolute; right: 0.8rem; background: none; border: none; color: var(--text-muted); font-size: 0.9rem; cursor: pointer; opacity: 0; pointer-events: none; transition: opacity 0.3s; padding: 0.2rem; }
         .search-clear-btn.visible { opacity: 1; pointer-events: all; }
 
-        section { padding: 14rem 4% 8rem 4%; max-width: 1750px; margin: 0 auto; position: relative; }
+        section { padding: 12rem 4% 6rem 4%; max-width: 1750px; margin: 0 auto; position: relative; }
         .section-tag-line { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 4rem; }
-        .section-tag { font-family: var(--font-editorial); font-size: 1.45rem; font-style: italic; text-transform: lowercase; color: var(--text-light); font-weight: 400; }
+        .section-tag { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); font-weight: 500; }
         .section-line { height: 1px; flex-grow: 1; background: var(--border-color); }
 
         .hero-deck { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 4%; position: relative; background: var(--bg-deep); }
         .hero-logo-container {
-            max-width: 950px; width: 85%; margin-bottom: 2.5rem; opacity: 0; transform: translateY(20px);
+            max-width: 900px; width: 85%; margin-bottom: 3.5rem; opacity: 0; transform: translateY(20px);
             animation: revealBrand 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
         }
         .hero-logo-container img { width: 100%; height: auto; display: block; mix-blend-mode: lighten; }
         
         .hero-deck h1 { 
-            font-family: var(--font-editorial); font-size: calc(2.2rem + 2.2vw); font-weight: 300; font-style: italic; 
-            max-width: 1000px; color: #ffffff; letter-spacing: -0.01em; line-height: 1.25; margin-bottom: 3.5rem;
+            font-family: var(--font-editorial); font-size: calc(1.8rem + 1.8vw); font-weight: 300; font-style: italic; 
+            max-width: 950px; color: rgba(255,255,255,0.85); letter-spacing: -0.01em; line-height: 1.3;
             opacity: 0; transform: translateY(15px);
             animation: revealBrand 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
         }
+        .scroll-indicator { position: absolute; bottom: 3.5rem; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); animation: microPulse 2s infinite ease-in-out; cursor: pointer; }
 
-        .hero-explore-cta {
-            opacity: 0; transform: translateY(15px);
-            animation: revealBrand 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
-            background: #ffffff; color: #000000; border: none; padding: 1rem 2.8rem;
-            font-family: var(--font-editorial); font-size: 1.4rem; font-style: italic; text-transform: lowercase;
-            border-radius: 4px; cursor: pointer; transition: var(--transition-main);
-            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15); z-index: 10;
-        }
-        .hero-explore-cta:hover { background: #e5e5e7; transform: translateY(-2px); box-shadow: 0 6px 25px rgba(255, 255, 255, 0.25); }
-
-        .scroll-indicator { position: absolute; bottom: 2.5rem; font-family: var(--font-editorial); font-size: 1.25rem; font-style: italic; text-transform: lowercase; color: var(--text-muted); animation: microPulse 2s infinite ease-in-out; cursor: pointer; font-weight: 400; }
-
-        .carousel-deck { position: relative; width: 100%; aspect-ratio: 21/9; border: 1px solid var(--border-color); overflow: hidden; background: #000000; border-radius: 4px; }
+        .carousel-deck { position: relative; width: 100%; aspect-ratio: 21/9; border: 1px solid var(--border-color); overflow: hidden; background: #020203; }
         .carousel-visual-pane { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
-        .carousel-img-item { position: absolute; top:0; left:0; width:100%; height:100%; object-fit: cover; opacity:0; scale: 1.03; transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), scale 1.5s cubic-bezier(0.25, 1, 0.5, 1); filter: brightness(45%); }
-        .carousel-img-item.active { opacity: 0.85; scale: 1; }
+        .carousel-img-item { position: absolute; top:0; left:0; width:100%; height:100%; object-fit: cover; opacity:0; scale: 1.03; transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), scale 1.5s cubic-bezier(0.25, 1, 0.5, 1); filter: grayscale(15%) brightness(35%); }
+        .carousel-img-item.active { opacity: 0.65; scale: 1; }
 
         .carousel-content-overlay {
-            position: absolute; bottom: 0; left: 0; width: 100%; padding: 5rem 5%; z-index: 2;
+            position: absolute; bottom: 0; left: 0; width: 100%; padding: 4rem 5%; z-index: 2;
             display: flex; justify-content: space-between; align-items: flex-end;
-            background: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0) 100%);
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0) 100%);
         }
-        .carousel-text-box { max-width: 850px; }
-        .carousel-title { font-family: var(--font-editorial); font-size: calc(1.8rem + 1.6vw); font-weight: 400; line-height: 1.2; margin-bottom: 1.2rem; letter-spacing: -0.01em; color: #ffffff; }
-        .carousel-excerpt { color: #e5e5e7; font-size: 1.1rem; font-weight: 400; max-width: 680px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.6; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+        .carousel-text-box { max-width: 750px; }
+        .carousel-title { font-family: var(--font-editorial); font-size: calc(1.6rem + 1.3vw); font-weight: 300; line-height: 1.2; margin-bottom: 1rem; letter-spacing: -0.01em; }
+        .carousel-excerpt { color: rgba(255,255,255,0.45); font-size: 0.9rem; font-weight: 300; max-width: 580px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.6; }
         
-        .carousel-nav-interface { display: flex; flex-direction: column; align-items: flex-end; gap: 2rem; }
-        .carousel-link { font-family: var(--font-editorial); font-size: 1.3rem; font-style: italic; text-transform: lowercase; color: #000000; background: #ffffff; padding: 0.6rem 1.8rem; border-radius: 4px; text-decoration: none; transition: var(--transition-main); font-weight: 400; cursor: pointer; }
-        .carousel-link:hover { background: #e5e5e7; padding-right: 2.2rem; }
+        .carousel-nav-interface { display: flex; flex-direction: column; align-items: flex-end; gap: 1.5rem; }
+        .carousel-link { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-light); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 0.3rem; transition: var(--transition-main); font-weight: 500; cursor: pointer; }
+        .carousel-link:hover { border-color: var(--text-light); letter-spacing: 0.18em; }
         
         .carousel-controls { display: flex; align-items: center; gap: 2rem; }
-        .ctrl-btn { background: rgba(255,255,255,0.1); border: 1px solid var(--border-color); color: #ffffff; font-size: 1.3rem; cursor: pointer; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: var(--transition-main); }
-        .ctrl-btn:hover { color: #000000; background: #ffffff; border-color: #ffffff; }
-        .carousel-counter { font-family: var(--font-editorial); font-style: italic; font-size: 1.25rem; color: #ffffff; font-weight: 400; text-transform: lowercase; }
+        .ctrl-btn { background: none; border: none; color: rgba(255,255,255,0.3); font-size: 1rem; cursor: pointer; padding: 0.5rem; transition: color 0.3s; }
+        .ctrl-btn:hover { color: var(--text-light); }
+        .carousel-counter { font-size: 0.75rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.2); font-weight: 400; }
 
         .system-dashboard-control-panel {
-            background: rgba(255,255,255,0.02); border: 1px solid var(--border-color);
-            padding: 2rem 2.5rem; margin-bottom: 4rem; display: flex; flex-wrap: wrap;
-            justify-content: space-between; align-items: center; gap: 2rem; border-radius: 4px;
+            background: rgba(255,255,255,0.01); border: 1px solid var(--border-color);
+            padding: 1.5rem 2rem; margin-bottom: 3.5rem; display: flex; flex-wrap: wrap;
+            justify-content: space-between; align-items: center; gap: 1.5rem;
         }
         
-        .catalog-matrix-controls { display: flex; gap: 2rem; overflow-x: auto; white-space: nowrap; -ms-overflow-style: none; scrollbar-width: none; }
+        .catalog-matrix-controls { display: flex; gap: 1.8rem; overflow-x: auto; white-space: nowrap; -ms-overflow-style: none; scrollbar-width: none; }
         .catalog-matrix-controls::-webkit-scrollbar { display: none; }
-        .matrix-tab { background: none; border: none; color: var(--text-muted); font-family: var(--font-editorial); font-size: 1.35rem; font-style: italic; text-transform: lowercase; cursor: pointer; padding: 0.6rem 0; position: relative; transition: var(--transition-main); font-weight: 400; min-height: 48px; }
-        .matrix-tab:hover { color: #ffffff; }
-        .matrix-tab.active { color: #ffffff; }
+        .matrix-tab { background: none; border: none; color: var(--text-muted); font-family: var(--font-accent); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; cursor: pointer; padding: 0.4rem 0; position: relative; transition: var(--transition-main); font-weight: 500; min-height: 44px; }
+        .matrix-tab:hover { color: var(--text-light); }
+        .matrix-tab.active { color: var(--text-light); }
         .matrix-tab.active::after { content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 1px; background: #fff; }
 
-        .dashboard-filtering-options-node { display: flex; align-items: center; gap: 2rem; }
-        .selector-label-group { display: flex; align-items: center; gap: 0.8rem; font-family: var(--font-editorial); font-size: 1.3rem; font-style: italic; text-transform: lowercase; color: #ffffff; font-weight: 400; }
+        .dashboard-filtering-options-node { display: flex; align-items: center; gap: 1.5rem; }
+        .selector-label-group { display: flex; align-items: center; gap: 0.6rem; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); }
         
         .interactive-dropdown-node {
-            background: #000; color: #ffffff; border: 1px solid var(--border-color);
-            font-family: var(--font-editorial); font-size: 1.2rem; font-style: italic; text-transform: lowercase;
-            padding: 0.5rem 2.5rem 0.5rem 1rem; cursor: pointer;
-            outline: none; border-radius: 4px; transition: var(--transition-main);
+            background: #000; color: var(--text-light); border: 1px solid var(--border-color);
+            font-family: var(--font-accent); font-size: 0.72rem; letter-spacing: 0.05em;
+            text-transform: none; padding: 0.5rem 2rem 0.5rem 0.8rem; cursor: pointer;
+            outline: none; border-radius: 2px; transition: var(--transition-main);
             -webkit-appearance: none; -moz-appearance: none; appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z' fill='%23ffffff'/%3E%3C/svg%3E");
-            background-repeat: no-repeat; background-position: right 0.8rem center; background-size: 16px;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z' fill='%236e6e73'/%3E%3C/svg%3E");
+            background-repeat: no-repeat; background-position: right 0.6rem center; background-size: 14px;
         }
-        .interactive-dropdown-node:hover { border-color: #ffffff; }
+        .interactive-dropdown-node:hover { border-color: rgba(255,255,255,0.25); color: #fff; }
 
-        .catalog-header-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem; padding: 0 0.5rem; }
-        .results-counter-node { font-family: var(--font-editorial); font-size: 1.35rem; font-style: italic; text-transform: lowercase; color: #ffffff; font-weight: 400; }
+        .catalog-header-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; padding: 0 0.5rem; }
+        .results-counter-node { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); font-weight: 500; }
 
-        .grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(460px, 1fr)); gap: 6rem 4rem; min-height: 400px; }
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 6rem 3.5rem; min-height: 400px; }
         .item-card { text-decoration: none; color: inherit; display: flex; flex-direction: column; opacity: 0; transform: translateY(15px); animation: itemReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; cursor: pointer; }
-        .img-wrapper { width: 100%; aspect-ratio: 16/10; background: #000000; margin-bottom: 2rem; overflow: hidden; border: 1px solid var(--border-color); position: relative; border-radius: 4px; }
+        .img-wrapper { width: 100%; aspect-ratio: 16/10; background: #080809; margin-bottom: 1.8rem; overflow: hidden; border: 1px solid var(--border-color); position: relative; }
         
-        .img-wrapper::after { content: "read article"; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: var(--font-editorial); font-size: 1.3rem; font-style: italic; font-weight: 400; color: #000000; opacity: 0; transition: var(--transition-main); z-index: 2; padding: 0.6rem 1.8rem; background: #ffffff; text-transform: lowercase; border-radius: 4px; }
-        .item-card.video-format .img-wrapper::after { content: "watch video"; }
-        .item-card:hover .img-wrapper::after { opacity: 1; }
+        .img-wrapper::after { content: "Read Article"; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 0.75rem; letter-spacing: 0.15em; font-weight: 500; color: #fff; opacity: 0; transition: var(--transition-main); z-index: 2; border: 1px solid rgba(255,255,255,0.2); padding: 0.8rem 1.4rem; background: rgba(0,0,0,0.65); backdrop-filter: blur(5px); text-transform: uppercase; }
+        .item-card.video-format .img-wrapper::after { content: "Watch Video"; }
+        .item-card.redirect-format .img-wrapper::after { content: "Open Link"; }
+        .item-card:hover .img-wrapper::after { opacity: 1; letter-spacing: 0.18em; }
 
-        .item-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: var(--transition-main); }
-        .item-card:hover img { transform: scale(1.02); opacity: 1; }
+        .item-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.55; filter: grayscale(10%); transition: var(--transition-main); }
+        .item-card:hover img { transform: scale(1.015); opacity: 0.85; filter: grayscale(0%); }
         
-        .card-meta { font-family: var(--font-editorial); font-size: 1.25rem; font-style: italic; text-transform: lowercase; color: #ffffff; margin-bottom: 1.2rem; font-weight: 400; display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-color); padding-bottom: 0.8rem; align-items: center; }
-        .card-meta-chan { color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem; }
-        .meta-format-icon { width: 14px; height: 14px; fill: currentColor; opacity: 0.8; }
-        .card-title { font-family: var(--font-editorial); font-size: 2.4rem; font-weight: 400; line-height: 1.2; margin-bottom: 1rem; letter-spacing: -0.01em; color: #ffffff; }
-        .card-excerpt { color: var(--text-muted); font-size: 1.05rem; font-weight: 400; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.65; }
-        .no-results { display: none; text-align: center; padding: 8rem 0; font-family: var(--font-editorial); font-size: 2rem; color: var(--text-muted); font-style: italic; border: 1px dashed var(--border-color); text-transform: lowercase; }
+        .card-meta { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 1rem; font-weight: 500; display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 0.5rem; align-items: center; }
+        .card-meta-chan { color: rgba(255,255,255,0.3); display: flex; align-items: center; gap: 0.4rem; }
+        .meta-format-icon { width: 12px; height: 12px; fill: currentColor; opacity: 0.5; }
+        .card-title { font-family: var(--font-editorial); font-size: 2rem; font-weight: 400; line-height: 1.25; margin-bottom: 0.8rem; letter-spacing: -0.01em; color: rgba(255,255,255,0.95); }
+        .card-excerpt { color: var(--text-muted); font-size: 0.92rem; font-weight: 300; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.65; }
+        .no-results { display: none; text-align: center; padding: 8rem 0; font-family: var(--font-editorial); font-size: 1.6rem; color: var(--text-muted); font-style: italic; border: 1px dashed var(--border-color); }
 
-        .pagination-container-deck { display: flex; justify-content: center; align-items: center; gap: 2rem; margin-top: 6rem; padding-top: 4rem; border-top: 1px solid var(--border-color); }
-        .pagination-btn { background: none; border: 1px solid var(--border-color); color: #ffffff; font-family: var(--font-editorial); font-size: 1.3rem; font-style: italic; text-transform: lowercase; padding: 0.6rem 2rem; cursor: pointer; transition: var(--transition-main); min-height: 48px; display: flex; align-items: center; border-radius: 4px; font-weight: 400; }
-        .pagination-btn:hover:not(:disabled) { border-color: #ffffff; background: #ffffff; color: #000000; }
-        .pagination-btn:disabled { opacity: 0.2; cursor: not-allowed; }
-        .pagination-tracker-label { font-family: var(--font-editorial); font-size: 1.3rem; font-style: italic; color: #ffffff; text-transform: lowercase; font-weight: 400; }
+        .pagination-container-deck { display: flex; justify-content: center; align-items: center; gap: 1.5rem; margin-top: 6rem; padding-top: 3rem; border-top: 1px solid var(--border-color); }
+        .pagination-btn { background: none; border: 1px solid var(--border-color); color: var(--text-muted); font-family: var(--font-accent); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; padding: 0.7rem 1.4rem; cursor: pointer; transition: var(--transition-main); min-height: 44px; display: flex; align-items: center; border-radius: 4px; }
+        .pagination-btn:hover:not(:disabled) { border-color: rgba(255,255,255,0.4); color: var(--text-light); }
+        .pagination-btn:disabled { opacity: 0.15; cursor: not-allowed; }
+        .pagination-tracker-label { font-size: 0.72rem; letter-spacing: 0.08em; color: var(--text-muted); text-transform: uppercase; }
 
-        .matrix-deck { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; }
-        .matrix-cell { border: 1px solid var(--border-color); background: rgba(255,255,255,0.01); padding: 4rem 3rem; text-decoration: none; color: inherit; transition: var(--transition-main); display: flex; flex-direction: column; justify-content: space-between; min-height: 420px; position: relative; border-radius: 4px; }
-        .matrix-cell:hover { border-color: #ffffff; background: rgba(255,255,255,0.03); }
+        .matrix-deck { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+        .matrix-cell { border: 1px solid var(--border-color); background: rgba(255,255,255,0.002); padding: 3.5rem 2.5rem; text-decoration: none; color: inherit; transition: var(--transition-main); display: flex; flex-direction: column; justify-content: space-between; min-height: 380px; position: relative; }
+        .matrix-cell:hover { border-color: var(--border-heavy); background: rgba(255,255,255,0.01); }
         
-        .matrix-cell-arrow { position: absolute; top: 2rem; right: 2rem; font-size: 1rem; opacity: 0.4; transition: var(--transition-main); color: #ffffff; }
-        .matrix-cell:hover .matrix-cell-arrow { opacity: 1; transform: translate(4px, -4px); }
+        .matrix-cell-arrow { position: absolute; top: 2rem; right: 2rem; font-size: 0.8rem; opacity: 0.15; transition: var(--transition-main); }
+        .matrix-cell:hover .matrix-cell-arrow { opacity: 0.8; transform: translate(3px, -3px); }
 
-        .matrix-brand-banner-wrap { width: 100%; max-width: 260px; margin-bottom: 2.5rem; display: block; mix-blend-mode: lighten; }
-        .matrix-brand-banner-wrap img { width: 100%; height: auto; display: block; transition: var(--transition-main); }
+        .matrix-brand-banner-wrap { width: 100%; max-width: 240px; margin-bottom: 2rem; display: block; mix-blend-mode: lighten; }
+        .matrix-brand-banner-wrap img { width: 100%; height: auto; display: block; filter: brightness(0.95); transition: var(--transition-main); }
+        .matrix-cell:hover .matrix-brand-banner-wrap img { filter: brightness(1); }
 
-        .matrix-cell p { font-size: 1.05rem; color: #e5e5e7; font-weight: 400; line-height: 1.65; margin-bottom: auto; }
+        .matrix-cell p { font-size: 0.88rem; color: var(--text-muted); font-weight: 300; line-height: 1.65; margin-bottom: auto; }
         
-        .matrix-status { font-family: var(--font-editorial); font-size: 1.25rem; font-style: italic; text-transform: lowercase; color: #ffffff; margin-top: 3rem; display: flex; align-items: center; gap: 0.8rem; opacity: 0.8; font-weight: 400; }
-        .matrix-status span { width: 8px; height: 8px; background: #fff; border-radius: 50%; display: inline-block; }
+        .matrix-status { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-light); margin-top: 2.5rem; display: flex; align-items: center; gap: 0.6rem; opacity: 0.5; font-weight: 500; }
+        .matrix-status span { width: 5px; height: 5px; background: #fff; border-radius: 50%; display: inline-block; }
         .matrix-status.pulse span { background: #30d158; animation: microPulse 2s infinite ease-in-out; }
 
-        .roster-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 4rem 3.5rem; }
-        .roster-card { display: flex; flex-direction: column; justify-content: space-between; border-top: 1px solid var(--border-color); padding-top: 2rem; min-height: 260px; transition: var(--transition-main); }
-        .roster-card:hover { border-top-color: #ffffff; }
+        .roster-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 4rem 3rem; }
+        .roster-card { display: flex; flex-direction: column; justify-content: space-between; border-top: 1px solid var(--border-color); padding-top: 1.8rem; min-height: 240px; transition: var(--transition-main); }
+        .roster-card:hover { border-top-color: rgba(255,255,255,0.25); }
         
-        .roster-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.2rem; }
+        .roster-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
         .roster-identity-stack { display: flex; flex-direction: column; }
-        .roster-name { font-family: var(--font-editorial); font-size: 2rem; font-weight: 400; color: #ffffff; letter-spacing: -0.01em; line-height: 1.1; }
-        .roster-pronoun { font-family: var(--font-editorial); font-size: 1.15rem; font-style: italic; text-transform: lowercase; color: var(--text-muted); margin-top: 0.2rem; display: block; }
-        .roster-role { font-family: var(--font-editorial); font-size: 1.25rem; font-style: italic; text-transform: lowercase; color: #ffffff; font-weight: 400; margin-top: 0.3rem; }
+        .roster-name { font-family: var(--font-editorial); font-size: 1.75rem; font-weight: 400; color: var(--text-light); letter-spacing: -0.01em; line-height: 1.1; }
+        .roster-pronoun { font-size: 0.68rem; font-weight: 400; text-transform: none; letter-spacing: 0.05em; color: var(--text-muted); margin-top: 0.3rem; display: block; }
+        .roster-role { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); font-weight: 600; margin-top: 0.4rem; }
         
-        .youtube-icon-wrapper { color: var(--text-muted); opacity: 0.6; transition: var(--transition-main); display: inline-flex; align-items: center; padding: 0.5rem; margin-top: -0.5rem; margin-right: -0.5rem; }
-        .youtube-icon-wrapper:hover { color: #ff0000; opacity: 1; transform: scale(1.1); }
-        .yt-svg-node { width: 22px; height: 22px; fill: currentColor; display: block; }
-        .roster-bio { font-size: 1rem; color: #e5e5e7; font-weight: 400; line-height: 1.6; margin-bottom: auto; }
+        .youtube-icon-wrapper { color: var(--text-muted); opacity: 0.3; transition: var(--transition-main); display: inline-flex; align-items: center; padding: 0.5rem; margin-top: -0.5rem; margin-right: -0.5rem; }
+        .youtube-icon-wrapper:hover { color: #ff0000; opacity: 1; transform: scale(1.05); }
+        .yt-svg-node { width: 18px; height: 18px; fill: currentColor; display: block; }
+        .roster-bio { font-size: 0.88rem; color: var(--text-muted); font-weight: 300; line-height: 1.6; margin-bottom: auto; }
 
-        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vw; background: rgba(0,0,0,0.98); z-index: 10000; display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(3,3,3,0.98); z-index: 10000; display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
         .lightbox-overlay.active { opacity: 1; pointer-events: all; }
         
-        .lightbox-container { width: 92%; max-width: 1200px; display: flex; flex-direction: column; gap: 2rem; transform: scale(0.98); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .lightbox-container { width: 92%; max-width: 1100px; display: flex; flex-direction: column; gap: 1.5rem; transform: scale(0.98); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
         .lightbox-overlay.active .lightbox-container { transform: scale(1); }
         
-        .lightbox-video-frame { width: 100%; aspect-ratio: 16/9; background: #000; border: 1px solid var(--border-color); position: relative; display: none; }
+        .lightbox-video-frame { width: 100%; aspect-ratio: 16/9; background: #000; border: 1px solid rgba(255,255,255,0.05); position: relative; display: none; }
         .lightbox-video-frame iframe { width: 100%; height: 100%; border: none; display: block; }
         
-        .lightbox-article-view { width: 100%; max-height: 65vh; overflow-y: auto; background: #000000; border: 1px solid var(--border-color); padding: 4rem; display: none; border-radius: 4px; }
-        .lightbox-article-body { font-family: var(--font-editorial); font-size: 1.5rem; font-weight: 300; line-height: 1.75; color: #e5e5e7; }
-        .lightbox-article-body p { margin-bottom: 2.5rem; }
-        .lightbox-article-body h2 { font-size: 2.4rem; font-weight: 300; font-style: italic; margin: 3.5rem 0 1.8rem 0; color: #fff; }
+        .lightbox-article-view { width: 100%; max-height: 60vh; overflow-y: auto; background: #0a0a0b; border: 1px solid rgba(255,255,255,0.05); padding: 3.5rem 4rem; display: none; }
+        .lightbox-article-body { font-family: var(--font-editorial); font-size: 1.35rem; font-weight: 300; line-height: 1.7; color: rgba(255,255,255,0.85); }
+        .lightbox-article-body p { margin-bottom: 2rem; }
+        .lightbox-article-body h2 { font-size: 2rem; font-weight: 300; font-style: italic; margin: 3rem 0 1.5rem 0; color: #fff; }
         
-        .lightbox-meta-footer { display: flex; justify-content: space-between; align-items: flex-start; border-top: 1px solid var(--border-color); padding-top: 2rem; }
+        .lightbox-meta-footer { display: flex; justify-content: space-between; align-items: flex-start; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1.5rem; }
         .lightbox-title-stack { max-width: 75%; }
-        .lightbox-title { font-family: var(--font-editorial); font-size: 2.6rem; font-weight: 400; letter-spacing: -0.01em; margin-bottom: 0.6rem; line-height: 1.2; }
-        .lightbox-desc { font-family: var(--font-editorial); font-size: 1.25rem; font-style: italic; text-transform: lowercase; color: var(--text-muted); font-weight: 400; line-height: 1.5; }
+        .lightbox-title { font-family: var(--font-editorial); font-size: 2.2rem; font-weight: 400; letter-spacing: -0.01em; margin-bottom: 0.5rem; line-height: 1.2; }
+        .lightbox-desc { font-size: 0.9rem; color: var(--text-muted); font-weight: 300; line-height: 1.5; }
         
-        .lightbox-close-btn { background: #ffffff; border: 1px solid #ffffff; color: #000000; font-family: var(--font-editorial); font-size: 1.3rem; font-style: italic; text-transform: lowercase; padding: 0.6rem 2rem; cursor: pointer; transition: var(--transition-main); min-height: 48px; border-radius: 4px; font-weight: 400; }
-        .lightbox-close-btn:hover { background: #e5e5e7; border-color: #e5e5e7; }
+        .lightbox-close-btn { background: none; border: 1px solid rgba(255,255,255,0.1); color: var(--text-light); font-family: var(--font-accent); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.8rem 1.6rem; cursor: pointer; transition: var(--transition-main); min-height: 44px; border-radius: 4px; }
+        .lightbox-close-btn:hover { background: #fff; color: #000; border-color: #fff; }
 
-        /* Perfected High-Contrast Edge-to-Edge Lowercase Footer Signature */
+        /* Modern Redesigned Footer Framework with Overlapping Vector Assets */
         footer { 
             position: relative;
-            padding: 0; 
-            height: 240px;
+            padding: 0 4%; 
+            height: 180px;
             border-top: 1px solid var(--border-color); 
             display: flex; 
+            justify-content: space-between; 
             align-items: flex-end;
-            background: #000000;
-            overflow: hidden;
-            width: 100%;
+            background: var(--bg-deep);
+            /* overflow: hidden; REMOVED to allow left logo to break boundaries gracefully into the body context area */
         }
         .footer-left-logo {
             position: absolute;
             left: 0;
             bottom: 0;
-            height: 110%;
+            height: 250px; /* Increased to naturally break past 180px container height and bleed into structural section above */
             width: auto;
             object-fit: contain;
             object-position: left bottom;
             pointer-events: none;
-            opacity: 1;
+            opacity: 0.85;
             mix-blend-mode: lighten;
-            z-index: 2;
+            z-index: 10;
         }
-        .footer-center-text-signature {
-            width: 100%;
-            text-align: right;
-            padding-right: 4%;
-            padding-bottom: 2rem;
-            font-family: var(--font-editorial);
-            font-size: calc(2.5rem + 3.5vw);
-            font-style: italic;
-            font-weight: 300;
-            color: #ffffff;
-            text-transform: lowercase;
-            letter-spacing: -0.03em;
-            line-height: 0.9;
-            z-index: 1;
-            user-select: none;
+        .footer-right-brand {
+            height: 55px;
+            max-width: 45%;
+            margin-bottom: 2rem;
+            object-fit: contain;
+            object-position: right bottom;
+            mix-blend-mode: lighten;
         }
 
         @keyframes revealBrand { to { opacity: 1; transform: translateY(0); } }
         @keyframes itemReveal { to { opacity: 1; transform: translateY(0); } }
-        @keyframes microPulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+        @keyframes microPulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
         
         @media (max-width: 1200px) {
-            header { padding: 1.2rem 4%; gap: 1rem; position: absolute; }
+            header { padding: 1.2rem 4%; gap: 1rem; position: absolute; background: var(--bg-black); }
             .header-top-row { flex-direction: column; gap: 1.2rem; align-items: flex-start; }
             
             .subdomain-routing-deck { 
@@ -286,41 +269,41 @@
                 display: grid; 
                 grid-template-columns: repeat(3, 1fr); 
                 gap: 1rem; 
-                border-bottom: 1px solid var(--border-color); 
+                border-bottom: 1px solid rgba(255,255,255,0.03); 
                 padding-bottom: 1rem; 
             }
-            .brand-route-node { justify-content: center; width: 100%; opacity: 0.9; }
-            .brand-route-node img { height: auto; width: 100%; max-height: 28px; object-fit: contain; }
+            .brand-route-node { justify-content: center; width: 100%; opacity: 0.8; }
+            .brand-route-node img { height: auto; width: 100%; max-height: 24px; object-fit: contain; }
             
             .nav-right-cluster { width: 100%; }
             nav { display: none; } 
             
-            main { padding-top: 10rem !important; }
-            section { padding: 8rem 4% 5rem 4%; }
-            .hero-deck { height: auto; min-height: 85vh; padding: 14rem 4% 5rem 4%; }
+            main { padding-top: 9rem !important; }
+            section { padding: 6rem 4% 4rem 4%; }
+            .hero-deck { height: auto; min-height: 75vh; padding: 12rem 4% 4rem 4%; }
             
             .carousel-deck { aspect-ratio: 16/10; }
-            .carousel-content-overlay { padding: 2.5rem 2rem; flex-direction: column; align-items: flex-start; gap: 2rem; }
+            .carousel-content-overlay { padding: 2rem; flex-direction: column; align-items: flex-start; gap: 2rem; }
             .carousel-nav-interface { align-items: flex-start; width: 100%; }
             .carousel-controls { width: 100%; justify-content: space-between; }
 
-            .system-dashboard-control-panel { padding: 1.5rem; flex-direction: column; align-items: stretch; gap: 1.5rem; }
+            .system-dashboard-control-panel { padding: 1rem; flex-direction: column; align-items: stretch; gap: 1.2rem; }
             .catalog-matrix-controls { width: 100%; }
             .search-container { width: 100%; }
-            .dashboard-filtering-options-node { flex-direction: column; align-items: stretch; gap: 1.5rem; }
+            .dashboard-filtering-options-node { flex-direction: column; align-items: stretch; gap: 1rem; }
             .selector-label-group { justify-content: space-between; }
             .interactive-dropdown-node { width: 100%; }
 
-            .grid-container { grid-template-columns: 1fr; gap: 4.5rem; }
+            .grid-container { grid-template-columns: 1fr; gap: 3.5rem; }
             .lightbox-article-view { padding: 2rem; }
-            .matrix-deck { grid-template-columns: 1fr; gap: 2rem; }
-            .lightbox-meta-footer { flex-direction: column; gap: 2rem; }
+            .matrix-deck { grid-template-columns: 1fr; gap: 1.5rem; }
+            .lightbox-meta-footer { flex-direction: column; gap: 1.5rem; }
             .lightbox-title-stack { max-width: 100%; }
             .lightbox-close-btn { width: 100%; text-align: center; }
             
-            footer { height: 160px; }
-            .footer-left-logo { height: 100%; }
-            .footer-center-text-signature { padding-bottom: 1.2rem; font-size: calc(1.8rem + 3vw); }
+            footer { height: 140px; padding: 0 4%; }
+            .footer-left-logo { height: 190px; }
+            .footer-right-brand { height: 40px; margin-bottom: 1.5rem; }
         }
     </style>
 </head>
@@ -337,10 +320,10 @@
                 </div>
                 <div class="lightbox-meta-footer">
                     <div class="lightbox-title-stack">
-                        <h3 id="lightboxTitle" class="lightbox-title">transmission</h3>
+                        <h3 id="lightboxTitle" class="lightbox-title">Transmission</h3>
                         <p id="lightboxDesc" class="lightbox-desc"></p>
                     </div>
-                    <button id="closeLightbox" class="lightbox-close-btn">close frame</button>
+                    <button id="closeLightbox" class="lightbox-close-btn">Close Frame</button>
                 </div>
             </div>
         </div>
@@ -361,10 +344,10 @@
 
                 <div class="nav-right-cluster">
                     <nav>
-                        <a href="#broadcast">featured</a>
-                        <a href="#journal">registry</a>
-                        <a href="#network">networks</a>
-                        <a href="#collective">team</a>
+                        <a href="#broadcast">Featured</a>
+                        <a href="#journal">Registry</a>
+                        <a href="#network">Networks</a>
+                        <a href="#collective">Team</a>
                     </nav>
                 </div>
             </div>
@@ -375,30 +358,27 @@
                 <div class="hero-logo-container">
                     <img src="imagestuff/TYSONMediaGroupBanner.png" alt="TYSON Media Group">
                 </div>
-                <h1>Stillness in motion.</h1>
-                
-                <button class="hero-explore-cta" onclick="document.getElementById('broadcast').scrollIntoView({behavior: 'smooth'});">view editorial feed ↓</button>
-                
-                <div class="scroll-indicator" onclick="document.getElementById('broadcast').scrollIntoView({behavior: 'smooth'});">explore featured work</div>
+                <h1>Stillness in Motion.</h1>
+                <div class="scroll-indicator" onclick="document.getElementById('broadcast').scrollIntoView({behavior: 'smooth'});">Explore Featured Work</div>
             </section>
 
             <section id="broadcast" class="broadcast-hub" style="padding-top: 4rem;">
                 <div class="section-tag-line">
-                    <span class="section-tag" style="color: #30d158;">★ spotlight features</span>
-                    <div class="section-line" style="background: rgba(48, 209, 88, 0.3);"></div>
+                    <span class="section-tag" style="color: #30d158;">★ Spotlight Features</span>
+                    <div class="section-line" style="background: rgba(48, 209, 88, 0.15);"></div>
                 </div>
                 
                 <div class="carousel-deck">
                     <div class="carousel-visual-pane" id="imageTrack"></div>
                     <div class="carousel-content-overlay">
                         <div class="carousel-text-box">
-                            <div id="carouselMeta" style="font-family: var(--font-editorial); font-size: 1.25rem; font-style: italic; text-transform: lowercase; color: #ffffff; margin-bottom: 0.8rem; font-weight:400;"></div>
+                            <div id="carouselMeta" style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 0.8rem; font-weight:500;"></div>
                             <h2 id="carouselTitle" class="carousel-title"></h2>
                             <p id="carouselExcerpt" class="carousel-excerpt"></p>
                         </div>
                         
                         <div class="carousel-nav-interface">
-                            <span id="carouselLink" class="carousel-link">open content →</span>
+                            <span id="carouselLink" class="carousel-link">Open Content →</span>
                             <div class="carousel-controls">
                                 <button class="ctrl-btn" id="prevBtn">←</button>
                                 <span class="carousel-counter" id="carouselCounter">01 / 01</span>
@@ -411,16 +391,16 @@
 
             <section id="journal" style="padding-top: 2rem;">
                 <div class="section-tag-line">
-                    <span class="section-tag">resource directory</span>
+                    <span class="section-tag">Resource Directory</span>
                     <div class="section-line"></div>
                 </div>
 
                 <div class="system-dashboard-control-panel">
                     <div class="catalog-matrix-controls">
-                        <button class="matrix-tab active" data-category="all">all feeds</button>
-                        <button class="matrix-tab" data-category="aviation">tyson aviation</button>
-                        <button class="matrix-tab" data-category="flagship">tyson media group</button>
-                        <button class="matrix-tab" data-category="atlantis">tyson atlantis</button>
+                        <button class="matrix-tab active" data-category="all">All Feeds</button>
+                        <button class="matrix-tab" data-category="aviation">TYSON Aviation</button>
+                        <button class="matrix-tab" data-category="flagship">TYSON Media Group</button>
+                        <button class="matrix-tab" data-category="atlantis">TYSON Atlantis</button>
                     </div>
                     
                     <div class="dashboard-filtering-options-node">
@@ -430,16 +410,16 @@
                         </div>
 
                         <div class="selector-label-group">
-                            <label for="sortSelector">sort sequence:</label>
+                            <label for="sortSelector">Sort Sequence:</label>
                             <select id="sortSelector" class="interactive-dropdown-node">
-                                <option value="newest" selected>release: newest first</option>
-                                <option value="oldest">release: oldest first</option>
-                                <option value="alpha">alphanumeric: a - z</option>
+                                <option value="newest" selected>Release: Newest First</option>
+                                <option value="oldest">Release: Oldest First</option>
+                                <option value="alpha">Alphanumeric: A - Z</option>
                             </select>
                         </div>
 
                         <div class="selector-label-group">
-                            <label for="limitSelector">density:</label>
+                            <label for="limitSelector">Density:</label>
                             <select id="limitSelector" class="interactive-dropdown-node">
                                 <option value="6" selected>6 per page</option>
                                 <option value="12">12 per page</option>
@@ -454,31 +434,31 @@
                 </div>
                 
                 <div id="gridContainer" class="grid-container"></div>
-                <div id="noResults" class="no-results">no active entries match selected layout parameters.</div>
+                <div id="noResults" class="no-results">No active entries match selected layout parameters.</div>
 
                 <div class="pagination-container-deck" id="paginationBlock">
-                    <button class="pagination-btn" id="prevPageBtn">← previous page</button>
-                    <span class="pagination-tracker-label" id="paginationTrackerNode">page 1 of 1</span>
-                    <button class="pagination-btn" id="nextPageBtn">next page →</button>
+                    <button class="pagination-btn" id="prevPageBtn">← Previous Page</button>
+                    <span class="pagination-tracker-label" id="paginationTrackerNode">Page 1 of 1</span>
+                    <button class="pagination-btn" id="nextPageBtn">Next Page →</button>
                 </div>
             </section>
 
             <section id="network">
                 <div class="section-tag-line">
-                    <span class="section-tag">network architecture</span>
+                    <span class="section-tag">Network Architecture</span>
                     <div class="section-line"></div>
                 </div>
                 
                 <div class="matrix-deck">
-                    <a href="https://aviation.tysonmediagroup.org" class="matrix-cell" style="border-color: rgba(48, 209, 88, 0.45);">
-                        <span class="matrix-cell-arrow" style="opacity: 0.8; color: #30d158;">↗</span>
+                    <a href="https://aviation.tysonmediagroup.org" class="matrix-cell" style="border-color: rgba(48, 209, 88, 0.25);">
+                        <span class="matrix-cell-arrow" style="opacity: 0.6; color: #30d158;">↗</span>
                         <div>
                             <div class="matrix-brand-banner-wrap">
                                 <img src="imagestuff/TYSONAviationBanner.png" alt="TYSON Aviation">
                             </div>
                             <p>Mainly YouTube content centered around Microsoft Flight Simulator and VATSIM networks. Featuring smooth, long flights perfect for sleep, delivered with an overall pleasing and relaxed aesthetic.</p>
                         </div>
-                        <div class="matrix-status pulse"><span></span>deployment stage active</div>
+                        <div class="matrix-status pulse"><span></span>Deployment Stage Active</div>
                     </a>
 
                     <a href="https://tysonmediagroup.org" class="matrix-cell">
@@ -489,7 +469,7 @@
                             </div>
                             <p>The core overarching parent organization behind the network, serving as the main corporate house for automotive productions—the fundamental focus of the TYSON identity.</p>
                         </div>
-                        <div class="matrix-status"><span></span>primary core station</div>
+                        <div class="matrix-status"><span></span>Primary Core Station</div>
                     </a>
                     
                     <a href="https://atlantis.tysonmediagroup.org" class="matrix-cell">
@@ -500,14 +480,14 @@
                             </div>
                             <p>A dedicated audio playground producing custom music tracks. Sped up, tuned, slowed, and pitched to absolute perfection—crafted and delivered with love from TYSON.</p>
                         </div>
-                        <div class="matrix-status"><span></span>acoustic sub-station</div>
+                        <div class="matrix-status"><span></span>Acoustic Sub-Station</div>
                     </a>
                 </div>
             </section>
 
             <section id="collective" style="padding-bottom: 10rem;">
                 <div class="section-tag-line">
-                    <span class="section-tag">the tyson team</span>
+                    <span class="section-tag">The TYSON Team</span>
                     <div class="section-line"></div>
                 </div>
                 
@@ -516,8 +496,8 @@
                         <div class="roster-header">
                             <div class="roster-identity-stack">
                                 <span class="roster-name">Tyler</span>
-                                <span class="roster-pronoun">pronouns: he / him</span>
-                                <span class="roster-role">founder & director</span>
+                                <span class="roster-pronoun">Pronouns: He / Him</span>
+                                <span class="roster-role">Founder & Director</span>
                             </div>
                             <a href="https://www.youtube.com/@T-Custard-26" target="_blank" class="youtube-icon-wrapper" title="T-Custard-26 Channel">
                                 <svg class="yt-svg-node" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
@@ -530,8 +510,8 @@
                         <div class="roster-header">
                             <div class="roster-identity-stack">
                                 <span class="roster-name">Ash</span>
-                                <span class="roster-pronoun">pronouns: they / them</span>
-                                <span class="roster-role">co-director</span>
+                                <span class="roster-pronoun">Pronouns: They / Them</span>
+                                <span class="roster-role">Co-Director</span>
                             </div>
                             <a href="https://www.youtube.com/@THE-BlurrySyrup" target="_blank" class="youtube-icon-wrapper" title="THE-BlurrySyrup Channel">
                                 <svg class="yt-svg-node" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
@@ -544,8 +524,8 @@
                         <div class="roster-header">
                             <div class="roster-identity-stack">
                                 <span class="roster-name">Brayden</span>
-                                <span class="roster-pronoun">pronouns: he / him</span>
-                                <span class="roster-role">creative director</span>
+                                <span class="roster-pronoun">Pronouns: He / Him</span>
+                                <span class="roster-role">Creative Director</span>
                             </div>
                         </div>
                         <p class="roster-bio">Maintains aesthetic balance across production tracks. Specializes in anchoring core experimental engineering scripts to reality while optimizing system execution parameters.</p>
@@ -555,8 +535,8 @@
                         <div class="roster-header">
                             <div class="roster-identity-stack">
                                 <span class="roster-name">Triston</span>
-                                <span class="roster-pronoun">pronouns: he / him</span>
-                                <span class="roster-role">vr content lead</span>
+                                <span class="roster-pronoun">Pronouns: He / Him</span>
+                                <span class="roster-role">VR Content Lead</span>
                             </div>
                             <a href="https://www.youtube.com/@bubbavrgt1" target="_blank" class="youtube-icon-wrapper" title="BubbaVRGT1 Channel">
                                 <svg class="yt-svg-node" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
@@ -569,8 +549,8 @@
                         <div class="roster-header">
                             <div class="roster-identity-stack">
                                 <span class="roster-name">Zane</span>
-                                <span class="roster-pronoun">pronouns: he / him</span>
-                                <span class="roster-role">aviation content lead</span>
+                                <span class="roster-pronoun">Pronouns: He / Him</span>
+                                <span class="roster-role">Aviation Content Lead</span>
                             </div>
                             <a href="https://www.youtube.com/@AwesomeZ05/featured" target="_blank" class="youtube-icon-wrapper" title="AwesomeZ05 Channel">
                                 <svg class="yt-svg-node" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
@@ -584,15 +564,18 @@
 
         <footer>
             <img src="imagestuff/footerlogo.png" alt="" class="footer-left-logo">
-            <div class="footer-center-text-signature">tysonmediagroup.org</div>
+            <img src="imagestuff/Untitled(2).png" alt="TYSON Media Group" class="footer-right-brand">
         </footer>
     </div>
 
     <script>
+        // Immediately kick-start system environment loops
         window.addEventListener('DOMContentLoaded', () => {
             initGlobalEcosystem();
         });
 
+        // Application Content Rendering Engine Logic
+        // Added 'redirectUrl' property to support standalone external link parameters
         const broadcastMasterRegistry = [
             {
                 "id": "tmg-aviation-launch",
@@ -601,7 +584,7 @@
                 "ytId": "XBhHj-1K8YU", 
                 "tag": "aviation",
                 "channelName": "@tysonmediagroup-aviation",
-                "issue": "video game • launch feature",
+                "issue": "Video Game • Launch Feature",
                 "timestamp": 1780444800, 
                 "excerpt": "Welcome to TYSON Aviation. The official programmatic expansion establishing flight deck documentation, mechanical aerospace design analysis, and airborne cinematic essays.",
                 "featured": true
@@ -612,11 +595,13 @@
                 "title": "Three Pedals, One Mission: Subaru Confirms Three New Manual Models for Japan",
                 "ytId": "LMv3NhnDtoM", 
                 "tag": "flagship",
-                "channelName": "editorial division",
-                "issue": "press release • june, 2026",
+                "channelName": "Editorial Division",
+                "issue": "Press Release • June, 2026",
                 "timestamp": 1780272000,
                 "excerpt": "Subaru's newly formed Sports Vehicle Planning Office drops a massive bombshell: three brand-new manual transmission platforms are slated to launch by 2027.",
                 "featured": true,
+                /* Example: If you want this article to redirect to its own separate file instead of opening the lightbox, you can uncomment or add the line below: */
+                // "redirectUrl": "subaru-manuals.html",
                 "bodyContent": `
                     <p>In an unexpected and exciting update directly out of Japan, Subaru's newly minted Sports Vehicle Planning Office has officially greenlit three new manual transmission models earmarked for production.</p>
                     <h2>Preserving the Mechanical Core</h2>
@@ -633,7 +618,7 @@
                 "ytId": "v1S0mT4TdhQ", 
                 "tag": "flagship",
                 "channelName": "@TYSONMediaGroup",
-                "issue": "video game • jun 3, 2026",
+                "issue": "Video Game • Jun 3, 2026",
                 "timestamp": 1779148800,
                 "excerpt": "Incoming updates documenting expanded telemetry grids, customized sound packages, and structural gameplay additions inside Forza Motorsport.",
                 "featured": false
@@ -645,7 +630,7 @@
                 "ytId": "VEmux2kX6NQ",
                 "tag": "flagship",
                 "channelName": "@TYSONMediaGroup",
-                "issue": "video game • may 31, 2026",
+                "issue": "Video Game • May 31, 2026",
                 "timestamp": 1778889600,
                 "excerpt": "The official promotional trailer asset documenting the upcoming deployment of TYSON Racing tracks.",
                 "featured": false
@@ -657,7 +642,7 @@
                 "ytId": "tpca3zN2cOo",
                 "tag": "flagship",
                 "channelName": "@TYSONMediaGroup",
-                "issue": "video game • may 23, 2026",
+                "issue": "Video Game • May 23, 2026",
                 "timestamp": 1778198400,
                 "excerpt": "In this video, TYSON takes this amazing 2019 ford F-150 out for a no talking POV drive!",
                 "featured": false
@@ -669,7 +654,7 @@
                 "ytId": "bwrrfE51zb8",
                 "tag": "flagship",
                 "channelName": "@TYSONMediaGroup",
-                "issue": "real life! • may 19, 2026",
+                "issue": "Real Life! • May 19, 2026",
                 "timestamp": 1777852800,
                 "excerpt": "In this video, we start the all-new redesigned Outback! Overall, a very very refined wagon-ish SUV...",
                 "featured": false
@@ -681,225 +666,3 @@
         let activeCategoryFilter = 'all';
         let currentPageIndex = 1;
         let displayLimitPerPage = 6;
-        let activeSortSequence = 'newest';
-
-        function initGlobalEcosystem() {
-            featuredData = broadcastMasterRegistry.filter(item => item.featured);
-            initCarousel();
-            initControlDashboardListeners();
-            executeRegistryRender();
-            initLightboxEvents();
-        }
-
-        function getYoutubeThumbnail(ytId) {
-            return `https://img.youtube.com/vi/${ytId}/maxresdefault.jpg`;
-        }
-
-        function initLightboxEvents() {
-            const lightbox = document.getElementById('videoLightbox');
-            document.getElementById('closeLightbox').addEventListener('click', closeLightboxSystem);
-            lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeLightboxSystem(); });
-            document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && lightbox.classList.contains('active')) closeLightboxSystem(); });
-        }
-
-        function launchLightbox(item) {
-            const videoFrame = document.getElementById('lightboxVideoFrame');
-            const articleView = document.getElementById('lightboxArticleView');
-            const iframe = document.getElementById('lightboxIframe');
-            const articleBody = document.getElementById('lightboxArticleBody');
-            
-            document.getElementById('lightboxTitle').innerText = item.title.toLowerCase();
-            document.getElementById('lightboxDesc').innerText = `${item.channelName} • ${item.issue}`;
-
-            if (item.contentType === 'article') {
-                videoFrame.style.display = 'none';
-                iframe.src = '';
-                articleBody.innerHTML = item.bodyContent || item.excerpt;
-                articleView.style.display = 'block';
-            } else {
-                articleView.style.display = 'none';
-                articleBody.innerHTML = '';
-                iframe.src = `https://www.youtube.com/embed/${item.ytId}?autoplay=1&modestbranding=1&rel=0`;
-                videoFrame.style.display = 'block';
-            }
-
-            document.getElementById('videoLightbox').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function launchIndependentLink(item) {
-            launchLightbox(item);
-        }
-
-        function closeLightboxSystem() {
-            document.getElementById('videoLightbox').classList.remove('active');
-            document.getElementById('lightboxIframe').src = ''; 
-            document.body.style.overflow = '';
-        }
-
-        function initCarousel() {
-            if(!featuredData.length) return;
-            const track = document.getElementById('imageTrack');
-            track.innerHTML = '';
-
-            featuredData.forEach((item, idx) => {
-                const img = document.createElement('img');
-                img.src = getYoutubeThumbnail(item.ytId);
-                img.alt = item.title;
-                img.className = `carousel-img-item ${idx === 0 ? 'active' : ''}`;
-                track.appendChild(img);
-            });
-
-            updateCarouselDisplay();
-
-            document.getElementById('nextBtn').addEventListener('click', () => {
-                currentCarouselIndex = (currentCarouselIndex + 1) % featuredData.length;
-                updateCarouselDisplay();
-            });
-            document.getElementById('prevBtn').addEventListener('click', () => {
-                currentCarouselIndex = (currentCarouselIndex - 1 + featuredData.length) % featuredData.length;
-                updateCarouselDisplay();
-            });
-            document.getElementById('carouselLink').addEventListener('click', () => {
-                launchLightbox(featuredData[currentCarouselIndex]);
-            });
-        }
-
-        function updateCarouselDisplay() {
-            const item = featuredData[currentCarouselIndex];
-            if(!item) return;
-            document.getElementById('carouselMeta').innerText = `${item.channelName} • ${item.issue}`;
-            document.getElementById('carouselTitle').innerText = item.title.toLowerCase();
-            document.getElementById('carouselExcerpt').innerText = item.excerpt;
-            document.getElementById('carouselCounter').innerText = `${String(currentCarouselIndex + 1).padStart(2, '0')} / ${String(featuredData.length).padStart(2, '0')}`;
-            document.querySelectorAll('.carousel-img-item').forEach((img, idx) => {
-                img.classList.toggle('active', idx === currentCarouselIndex);
-            });
-        }
-
-        function initControlDashboardListeners() {
-            const searchInput = document.getElementById('journalSearch');
-            const clearBtn = document.getElementById('clearSearchBtn');
-
-            searchInput.addEventListener('input', () => {
-                clearBtn.classList.toggle('visible', searchInput.value.length > 0);
-                currentPageIndex = 1; 
-                executeRegistryRender();
-            });
-
-            clearBtn.addEventListener('click', () => {
-                searchInput.value = '';
-                clearBtn.classList.remove('visible');
-                currentPageIndex = 1;
-                executeRegistryRender();
-            });
-
-            document.querySelectorAll('.matrix-tab').forEach(tab => {
-                tab.addEventListener('click', (e) => {
-                    document.querySelectorAll('.matrix-tab').forEach(t => t.classList.remove('active'));
-                    e.target.classList.add('active');
-                    activeCategoryFilter = e.target.getAttribute('data-category');
-                    currentPageIndex = 1;
-                    executeRegistryRender();
-                });
-            });
-
-            document.getElementById('sortSelector').addEventListener('change', (e) => {
-                activeSortSequence = e.target.value;
-                executeRegistryRender();
-            });
-
-            document.getElementById('limitSelector').addEventListener('change', (e) => {
-                displayLimitPerPage = parseInt(e.target.value);
-                currentPageIndex = 1;
-                executeRegistryRender();
-            });
-
-            document.getElementById('prevPageBtn').addEventListener('click', () => {
-                if (currentPageIndex > 1) {
-                    currentPageIndex--;
-                    executeRegistryRender();
-                    document.getElementById('journal').scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-
-            document.getElementById('nextPageBtn').addEventListener('click', () => {
-                currentPageIndex++;
-                executeRegistryRender();
-                document.getElementById('journal').scrollIntoView({ behavior: 'smooth' });
-            });
-        }
-
-        function executeRegistryRender() {
-            const container = document.getElementById('gridContainer');
-            const noResults = document.getElementById('noResults');
-            const countNode = document.getElementById('resultsCount');
-            const searchQuery = document.getElementById('journalSearch').value.toLowerCase().trim();
-            
-            let processedDataset = broadcastMasterRegistry.filter(item => {
-                const matchesCategory = (activeCategoryFilter === 'all') || (item.tag === activeCategoryFilter);
-                const matchesSearch = item.title.toLowerCase().includes(searchQuery) || 
-                                      item.excerpt.toLowerCase().includes(searchQuery) || 
-                                      item.channelName.toLowerCase().includes(searchQuery) ||
-                                      item.issue.toLowerCase().includes(searchQuery);
-                return matchesCategory && matchesSearch;
-            });
-
-            if (activeSortSequence === 'newest') {
-                processedDataset.sort((a, b) => b.timestamp - a.timestamp);
-            } else if (activeSortSequence === 'oldest') {
-                processedDataset.sort((a, b) => a.timestamp - b.timestamp);
-            } else if (activeSortSequence === 'alpha') {
-                processedDataset.sort((a, b) => a.title.localeCompare(b.title));
-            }
-
-            const totalMatchingUnits = processedDataset.length;
-            const maxCalculatedPages = Math.ceil(totalMatchingUnits / displayLimitPerPage) || 1;
-            
-            if (currentPageIndex > maxCalculatedPages) currentPageIndex = maxCalculatedPages;
-
-            const sliceStartIndex = (currentPageIndex - 1) * displayLimitPerPage;
-            const sliceEndIndex = sliceStartIndex + displayLimitPerPage;
-            const paginatedDatasetSlice = processedDataset.slice(sliceStartIndex, sliceEndIndex);
-
-            container.innerHTML = '';
-            countNode.innerText = `${totalMatchingUnits} items cataloged • showing page ${currentPageIndex} of ${maxCalculatedPages}`;
-
-            if (!totalMatchingUnits) {
-                noResults.style.display = 'block';
-                document.getElementById('paginationBlock').style.display = 'none';
-                return;
-            }
-            
-            noResults.style.display = 'none';
-            document.getElementById('paginationBlock').style.display = totalMatchingUnits > displayLimitPerPage ? 'flex' : 'none';
-
-            document.getElementById('paginationTrackerNode').innerText = `page ${currentPageIndex} of ${maxCalculatedPages}`;
-            document.getElementById('prevPageBtn').disabled = (currentPageIndex === 1);
-            document.getElementById('nextPageBtn').disabled = (currentPageIndex === maxCalculatedPages);
-
-            paginatedDatasetSlice.forEach((indexItem, index) => {
-                const card = document.createElement('div');
-                card.className = `item-card ${indexItem.contentType === 'video' ? 'video-format' : 'article-format'}`;
-                card.style.animationDelay = `${index * 0.03}s`;
-                card.onclick = () => launchIndependentLink(indexItem);
-                
-                const formatIconSvg = indexItem.contentType === 'video' 
-                    ? `<svg class="meta-format-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>`
-                    : `<svg class="meta-format-icon" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>`;
-
-                card.innerHTML = `
-                    <div class="img-wrapper"><img src="${getYoutubeThumbnail(indexItem.ytId)}" alt="${indexItem.title}"></div>
-                    <div class="card-meta">
-                        <span>${indexItem.issue}</span>
-                        <span class="card-meta-chan">${formatIconSvg}${indexItem.channelName}</span>
-                    </div>
-                    <h4 class="card-title">${indexItem.title}</h4>
-                    <p class="card-excerpt">${indexItem.excerpt}</p>
-                `;
-                container.appendChild(card);
-            });
-        }
-    </script>
-</body>
-</html>
